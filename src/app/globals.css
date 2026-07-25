@@ -3,6 +3,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Brand palette — keep logo colors centralized here */
+  --brand-navy: #0b1f3a;
+  --brand-blue: #1d4ed8;
+  --brand-teal: #0f766e;
+  --brand-reversed: #f8fafc;
+
   --background: #f7f9fc;
   --foreground: #0f172a;
   --muted: #64748b;
@@ -10,22 +16,27 @@
   --card-foreground: #0f172a;
   --border: #e2e8f0;
   --ring: #2563eb;
-  --primary: #1d4ed8;
+  --primary: var(--brand-blue);
   --primary-foreground: #ffffff;
   --primary-soft: #dbeafe;
   --accent: #0ea5e9;
   --accent-foreground: #082f49;
   --surface: #ffffff;
   --surface-elevated: #ffffff;
-  --hero-from: #0b1f3a;
+  --hero-from: var(--brand-navy);
   --hero-via: #123866;
-  --hero-to: #1d4ed8;
+  --hero-to: var(--brand-blue);
   --glow: rgba(37, 99, 235, 0.22);
   --success: #059669;
   --shadow-soft: 0 18px 50px -28px rgba(15, 23, 42, 0.35);
 }
 
 .dark {
+  --brand-navy: #0b1f3a;
+  --brand-blue: #3b82f6;
+  --brand-teal: #2dd4bf;
+  --brand-reversed: #f8fafc;
+
   --background: #070b14;
   --foreground: #e8eef9;
   --muted: #94a3b8;
@@ -33,7 +44,7 @@
   --card-foreground: #e8eef9;
   --border: #1e293b;
   --ring: #60a5fa;
-  --primary: #3b82f6;
+  --primary: var(--brand-blue);
   --primary-foreground: #06111f;
   --primary-soft: rgba(59, 130, 246, 0.16);
   --accent: #38bdf8;
@@ -64,6 +75,10 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-success: var(--success);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-reversed: var(--brand-reversed);
   --font-sans: var(--font-plus-jakarta);
   --font-display: var(--font-manrope);
   --shadow-soft: var(--shadow-soft);
