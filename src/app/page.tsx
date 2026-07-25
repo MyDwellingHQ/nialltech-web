@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
+import { Founder } from "@/components/home/Founder";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { Certifications } from "@/components/home/Certifications";
 import { TechStack } from "@/components/home/TechStack";
@@ -28,6 +29,7 @@ export default function HomePage() {
     <>
       <Hero />
       <ServicesPreview />
+      <Founder />
       <WhyChooseUs />
       <Certifications />
       <TechStack />

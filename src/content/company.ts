@@ -95,9 +95,9 @@ export const workflowSteps = [
 ];
 
 export const aboutStats = [
-  { label: "Years of combined experience", value: "15+" },
-  { label: "Cloud & identity projects", value: "120+" },
-  { label: "Average client retention", value: "96%" },
+  { label: "Years of professional IT experience", value: "15+" },
+  { label: "Engagement model", value: "Founder-led" },
+  { label: "Service area", value: "Kitsap" },
   { label: "Response commitment", value: "Same day" },
 ];
 

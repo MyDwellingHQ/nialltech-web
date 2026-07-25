@@ -3,12 +3,13 @@ import { Mail, MapPin, Phone, Clock3 } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { siteConfig } from "@/lib/site";
+import { FounderPhoto } from "@/components/brand/founder-photo";
+import { formatAddressLine, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Niall Tech to discuss Microsoft 365, Azure, security, infrastructure, or IT support consulting.",
+    "Contact Niall Tech to discuss Microsoft 365, Azure, security, infrastructure, or IT support consulting in Kitsap County.",
   alternates: {
     canonical: "/contact",
   },
@@ -25,18 +26,34 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Tell us what you need"
-        description="Share a few details about your environment and goals. We typically respond the same business day with a clear next step."
+        description="Share a few details about your environment and goals. You will hear back from the founder—usually the same business day—with a clear next step."
       />
 
       <Container className="grid gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 sm:py-20">
         <aside className="space-y-6">
+          <div className="flex items-center gap-4">
+            <FounderPhoto
+              compact
+              className="h-20 w-20 shrink-0"
+              sizes="80px"
+            />
+            <div>
+              <p className="font-display text-lg font-semibold tracking-tight">
+                Paul Dent
+              </p>
+              <p className="text-sm text-muted">
+                Founder · Work directly with the engineer doing the work
+              </p>
+            </div>
+          </div>
+
           <div>
             <h2 className="font-display text-2xl font-semibold tracking-tight">
               Get in touch
             </h2>
             <p className="mt-3 text-muted">
-              Prefer email or phone? Reach us directly and we will route your
-              request to the right consultant.
+              Prefer email or phone? Reach out directly—this is a founder-led
+              practice, not a call center queue.
             </p>
           </div>
 
@@ -55,13 +72,13 @@ export default function ContactPage() {
             />
             <ContactDetail
               icon={MapPin}
-              label="Office"
-              value={`${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`}
+              label="Location"
+              value={`${formatAddressLine()} · Kitsap County`}
             />
             <ContactDetail
               icon={Clock3}
               label="Hours"
-              value="Monday–Friday, 9:00–17:30 (local time)"
+              value="Monday–Friday, 9:00–17:30 (Pacific)"
             />
           </ul>
         </aside>
