@@ -1,6 +1,20 @@
-import { siteConfig } from "@/lib/site";
+import { formatAddressLine, siteConfig } from "@/lib/site";
 
 export function OrganizationJsonLd() {
+  const address: Record<string, string> = {
+    "@type": "PostalAddress",
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.region,
+    addressCountry: siteConfig.address.country,
+  };
+
+  if (siteConfig.address.street) {
+    address.streetAddress = siteConfig.address.street;
+  }
+  if (siteConfig.address.postalCode) {
+    address.postalCode = siteConfig.address.postalCode;
+  }
+
   const data = {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
@@ -10,17 +24,12 @@ export function OrganizationJsonLd() {
     email: siteConfig.email,
     telephone: siteConfig.phone,
     description: siteConfig.description,
-    areaServed: "Worldwide",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.street,
-      addressLocality: siteConfig.address.city,
-      addressRegion: siteConfig.address.region,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.country,
-    },
+    areaServed: ["Bremerton, WA", "Kitsap County", "Washington"],
+    address,
     sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
     knowsAbout: siteConfig.keywords,
+    slogan: siteConfig.tagline,
+    location: formatAddressLine(),
   };
 
   return (
@@ -41,6 +50,7 @@ export function WebsiteJsonLd() {
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
+      legalName: siteConfig.legalName,
     },
   };
 

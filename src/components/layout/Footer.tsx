@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { footerNav, siteConfig } from "@/lib/site";
+import { SiteLogo } from "@/components/brand/site-logo";
+import { footerNav, formatAddressLine, siteConfig } from "@/lib/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -10,18 +11,16 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-                NT
-              </span>
-              <span className="font-display text-lg font-semibold tracking-tight">
-                Niall Tech
-              </span>
+            <Link
+              href="/"
+              className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-label={`${siteConfig.name} home`}
+            >
+              <SiteLogo variant="horizontal" size={32} />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-              {siteConfig.tagline} Microsoft 365, Azure, identity, security, and
-              infrastructure consulting for organizations that need clarity and
-              reliable delivery.
+              {siteConfig.tagline} Founder-led Microsoft cloud, cybersecurity,
+              and infrastructure consulting based in {formatAddressLine()}.
             </p>
             <div className="mt-5 space-y-1 text-sm text-muted">
               <p>

@@ -9,7 +9,7 @@ export function WhyChooseUs() {
       className="bg-surface"
       eyebrow="Why Niall Tech"
       title="Trust, simplicity, and technical depth"
-      description="We combine senior-level expertise with a delivery style that is clear, measured, and focused on outcomes."
+      description="Senior-level expertise with a founder-led delivery style—clear, measured, and focused on outcomes without unnecessary complexity."
     >
       <div className="grid gap-5 md:grid-cols-2">
         {whyChooseUs.map((item, index) => (

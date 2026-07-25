@@ -17,6 +17,12 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/svg+xml",
         purpose: "any",
       },
+      {
+        src: "/brand/niall-tech-mark.svg",
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "monochrome",
+      },
     ],
   };
 }

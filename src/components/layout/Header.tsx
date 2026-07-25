@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { SiteLogo } from "@/components/brand/site-logo";
 import { mainNav, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -44,14 +45,19 @@ export function Header() {
         <Link
           href="/"
           onClick={closeMenu}
-          className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${siteConfig.name} home`}
         >
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-soft">
-            NT
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-            Niall Tech
+          <SiteLogo
+            variant="horizontal"
+            size={36}
+            className="max-[360px]:hidden"
+          />
+          <span className="hidden items-center gap-2.5 max-[360px]:inline-flex">
+            <SiteLogo variant="mark" size={32} decorative />
+            <span className="font-display text-base font-semibold tracking-tight">
+              {siteConfig.name}
+            </span>
           </span>
         </Link>
 

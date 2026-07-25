@@ -1,7 +1,7 @@
 import { Mail, Phone } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site";
+import { formatAddressLine, siteConfig } from "@/lib/site";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 
 export function ContactCTA() {
@@ -51,10 +51,9 @@ export function ContactCTA() {
                 {siteConfig.phone}
               </a>
               <p className="text-sm leading-relaxed text-slate-300">
-                {siteConfig.address.street}
+                {formatAddressLine()}
                 <br />
-                {siteConfig.address.city}, {siteConfig.address.region}{" "}
-                {siteConfig.address.postalCode}
+                Kitsap County, Washington
               </p>
             </div>
           </div>

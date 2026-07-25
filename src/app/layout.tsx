@@ -60,8 +60,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/icon.svg" }],
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/brand/niall-tech-mark.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/icon.svg", sizes: "180x180" }],
   },
 };
 

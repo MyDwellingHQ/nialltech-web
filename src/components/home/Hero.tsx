@@ -26,11 +26,12 @@ export function Hero() {
               Niall Tech
             </p>
             <h1 className="animate-fade-up animation-delay-100 mt-5 max-w-xl text-2xl font-medium leading-snug tracking-tight text-slate-100 sm:text-3xl">
-              Microsoft, cloud, and infrastructure consulting you can trust.
+              Practical IT expertise for Kitsap County organizations.
             </h1>
             <p className="animate-fade-up animation-delay-200 mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-              We help organizations modernize identity, endpoints, security, and
-              IT operations with clear guidance and reliable delivery.
+              Founder-led Microsoft cloud, cybersecurity, and infrastructure
+              consulting from Bremerton—clear guidance, reliable delivery, and
+              direct access to the engineer doing the work.
             </p>
             <div className="animate-fade-up animation-delay-300 mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact" size="lg">

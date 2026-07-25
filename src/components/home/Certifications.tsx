@@ -8,7 +8,7 @@ export function Certifications() {
     <Section
       eyebrow="Credentials"
       title="Certifications that signal readiness"
-      description="Our consultants maintain current Microsoft and security credentials relevant to the platforms we implement."
+      description="Credential highlights relevant to the Microsoft, security, and infrastructure work Niall Tech delivers. Official badge artwork is shown only when authorized files are available—never as a substitute for the Niall Tech logo."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert, index) => (
