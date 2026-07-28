@@ -50,12 +50,18 @@ Defaults to `https://nialltech.com` for metadata, sitemap, and robots.
 
 ## Deploy on Vercel
 
-1. Import this repository in Vercel
-2. Framework preset: **Next.js** (auto-detected)
-3. Build command: `next build`
-4. Output: Next.js defaults (no custom config required)
+This repo includes a `vercel.json` that forces the **Next.js** framework preset. That matters because a project first connected with only a README can stay stuck on Framework Preset **Other**, which builds successfully but serves every route as a platform `NOT_FOUND` 404.
 
-No project modifications are required for a successful Vercel deployment.
+In the Vercel project settings, confirm:
+
+1. **Root Directory**: leave empty (app lives at the repository root — `src/app`, not a subdirectory)
+2. **Framework Preset**: Next.js (also set in `vercel.json`)
+3. **Build Command**: `next build` (default / `vercel.json`)
+4. **Output Directory**: leave empty — do not set `public`, `out`, or `.next`
+5. **Install Command**: default (`npm install`)
+6. **Production Branch**: `main`
+
+After changing Build & Development Settings, redeploy Production.
 
 ## Project structure
 
