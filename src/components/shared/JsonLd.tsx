@@ -11,14 +11,6 @@ export function OrganizationJsonLd() {
     telephone: siteConfig.phone,
     description: siteConfig.description,
     areaServed: "Worldwide",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.street,
-      addressLocality: siteConfig.address.city,
-      addressRegion: siteConfig.address.region,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.country,
-    },
     sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
     knowsAbout: siteConfig.keywords,
   };

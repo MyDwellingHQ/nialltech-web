@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, Clock3 } from "lucide-react";
+import { Mail, Phone, Clock3 } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -52,11 +52,6 @@ export default function ContactPage() {
               label="Phone"
               value={siteConfig.phone}
               href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
-            />
-            <ContactDetail
-              icon={MapPin}
-              label="Office"
-              value={`${siteConfig.address.street}, ${siteConfig.address.city}, ${siteConfig.address.region} ${siteConfig.address.postalCode}`}
             />
             <ContactDetail
               icon={Clock3}
