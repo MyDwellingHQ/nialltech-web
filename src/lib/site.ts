@@ -8,13 +8,6 @@ export const siteConfig = {
   locale: "en_US",
   email: "hello@nialltech.com",
   phone: "+1 (555) 014-2200",
-  address: {
-    street: "100 Innovation Drive",
-    city: "Austin",
-    region: "TX",
-    postalCode: "78701",
-    country: "US",
-  },
   social: {
     linkedin: "https://www.linkedin.com/company/niall-tech",
     github: "https://github.com/niall-tech",

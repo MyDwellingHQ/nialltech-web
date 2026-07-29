@@ -50,12 +50,6 @@ export function ContactCTA() {
                 </span>
                 {siteConfig.phone}
               </a>
-              <p className="text-sm leading-relaxed text-slate-300">
-                {siteConfig.address.street}
-                <br />
-                {siteConfig.address.city}, {siteConfig.address.region}{" "}
-                {siteConfig.address.postalCode}
-              </p>
             </div>
           </div>
         </div>
