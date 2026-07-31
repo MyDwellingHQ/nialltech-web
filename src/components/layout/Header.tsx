@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { BrandMark } from "@/components/brand/BrandLogo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -47,9 +48,7 @@ export function Header() {
           className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${siteConfig.name} home`}
         >
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-soft">
-            NT
-          </span>
+          <BrandMark className="h-9 w-9" />
           <span className="font-display text-lg font-semibold tracking-tight text-foreground">
             Niall Tech
           </span>

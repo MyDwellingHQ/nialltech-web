@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandMark } from "@/components/brand/BrandLogo";
 import { Container } from "@/components/ui/Container";
 import { footerNav, siteConfig } from "@/lib/site";
 
@@ -11,9 +12,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-                NT
-              </span>
+              <BrandMark className="h-9 w-9" />
               <span className="font-display text-lg font-semibold tracking-tight">
                 Niall Tech
               </span>
