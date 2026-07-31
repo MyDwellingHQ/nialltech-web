@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
+import { ModernizeTransition } from "@/components/home/ModernizeTransition";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { Certifications } from "@/components/home/Certifications";
@@ -27,6 +28,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ModernizeTransition />
       <ServicesPreview />
       <WhyChooseUs />
       <Certifications />
