@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 2200" width="1700" height="2200" font-family="Inter, Arial, sans-serif">
+
+  <rect width="1700" height="2200" fill="#FFFFFF"/>
+  <svg x="150" y="150" width="430" height="102.38095238095238" viewBox="0 0 420 100" preserveAspectRatio="xMinYMid meet">
+
+  
+  
+  <g transform="translate(0, 10) scale(0.8)">
+    <g transform="scale(0.83333)">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#0B1320"/>
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#0B1320"/>
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#146BFF"/>
+  </g>
+  </g>
+  
+  <g font-family="Inter, Arial, Helvetica, sans-serif">
+    <text x="98" y="62" fill="#0B1320" font-size="32" font-weight="700" letter-spacing="3.2">NIALL</text>
+    <text x="211.6" y="62" fill="#146BFF" font-size="32" font-weight="500" letter-spacing="7.5">TECH</text>
+  </g>
+  
+
+</svg>
+  <line x1="150" y1="300" x2="1550" y2="300" stroke="#E5E7EB" stroke-width="2"/>
+  <line x1="150" y1="2004" x2="1550" y2="2004" stroke="#E5E7EB" stroke-width="2"/>
+  <text x="850" y="2050" text-anchor="middle" fill="#475569" font-size="26" font-weight="500" letter-spacing="1.5">nialltech.com  ·  hello@nialltech.com  ·  +1 (555) 014-2200</text>
+  <rect x="0" y="0" width="1700" height="14" fill="#0B1320"/>
+  <rect x="0" y="0" width="578" height="14" fill="#146BFF"/>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1125 675" width="1125" height="675" font-family="Inter, Arial, sans-serif">
+
+  <rect width="1125" height="675" fill="#0B1320"/>
+  <svg x="352.5" y="150" width="420" height="240" viewBox="0 0 280 160" preserveAspectRatio="xMidYMid meet">
+
+  
+  
+  <g transform="translate(90, 8) scale(0.85)">
+    <g transform="scale(0.83333)">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#FFFFFF"/>
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#FFFFFF"/>
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#FFFFFF"/>
+  </g>
+  </g>
+  <g font-family="Inter, Arial, Helvetica, sans-serif">
+    <text x="118" y="128" fill="#FFFFFF" font-size="28" font-weight="700" letter-spacing="3.2" text-anchor="end">NIALL</text>
+    <text x="128" y="128" fill="#FFFFFF" font-size="28" font-weight="500" letter-spacing="6.5" text-anchor="start">TECH</text>
+  </g>
+
+</svg>
+  <g font-size="26" font-weight="500" letter-spacing="3" text-anchor="middle" fill="#E5E7EB">
+    <text x="562.5" y="470">Modern IT. &#160; Cybersecurity. &#160; Cloud.</text>
+  </g>
+  <rect x="861.5" y="411.5" width="182" height="182" rx="16" fill="#FFFFFF"/>
+  <svg x="877.5" y="427.5" width="150" height="150" viewBox="0 0 25 25" preserveAspectRatio="xMidYMid meet"><path stroke="#0B1320" d="M0 0.5h7m2 0h5m4 0h7M0 1.5h1m5 0h1m2 0h7m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m3 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m4 0h1m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h1m2 0h1M0 8.5h1m1 0h5m4 0h1m1 0h3m2 0h5M4 9.5h2m1 0h1m1 0h5m2 0h1m2 0h1m3 0h1M1 10.5h2m1 0h1m1 0h3m1 0h1m2 0h4m3 0h2m1 0h2M0 11.5h1m3 0h1m2 0h1m1 0h4m1 0h7m3 0h1M0 12.5h1m5 0h1m1 0h1m3 0h4m1 0h2m1 0h1m1 0h3M0 13.5h2m1 0h1m3 0h4m2 0h1m2 0h1m2 0h1m1 0h1m1 0h1M0 14.5h1m1 0h5m1 0h2m1 0h2m1 0h2m2 0h4m1 0h2M0 15.5h1m1 0h1m1 0h2m1 0h1m2 0h2m2 0h7m3 0h1M0 16.5h1m1 0h3m1 0h6m3 0h6m1 0h1M8 17.5h1m3 0h2m2 0h1m3 0h2M0 18.5h7m2 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3M0 19.5h1m5 0h1m1 0h3m1 0h2m2 0h1m3 0h2m1 0h2M0 20.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h7m1 0h3M0 21.5h1m1 0h3m1 0h1m1 0h3m4 0h1m1 0h2m1 0h5M0 22.5h1m1 0h3m1 0h1m1 0h1m1 0h3m3 0h1m4 0h2m1 0h1M0 23.5h1m5 0h1m2 0h1m1 0h1m2 0h4m1 0h3m2 0h1M0 24.5h7m1 0h4m6 0h7"/></svg>
+  <text x="97.5" y="573.5" fill="#475569" font-size="22" font-weight="500" letter-spacing="1">nialltech.com</text>
+</svg>

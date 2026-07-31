@@ -1,4 +1,8 @@
 import { cn } from "@/lib/utils";
+import {
+  NIALL_MARK_PATHS,
+  NIALL_MARK_VIEWBOX,
+} from "@/brand/niall-mark-geometry";
 
 export type BrandLogoVariant = "icon" | "horizontal" | "stacked" | "wordmark";
 export type BrandLogoTheme = "light" | "dark" | "monochrome";
@@ -108,22 +112,14 @@ export function BrandMark({
 
   return (
     <svg
-      viewBox="0 0 100 100"
+      viewBox={NIALL_MARK_VIEWBOX}
       className={cn("h-9 w-9", className)}
       role="img"
       aria-label="Niall Tech"
     >
-      <rect x="21" y="15" width="14.5" height="70" rx="7.25" fill={primary} />
-      <line
-        x1="41.5875"
-        y1="23.75"
-        x2="69.575"
-        y2="76.75"
-        stroke={primary}
-        strokeWidth="14.5"
-        strokeLinecap="round"
-      />
-      <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill={accent} />
+      <path d={NIALL_MARK_PATHS.main} fill={primary} />
+      <path d={NIALL_MARK_PATHS.lowerLeft} fill={primary} />
+      <path d={NIALL_MARK_PATHS.bluePillar} fill={accent} />
     </svg>
   );
 }
