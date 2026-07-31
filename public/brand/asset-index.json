@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T16:18:47.769Z",
+  "generatedAt": "2026-07-31T16:34:19.978Z",
   "masterSvg": "/brand/svg/niall-tech-icon.svg",
   "masterGeometry": "medium-gap",
   "brandColors": {
@@ -237,6 +237,34 @@
       "bytes": 69126
     },
     {
+      "name": "github-org-banner-1280x640.png",
+      "category": "social",
+      "path": "/brand/social/github-org-banner-1280x640.png",
+      "format": "png",
+      "bytes": 131657
+    },
+    {
+      "name": "github-org-banner-1280x640.svg",
+      "category": "social",
+      "path": "/brand/social/github-org-banner-1280x640.svg",
+      "format": "svg",
+      "bytes": 1817
+    },
+    {
+      "name": "linkedin-banner-1584x396.png",
+      "category": "social",
+      "path": "/brand/social/linkedin-banner-1584x396.png",
+      "format": "png",
+      "bytes": 92480
+    },
+    {
+      "name": "linkedin-banner-1584x396.svg",
+      "category": "social",
+      "path": "/brand/social/linkedin-banner-1584x396.svg",
+      "format": "svg",
+      "bytes": 1820
+    },
+    {
       "name": "linkedin-company-cover-1128x191.png",
       "category": "social",
       "path": "/brand/social/linkedin-company-cover-1128x191.png",
@@ -263,6 +291,20 @@
       "path": "/brand/social/social-avatar-dark-1024.png",
       "format": "png",
       "bytes": 19440
+    },
+    {
+      "name": "x-banner-1500x500.png",
+      "category": "social",
+      "path": "/brand/social/x-banner-1500x500.png",
+      "format": "png",
+      "bytes": 112323
+    },
+    {
+      "name": "x-banner-1500x500.svg",
+      "category": "social",
+      "path": "/brand/social/x-banner-1500x500.svg",
+      "format": "svg",
+      "bytes": 1815
     },
     {
       "name": "niall-tech-gap-chamfered.svg",

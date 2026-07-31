@@ -54,10 +54,11 @@ export function resolveColors(mode) {
  * no-op: the approved mark's negative space is structural (the gaps between the
  * three shapes), not a tunable stroke gap. Paint order matches the canonical
  * source: main beam, lower-left pillar, then the electric-blue right pillar.
- * @param {GapStyle} [_gapStyle] retained for signature compatibility (ignored)
+ * @param {GapStyle} [gapStyle] retained for signature compatibility (ignored)
  * @param {ColorMode} mode
  */
-export function renderIconMarkup(_gapStyle = "medium", mode = "color") {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- gapStyle kept for call-site compatibility (see doc above)
+export function renderIconMarkup(gapStyle = "medium", mode = "color") {
   const { primary, accent } = resolveColors(mode);
   const s = CANONICAL_TO_ICON.toFixed(5);
   return [

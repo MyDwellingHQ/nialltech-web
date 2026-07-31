@@ -11,7 +11,7 @@
  * Usage: npm run brand:build
  */
 
-import { createWriteStream } from "node:fs";
+import { createWriteStream, existsSync } from "node:fs";
 import {
   access,
   copyFile,
@@ -631,9 +631,22 @@ async function buildZip() {
     archive.on("error", reject);
     archive.pipe(output);
 
-    const include = ["svg", "png", "favicon", "social", "print"];
+    const include = [
+      "svg",
+      "png",
+      "favicon",
+      "social",
+      "print",
+      "collateral",
+      "office",
+      "email",
+    ];
     for (const dir of include) {
-      archive.directory(path.join(BRAND, dir), dir);
+      const full = path.join(BRAND, dir);
+      // collateral/office/email are produced by sibling scripts; only add if built.
+      if (existsSync(full)) {
+        archive.directory(full, dir);
+      }
     }
     archive.file(path.join(BRAND, "README.md"), { name: "README.md" });
     archive.file(path.join(BRAND, "brand-colors.txt"), {
@@ -661,6 +674,16 @@ async function verifyRequired() {
 }
 
 async function main() {
+  // Fast path: re-package the ZIP only, after sibling collateral/office/email
+  // scripts have run, without regenerating every raster asset.
+  if (process.argv.includes("--zip-only")) {
+    console.log("\nNiall Tech brand asset — re-zip only\n");
+    await writeAssetIndex();
+    await buildZip();
+    console.log("\nRe-zip complete.\n");
+    return;
+  }
+
   console.log("\nNiall Tech brand asset build\n");
   await ensureFonts();
   await generateSvgs();

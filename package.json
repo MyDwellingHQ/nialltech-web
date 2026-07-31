@@ -9,6 +9,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "brand:build": "node scripts/build-brand-assets.mjs",
+    "brand:collateral": "node scripts/build-brand-collateral.mjs",
+    "brand:office": "node scripts/build-brand-office.mjs",
+    "brand:zip": "node scripts/build-brand-assets.mjs --zip-only",
+    "brand:all": "npm run brand:build && npm run brand:collateral && npm run brand:office && npm run brand:zip",
     "brand:logo-reconstruction": "node scripts/build-logo-reconstruction.mjs",
     "brand:logo-reconstruction:test": "node scripts/test-logo-reconstruction.mjs"
   },
