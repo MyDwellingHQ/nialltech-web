@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 2200" width="1700" height="2200" font-family="Inter, Arial, sans-serif">
+
+  <rect width="1700" height="2200" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1700" height="14" fill="#0B1320"/>
+  <rect x="0" y="0" width="578" height="14" fill="#146BFF"/>
+  <svg x="150" y="150" width="360" height="85.71428571428571" viewBox="0 0 420 100" preserveAspectRatio="xMinYMid meet">
+
+  
+  
+  <g transform="translate(0, 10) scale(0.8)">
+    <g transform="scale(0.83333)">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#0B1320"/>
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#0B1320"/>
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#146BFF"/>
+  </g>
+  </g>
+  
+  <g font-family="Inter, Arial, Helvetica, sans-serif">
+    <text x="98" y="62" fill="#0B1320" font-size="32" font-weight="700" letter-spacing="3.2">NIALL</text>
+    <text x="211.6" y="62" fill="#146BFF" font-size="32" font-weight="500" letter-spacing="7.5">TECH</text>
+  </g>
+  
+
+</svg>
+  <text x="1550" y="190" text-anchor="end" fill="#0B1320" font-size="64" font-weight="700" letter-spacing="2">INVOICE</text>
+  <text x="1550" y="234" text-anchor="end" fill="#475569" font-size="24">Invoice #NT-1042 · Net 15</text>
+  <g font-size="24">
+    <text x="150" y="400" fill="#475569" font-weight="600">BILL TO</text>
+    <text x="150" y="442" fill="#0B1320">Client organization</text>
+    <text x="150" y="478" fill="#0B1320">Accounts payable</text>
+    <text x="1550" y="400" text-anchor="end" fill="#475569" font-weight="600">DETAILS</text>
+    <text x="1550" y="442" text-anchor="end" fill="#0B1320">Issue date: on generation</text>
+    <text x="1550" y="478" text-anchor="end" fill="#0B1320">From: Niall Tech</text>
+  </g>
+  
+    <rect x="150" y="760" width="1400" height="56" fill="#0B1320"/>
+    <text x="170" y="798" fill="#FFFFFF" font-size="24" font-weight="600">Description</text>
+    <text x="1040" y="798" fill="#FFFFFF" font-size="24" font-weight="600" text-anchor="end">Hrs</text>
+    <text x="1230" y="798" fill="#FFFFFF" font-size="24" font-weight="600" text-anchor="end">Rate</text>
+    <text x="1550" y="798" fill="#FFFFFF" font-size="24" font-weight="600" text-anchor="end">Amount</text>
+  
+    
+    <text x="170" y="862" fill="#0B1320" font-size="23">Microsoft 365 tenant setup &amp; Entra ID hardening</text>
+    <text x="1040" y="862" fill="#0B1320" font-size="23" text-anchor="end">8</text>
+    <text x="1230" y="862" fill="#0B1320" font-size="23" text-anchor="end">$185.00</text>
+    <text x="1550" y="862" fill="#0B1320" font-size="23" text-anchor="end">$1,480.00</text>
+    <rect x="150" y="890" width="1400" height="74" fill="#F7F9FC"/>
+    <text x="170" y="936" fill="#0B1320" font-size="23">Intune endpoint enrollment &amp; compliance policies</text>
+    <text x="1040" y="936" fill="#0B1320" font-size="23" text-anchor="end">6</text>
+    <text x="1230" y="936" fill="#0B1320" font-size="23" text-anchor="end">$185.00</text>
+    <text x="1550" y="936" fill="#0B1320" font-size="23" text-anchor="end">$1,110.00</text>
+    
+    <text x="170" y="1010" fill="#0B1320" font-size="23">Network assessment &amp; firewall configuration</text>
+    <text x="1040" y="1010" fill="#0B1320" font-size="23" text-anchor="end">5</text>
+    <text x="1230" y="1010" fill="#0B1320" font-size="23" text-anchor="end">$175.00</text>
+    <text x="1550" y="1010" fill="#0B1320" font-size="23" text-anchor="end">$875.00</text>
+    <rect x="150" y="1038" width="1400" height="74" fill="#F7F9FC"/>
+    <text x="170" y="1084" fill="#0B1320" font-size="23">Managed backup &amp; disaster-recovery onboarding</text>
+    <text x="1040" y="1084" fill="#0B1320" font-size="23" text-anchor="end">4</text>
+    <text x="1230" y="1084" fill="#0B1320" font-size="23" text-anchor="end">$175.00</text>
+    <text x="1550" y="1084" fill="#0B1320" font-size="23" text-anchor="end">$700.00</text>
+  
+    <text x="1230" y="1142" fill="#475569" font-size="24" font-weight="500" text-anchor="end">Subtotal</text>
+    <text x="1550" y="1142" fill="#0B1320" font-size="24" font-weight="500" text-anchor="end">$4,165.00</text>
+    <text x="1230" y="1192" fill="#475569" font-size="24" font-weight="500" text-anchor="end">Tax (0%)</text>
+    <text x="1550" y="1192" fill="#0B1320" font-size="24" font-weight="500" text-anchor="end">$0.00</text>
+    <text x="1230" y="1242" fill="#0B1320" font-size="28" font-weight="700" text-anchor="end">Total Due</text>
+    <text x="1550" y="1242" fill="#146BFF" font-size="28" font-weight="700" text-anchor="end">$4,165.00</text>
+  <text x="150" y="2050" fill="#475569" font-size="22">Payment: hello@nialltech.com · nialltech.com · +1 (555) 014-2200</text>
+</svg>

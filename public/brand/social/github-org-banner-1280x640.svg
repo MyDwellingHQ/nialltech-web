@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" font-family="Inter, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1320"/>
+      <stop offset="55%" stop-color="#0E1A2E"/>
+      <stop offset="100%" stop-color="#102A56"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#146BFF" stroke-width="1" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+  <g opacity="0.18" stroke="#22C1FF" stroke-width="2">
+    <line x1="0" y1="512" x2="1280" y2="396.8"/>
+  </g>
+  <svg x="77" y="275" width="380" height="90.47619047619048" viewBox="0 0 420 100" preserveAspectRatio="xMinYMid meet">
+
+  
+  
+  <g transform="translate(0, 10) scale(0.8)">
+    <g transform="scale(0.83333)">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#FFFFFF"/>
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#FFFFFF"/>
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#FFFFFF"/>
+  </g>
+  </g>
+  
+  <g font-family="Inter, Arial, Helvetica, sans-serif">
+    <text x="98" y="62" fill="#FFFFFF" font-size="32" font-weight="700" letter-spacing="3.2">NIALL</text>
+    <text x="211.6" y="62" fill="#FFFFFF" font-size="32" font-weight="500" letter-spacing="7.5">TECH</text>
+  </g>
+  
+
+</svg>
+  <g font-weight="700" font-size="77" fill="#FFFFFF" letter-spacing="1">
+        <text x="1203" y="250" text-anchor="end">Secure IT.</text>
+        <text x="1203" y="340" text-anchor="end">Modern Cloud.</text>
+        <text x="1203" y="429" text-anchor="end" fill="#22C1FF">Local Expertise.</text>
+      </g>
+</svg>

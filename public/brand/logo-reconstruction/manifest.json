@@ -1,0 +1,70 @@
+{
+  "project": "niall-tech",
+  "artifact": "logo-reconstruction",
+  "generatedAt": "2026-07-31T06:22:06.582Z",
+  "status": "approval-candidate",
+  "canvas": "120x120",
+  "construction": "three-shape folded beam (main + lowerLeft + bluePillar)",
+  "paths": {
+    "main": "M8 5H35L112 82V115H85L8 38Z",
+    "lowerLeft": "M8 49L35 76V112L31 116H12L8 112Z",
+    "bluePillar": "M88 5H108L112 9V70L88 46Z"
+  },
+  "colors": {
+    "navy": "#0B1320",
+    "electricBlue": "#146BFF",
+    "white": "#FFFFFF"
+  },
+  "svg": [
+    {
+      "file": "svg/niall-tech-mark-light.svg",
+      "kind": "mark",
+      "theme": "light",
+      "bytes": 373,
+      "sha256": "a06326948dd2740fab27c044d9ec5de7c6a2f9670e744be4f63a99e824ccaed0"
+    },
+    {
+      "file": "svg/niall-tech-mark-dark.svg",
+      "kind": "mark",
+      "theme": "dark",
+      "bytes": 371,
+      "sha256": "b894fdb6030edfd0644a4a6febb8bfbd08d45f9525f215a669300ca4c3728c3e"
+    },
+    {
+      "file": "svg/niall-tech-mark-monochrome.svg",
+      "kind": "mark",
+      "theme": "monochrome",
+      "bytes": 398,
+      "sha256": "96470fb923c03d12e64b9c0976f6491049a96ea82d63ca15c006674ce0c7db41"
+    },
+    {
+      "file": "svg/niall-tech-horizontal-light.svg",
+      "kind": "horizontal",
+      "theme": "light",
+      "bytes": 928,
+      "sha256": "cc10fe20bd5aa986dab5e0ae2e71c1e21e25e75acd324b03ea69a50497dadcd2"
+    },
+    {
+      "file": "svg/niall-tech-stacked-light.svg",
+      "kind": "stacked",
+      "theme": "light",
+      "bytes": 843,
+      "sha256": "a7604d0653f325de436918287ec8f65ec56b2f0c320ea50db0158bd545c9bd20"
+    },
+    {
+      "file": "svg/niall-tech-horizontal-dark.svg",
+      "kind": "horizontal",
+      "theme": "dark",
+      "bytes": 941,
+      "sha256": "6a949bb279788ac6d8b60024aebf3ab66fd642cb526cf06b7b6a6ef2376bbcc6"
+    },
+    {
+      "file": "svg/niall-tech-stacked-dark.svg",
+      "kind": "stacked",
+      "theme": "dark",
+      "bytes": 841,
+      "sha256": "8b1b7aca8d4e9451355c92e5c81df0644a2d243a4e9c7fe3359ed096265b353e"
+    }
+  ],
+  "png": []
+}

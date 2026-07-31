@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="Niall Tech horizontal lockup (light)" shape-rendering="geometricPrecision">
+  <title>Niall Tech horizontal lockup (light)</title>
+  <svg x="12" y="10" width="120" height="120" viewBox="0 0 120 120">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#0B1320" />
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#0B1320" />
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#146BFF" />
+  </svg>
+  <line x1="162" y1="24" x2="162" y2="116" stroke="#475569" stroke-width="1.5" />
+  <text x="198" y="66" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="46" font-weight="650" letter-spacing="11" text-anchor="start" fill="#0B1320">NIALL</text>
+  <text x="198" y="106" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="7.7" text-anchor="start" fill="#146BFF">TECH</text>
+</svg>

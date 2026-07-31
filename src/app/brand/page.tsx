@@ -5,6 +5,7 @@ import { BrandColorSwatch } from "@/components/brand/BrandColorSwatch";
 import { BrandLogo, BrandMark } from "@/components/brand/BrandLogo";
 import { BrandUsageExample } from "@/components/brand/BrandUsageExample";
 import { DownloadButton } from "@/components/brand/DownloadButton";
+import { MerchandiseMockups } from "@/components/brand/MerchandiseMockups";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -239,6 +240,15 @@ export default function BrandAssetsPage() {
             />
           ))}
         </div>
+      </Section>
+
+      <Section
+        id="merch"
+        eyebrow="In the wild"
+        title="Merchandise & environments"
+        description="Previews of the approved mark on apparel, drinkware, vehicles, signage, and more. Each mockup composites the live vector logo — no redrawn art."
+      >
+        <MerchandiseMockups />
       </Section>
 
       <Section

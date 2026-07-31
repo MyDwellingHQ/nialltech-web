@@ -7,13 +7,23 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "brand:build": "node scripts/build-brand-assets.mjs"
+    "typecheck": "tsc --noEmit",
+    "brand:build": "node scripts/build-brand-assets.mjs",
+    "brand:collateral": "node scripts/build-brand-collateral.mjs",
+    "brand:office": "node scripts/build-brand-office.mjs",
+    "brand:zip": "node scripts/build-brand-assets.mjs --zip-only",
+    "brand:all": "npm run brand:build && npm run brand:collateral && npm run brand:office && npm run brand:zip",
+    "brand:logo-reconstruction": "node scripts/build-logo-reconstruction.mjs",
+    "brand:logo-reconstruction:test": "node scripts/test-logo-reconstruction.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "docx": "^9.7.1",
     "lucide-react": "^1.26.0",
     "next": "16.2.11",
     "next-themes": "^0.4.6",
+    "pptxgenjs": "^4.0.1",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.6.0"

@@ -3,9 +3,11 @@
   <title id="title">Niall Tech embroidery mark</title>
   
   <g transform="translate(10, 10)">
-    <rect x="21" y="15" width="14.5" height="70" rx="7.25" fill="#0B1320"/>
-  <line x1="41.5875" y1="23.75" x2="69.575" y2="76.75" stroke="#0B1320" stroke-width="14.5" stroke-linecap="round"/>
-  <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill="#0B1320"/>
+    <g transform="scale(0.83333)">
+    <path d="M8 5H35L112 82V115H85L8 38Z" fill="#0B1320"/>
+    <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="#0B1320"/>
+    <path d="M88 5H108L112 9V70L88 46Z" fill="#0B1320"/>
+  </g>
   </g>
 
 </svg>

@@ -53,6 +53,9 @@ export type BrandAssetCategory =
   | "special"
   | "favicon"
   | "social"
+  | "banner"
+  | "collateral"
+  | "office"
   | "print"
   | "package";
 
@@ -61,7 +64,18 @@ export type BrandAsset = {
   name: string;
   category: BrandAssetCategory;
   path: string;
-  format: "SVG" | "PNG" | "ICO" | "PDF" | "ZIP" | "JSON" | "TXT" | "webmanifest";
+  format:
+    | "SVG"
+    | "PNG"
+    | "ICO"
+    | "PDF"
+    | "ZIP"
+    | "JSON"
+    | "TXT"
+    | "HTML"
+    | "PPTX"
+    | "DOCX"
+    | "webmanifest";
   dimensions?: string;
   background: "light" | "dark" | "transparent" | "any";
   description: string;
@@ -78,7 +92,7 @@ export const brandAssets: BrandAsset[] = [
     format: "SVG",
     dimensions: "100×100",
     background: "light",
-    description: "Production master icon — medium-gap geometric N.",
+    description: "Production master icon — the approved folded-beam N.",
     recommendedUse: "Favicons, avatars, sparse UI, app icons",
     preview: "/brand/svg/niall-tech-icon.svg",
   },
@@ -491,6 +505,177 @@ export const brandAssets: BrandAsset[] = [
     recommendedUse: "Design tool import",
     preview: "/brand/print/niall-tech-logo-print.svg",
   },
+  // Social banners
+  {
+    id: "linkedin-banner",
+    name: "LinkedIn banner",
+    category: "banner",
+    path: "/brand/social/linkedin-banner-1584x396.png",
+    format: "PNG",
+    dimensions: "1584×396",
+    background: "dark",
+    description: "Personal LinkedIn profile banner with headline.",
+    recommendedUse: "LinkedIn profile background",
+    preview: "/brand/social/linkedin-banner-1584x396.png",
+  },
+  {
+    id: "linkedin-banner-svg",
+    name: "LinkedIn banner (SVG)",
+    category: "banner",
+    path: "/brand/social/linkedin-banner-1584x396.svg",
+    format: "SVG",
+    dimensions: "1584×396",
+    background: "dark",
+    description: "Editable vector source for the LinkedIn banner.",
+    recommendedUse: "Custom edits before export",
+    preview: "/brand/social/linkedin-banner-1584x396.png",
+  },
+  {
+    id: "x-banner",
+    name: "X / Twitter banner",
+    category: "banner",
+    path: "/brand/social/x-banner-1500x500.png",
+    format: "PNG",
+    dimensions: "1500×500",
+    background: "dark",
+    description: "X (Twitter) profile header with headline.",
+    recommendedUse: "X profile header",
+    preview: "/brand/social/x-banner-1500x500.png",
+  },
+  {
+    id: "github-banner",
+    name: "GitHub org banner",
+    category: "banner",
+    path: "/brand/social/github-org-banner-1280x640.png",
+    format: "PNG",
+    dimensions: "1280×640",
+    background: "dark",
+    description: "GitHub organization profile banner.",
+    recommendedUse: "GitHub organization profile",
+    preview: "/brand/social/github-org-banner-1280x640.png",
+  },
+  // Stationery & collateral
+  {
+    id: "business-card-front",
+    name: "Business card — front",
+    category: "collateral",
+    path: "/brand/collateral/business-card-front.pdf",
+    format: "PDF",
+    dimensions: '3.5×2" + bleed',
+    background: "light",
+    description: "Print-ready card front: logo, name, title, contact.",
+    recommendedUse: "Send to print vendor",
+    preview: "/brand/collateral/business-card-front.png",
+  },
+  {
+    id: "business-card-back",
+    name: "Business card — back",
+    category: "collateral",
+    path: "/brand/collateral/business-card-back.pdf",
+    format: "PDF",
+    dimensions: '3.5×2" + bleed',
+    background: "dark",
+    description: "Card back: centered mark, tagline, and QR to site.",
+    recommendedUse: "Send to print vendor",
+    preview: "/brand/collateral/business-card-back.png",
+  },
+  {
+    id: "letterhead",
+    name: "Letterhead",
+    category: "collateral",
+    path: "/brand/collateral/letterhead.pdf",
+    format: "PDF",
+    dimensions: "US Letter",
+    background: "light",
+    description: "Minimal letterhead with logo and footer contact block.",
+    recommendedUse: "Formal correspondence",
+    preview: "/brand/collateral/letterhead.png",
+  },
+  {
+    id: "invoice",
+    name: "Invoice template",
+    category: "collateral",
+    path: "/brand/collateral/invoice.pdf",
+    format: "PDF",
+    dimensions: "US Letter",
+    background: "light",
+    description: "Branded invoice with itemized services and totals.",
+    recommendedUse: "Client billing",
+    preview: "/brand/collateral/invoice.png",
+  },
+  {
+    id: "proposal-cover",
+    name: "Proposal cover",
+    category: "collateral",
+    path: "/brand/collateral/proposal-cover.pdf",
+    format: "PDF",
+    dimensions: "US Letter",
+    background: "dark",
+    description: "Navy proposal cover with reverse lockup and tagline.",
+    recommendedUse: "Client proposals",
+    preview: "/brand/collateral/proposal-cover.png",
+  },
+  {
+    id: "sow-cover",
+    name: "Statement of Work cover",
+    category: "collateral",
+    path: "/brand/collateral/sow-cover.pdf",
+    format: "PDF",
+    dimensions: "US Letter",
+    background: "dark",
+    description: "Navy SOW cover matching the proposal system.",
+    recommendedUse: "Statements of work",
+    preview: "/brand/collateral/sow-cover.png",
+  },
+  {
+    id: "email-signature-responsive",
+    name: "Email signature (HTML)",
+    category: "collateral",
+    path: "/brand/email/signature-responsive.html",
+    format: "HTML",
+    dimensions: "Responsive",
+    background: "light",
+    description: "Responsive HTML email signature with logo and contact block.",
+    recommendedUse: "Modern mail clients (Gmail, Apple Mail)",
+    preview: "/brand/collateral/business-card-front.png",
+  },
+  {
+    id: "email-signature-outlook",
+    name: "Email signature (Outlook-safe)",
+    category: "collateral",
+    path: "/brand/email/signature-outlook.html",
+    format: "HTML",
+    dimensions: "Table-based",
+    background: "light",
+    description: "Outlook-safe table markup for desktop Outlook signatures.",
+    recommendedUse: "Microsoft Outlook desktop",
+    preview: "/brand/collateral/business-card-front.png",
+  },
+  // Office templates
+  {
+    id: "pptx",
+    name: "PowerPoint template",
+    category: "office",
+    path: "/brand/office/niall-tech-presentation-template.pptx",
+    format: "PPTX",
+    dimensions: "16:9",
+    background: "any",
+    description: "Deck with title, section divider, content, and thank-you slides.",
+    recommendedUse: "Client presentations",
+    preview: "/brand/social/open-graph-1200x630.png",
+  },
+  {
+    id: "docx",
+    name: "Word template",
+    category: "office",
+    path: "/brand/office/niall-tech-word-template.docx",
+    format: "DOCX",
+    dimensions: "US Letter",
+    background: "light",
+    description: "Branded Word template with header logo and footer contact.",
+    recommendedUse: "Documents and reports",
+    preview: "/brand/collateral/letterhead.png",
+  },
   {
     id: "zip",
     name: "Complete brand package",
@@ -531,9 +716,23 @@ export const brandAssetSections: {
   },
   {
     id: "social-assets",
-    title: "Social assets",
-    description: "Avatars and cover images for company profiles.",
-    categories: ["social"],
+    title: "Social media kit",
+    description: "Avatars, cover images, and profile banners for company and personal profiles.",
+    categories: ["social", "banner"],
+  },
+  {
+    id: "collateral-assets",
+    title: "Stationery & collateral",
+    description:
+      "Business cards, letterhead, invoice, proposal and SOW covers, and the email signature — print-ready PDFs and source.",
+    categories: ["collateral"],
+  },
+  {
+    id: "office-assets",
+    title: "Office & presentation templates",
+    description:
+      "Ready-to-edit PowerPoint deck and Word template, pre-branded with the approved logo and palette.",
+    categories: ["office"],
   },
   {
     id: "print-assets",
