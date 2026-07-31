@@ -302,6 +302,7 @@ async function buildFavicons() {
 
   await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "favicon-16x16.png"), 16);
   await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "favicon-32x32.png"), 32);
+  await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "favicon-48x48.png"), 48);
   await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "apple-touch-icon.png"), 180);
   await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "android-chrome-192x192.png"), 192);
   await rasterize(path.join(favDir, "favicon.svg"), path.join(favDir, "android-chrome-512x512.png"), 512);
@@ -385,7 +386,7 @@ async function buildPdfs() {
     color: rgb(navy.r / 255, navy.g / 255, navy.b / 255),
   });
   rgbPage.drawText(
-    `Deep Navy ${COLORS.navy}  ·  Electric Blue ${COLORS.blue}  ·  Master: medium-gap icon`,
+    `Deep Navy ${COLORS.navy}  ·  Electric Blue ${COLORS.blue}  ·  Master: approved folded-beam icon`,
     {
       x: 48,
       y: 36,
@@ -483,16 +484,22 @@ async function writeAssetIndex() {
     }
   }
 
+  // Every surfaced asset directory is walked so the manifest is a complete
+  // inventory. Keep this list in sync with the ZIP include list and the
+  // brand-page registry — scripts/check-brand-consistency.mjs enforces it.
   await walk(path.join(BRAND, "svg"), "svg");
   await walk(path.join(BRAND, "png"), "png");
   await walk(path.join(BRAND, "favicon"), "favicon");
   await walk(path.join(BRAND, "social"), "social");
   await walk(path.join(BRAND, "print"), "print");
+  await walk(path.join(BRAND, "collateral"), "collateral");
+  await walk(path.join(BRAND, "office"), "office");
+  await walk(path.join(BRAND, "email"), "email");
 
   const index = {
     generatedAt: new Date().toISOString(),
     masterSvg: "/brand/svg/niall-tech-icon.svg",
-    masterGeometry: "medium-gap",
+    masterGeometry: "approved-folded-beam",
     brandColors: COLORS,
     assets: entries.sort((a, b) => a.path.localeCompare(b.path)),
   };
@@ -513,13 +520,12 @@ Official logo files, raster exports, favicons, social covers, and print masters 
 ## Master logo
 
 - **Production master icon:** \`svg/niall-tech-icon.svg\`
-- **Geometry:** medium gap between the left pillar, diagonal stroke, and electric-blue right pillar
-- **Studies:** \`svg/alternates/\` (hairline, medium, chamfered) — medium was selected as the production master
+- **Geometry:** the approved folded-beam **N**, defined once in \`src/brand/niall-mark-geometry.mjs\` and mapped into every asset
 
-The mark is a geometric capital **N**:
-- Deep Navy left vertical pillar
-- Deep Navy diagonal (upper-left → lower-right)
-- Electric Blue short vertical pillar (upper-right)
+The mark is a bold folded-beam capital **N**:
+- Deep Navy main beam (upper-left → lower-right)
+- Deep Navy lower-left pillar
+- Electric Blue tall right pillar
 - Flat color only — no gradients, shadows, or filters
 
 ## Color values
@@ -548,10 +554,13 @@ Site UI may continue to use Plus Jakarta Sans / Manrope; Inter is required for b
 
 \`\`\`
 public/brand/
-  svg/           Vector masters + alternates/
+  svg/           Vector logo masters
   png/           Transparent PNG exports
   favicon/       Favicon + PWA icons + site.webmanifest
-  social/        Avatars and cover images
+  social/        Avatars, cover images, and profile banners
+  collateral/    Business cards, letterhead, invoice, proposal/SOW covers
+  email/         HTML email signatures (responsive + Outlook-safe)
+  office/        PowerPoint + Word templates
   print/         PDF + SVG print masters
   README.md
   brand-colors.txt
