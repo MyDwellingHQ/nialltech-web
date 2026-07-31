@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T03:49:32.365Z",
+  "generatedAt": "2026-07-31T04:11:25.049Z",
   "masterSvg": "/brand/svg/niall-tech-icon.svg",
   "masterGeometry": "medium-gap",
   "brandColors": {
@@ -12,6 +12,69 @@
     "black": "#000000"
   },
   "assets": [
+    {
+      "name": "niall-tech-business-card-back.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/business-cards/niall-tech-business-card-back.svg",
+      "format": "svg",
+      "bytes": 1098
+    },
+    {
+      "name": "niall-tech-business-card-front.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/business-cards/niall-tech-business-card-front.svg",
+      "format": "svg",
+      "bytes": 1283
+    },
+    {
+      "name": "niall-tech-email-signature.html",
+      "category": "collateral",
+      "path": "/brand/collateral/email/niall-tech-email-signature.html",
+      "format": "html",
+      "bytes": 1351
+    },
+    {
+      "name": "niall-tech-email-signature.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/email/niall-tech-email-signature.svg",
+      "format": "svg",
+      "bytes": 1131
+    },
+    {
+      "name": "niall-tech-letterhead.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/letterhead/niall-tech-letterhead.svg",
+      "format": "svg",
+      "bytes": 1647
+    },
+    {
+      "name": "niall-tech-apparel-placement.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/templates/niall-tech-apparel-placement.svg",
+      "format": "svg",
+      "bytes": 1167
+    },
+    {
+      "name": "niall-tech-powerpoint-title.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/templates/niall-tech-powerpoint-title.svg",
+      "format": "svg",
+      "bytes": 1262
+    },
+    {
+      "name": "niall-tech-proposal-cover.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/templates/niall-tech-proposal-cover.svg",
+      "format": "svg",
+      "bytes": 1488
+    },
+    {
+      "name": "niall-tech-word-header.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/templates/niall-tech-word-header.svg",
+      "format": "svg",
+      "bytes": 1103
+    },
     {
       "name": "android-chrome-192x192.png",
       "category": "favicon",

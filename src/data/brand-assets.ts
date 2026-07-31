@@ -54,6 +54,14 @@ export type BrandAssetCategory =
   | "favicon"
   | "social"
   | "print"
+  | "business-cards"
+  | "email"
+  | "letterhead"
+  | "vehicle"
+  | "apparel"
+  | "proposal"
+  | "powerpoint"
+  | "word"
   | "package";
 
 export type BrandAsset = {
@@ -61,13 +69,26 @@ export type BrandAsset = {
   name: string;
   category: BrandAssetCategory;
   path: string;
-  format: "SVG" | "PNG" | "ICO" | "PDF" | "ZIP" | "JSON" | "TXT" | "webmanifest";
+  format: "SVG" | "PNG" | "ICO" | "PDF" | "ZIP" | "JSON" | "TXT" | "HTML" | "webmanifest";
   dimensions?: string;
   background: "light" | "dark" | "transparent" | "any";
   description: string;
   recommendedUse: string;
   preview?: string;
 };
+
+export const brandPortalNav = [
+  { label: "Brand Assets", href: "#brand-assets" },
+  { label: "Business Cards", href: "#business-cards" },
+  { label: "Email Signatures", href: "#email-signatures" },
+  { label: "Letterhead", href: "#letterhead" },
+  { label: "Vehicle Graphics", href: "#vehicle-graphics" },
+  { label: "Apparel", href: "#apparel" },
+  { label: "Proposal Templates", href: "#proposal-templates" },
+  { label: "PowerPoint", href: "#powerpoint" },
+  { label: "Word", href: "#word" },
+  { label: "Downloads", href: "#downloads" },
+] as const;
 
 export const brandAssets: BrandAsset[] = [
   {
@@ -492,13 +513,156 @@ export const brandAssets: BrandAsset[] = [
     preview: "/brand/print/niall-tech-logo-print.svg",
   },
   {
+    id: "bc-front",
+    name: "Business card — front",
+    category: "business-cards",
+    path: "/brand/collateral/business-cards/niall-tech-business-card-front.svg",
+    format: "SVG",
+    dimensions: "3.5×2 in (1050×600)",
+    background: "dark",
+    description: "Navy front with reverse logo and contact placeholders.",
+    recommendedUse: "Print vendors; replace contact lines before production",
+    preview: "/brand/collateral/business-cards/niall-tech-business-card-front.svg",
+  },
+  {
+    id: "bc-back",
+    name: "Business card — back",
+    category: "business-cards",
+    path: "/brand/collateral/business-cards/niall-tech-business-card-back.svg",
+    format: "SVG",
+    dimensions: "3.5×2 in (1050×600)",
+    background: "light",
+    description: "Light back with icon and service line.",
+    recommendedUse: "Print vendors",
+    preview: "/brand/collateral/business-cards/niall-tech-business-card-back.svg",
+  },
+  {
+    id: "email-svg",
+    name: "Email signature artwork",
+    category: "email",
+    path: "/brand/collateral/email/niall-tech-email-signature.svg",
+    format: "SVG",
+    dimensions: "640×200",
+    background: "light",
+    description: "Visual reference for signature layout.",
+    recommendedUse: "Design reference before building HTML signatures",
+    preview: "/brand/collateral/email/niall-tech-email-signature.svg",
+  },
+  {
+    id: "email-html",
+    name: "Email signature HTML",
+    category: "email",
+    path: "/brand/collateral/email/niall-tech-email-signature.html",
+    format: "HTML",
+    background: "light",
+    description: "Copy-ready HTML signature using the official icon.",
+    recommendedUse: "Outlook / Gmail / Apple Mail",
+    preview: "/brand/svg/niall-tech-horizontal.svg",
+  },
+  {
+    id: "letterhead",
+    name: "Letterhead",
+    category: "letterhead",
+    path: "/brand/collateral/letterhead/niall-tech-letterhead.svg",
+    format: "SVG",
+    dimensions: "Letter (850×1100)",
+    background: "light",
+    description: "Printable letterhead master with header and footer.",
+    recommendedUse: "Correspondence and formal letters",
+    preview: "/brand/collateral/letterhead/niall-tech-letterhead.svg",
+  },
+  {
+    id: "vehicle-collateral",
+    name: "Vehicle decal",
+    category: "vehicle",
+    path: "/brand/svg/niall-tech-vehicle-decal.svg",
+    format: "SVG",
+    dimensions: "560×150",
+    background: "dark",
+    description: "High-contrast white lockup for vehicle panels.",
+    recommendedUse: "Fleet wraps and exterior signage",
+    preview: "/brand/svg/niall-tech-vehicle-decal.svg",
+  },
+  {
+    id: "vehicle-print",
+    name: "Vehicle decal (print folder)",
+    category: "vehicle",
+    path: "/brand/print/niall-tech-vehicle-decal.svg",
+    format: "SVG",
+    dimensions: "560×150",
+    background: "dark",
+    description: "Print-folder copy of the vehicle decal master.",
+    recommendedUse: "Vendor handoff",
+    preview: "/brand/print/niall-tech-vehicle-decal.svg",
+  },
+  {
+    id: "apparel-guide",
+    name: "Apparel placement guide",
+    category: "apparel",
+    path: "/brand/collateral/templates/niall-tech-apparel-placement.svg",
+    format: "SVG",
+    dimensions: "800×800",
+    background: "light",
+    description: "Left-chest placement guidance for embroidery and print.",
+    recommendedUse: "Apparel vendors",
+    preview: "/brand/collateral/templates/niall-tech-apparel-placement.svg",
+  },
+  {
+    id: "embroidery-collateral",
+    name: "Embroidery mark",
+    category: "apparel",
+    path: "/brand/svg/niall-tech-embroidery.svg",
+    format: "SVG",
+    dimensions: "120×120",
+    background: "light",
+    description: "Simplified navy icon for stitch clarity.",
+    recommendedUse: "Hats, polos, patches",
+    preview: "/brand/svg/niall-tech-embroidery.svg",
+  },
+  {
+    id: "proposal-cover",
+    name: "Proposal cover",
+    category: "proposal",
+    path: "/brand/collateral/templates/niall-tech-proposal-cover.svg",
+    format: "SVG",
+    dimensions: "1200×1600",
+    background: "dark",
+    description: "Cover template for client proposals.",
+    recommendedUse: "Sales proposals; replace client name before export",
+    preview: "/brand/collateral/templates/niall-tech-proposal-cover.svg",
+  },
+  {
+    id: "ppt-title",
+    name: "PowerPoint title slide",
+    category: "powerpoint",
+    path: "/brand/collateral/templates/niall-tech-powerpoint-title.svg",
+    format: "SVG",
+    dimensions: "1920×1080",
+    background: "dark",
+    description: "Widescreen title slide master.",
+    recommendedUse: "Import into PowerPoint / Keynote as starting frame",
+    preview: "/brand/collateral/templates/niall-tech-powerpoint-title.svg",
+  },
+  {
+    id: "word-header",
+    name: "Word header",
+    category: "word",
+    path: "/brand/collateral/templates/niall-tech-word-header.svg",
+    format: "SVG",
+    dimensions: "1200×220",
+    background: "light",
+    description: "Document header pattern for Word / Google Docs.",
+    recommendedUse: "Letters, SOWs, and internal docs",
+    preview: "/brand/collateral/templates/niall-tech-word-header.svg",
+  },
+  {
     id: "zip",
     name: "Complete brand package",
     category: "package",
     path: "/brand/niall-tech-brand-assets.zip",
     format: "ZIP",
     background: "any",
-    description: "All approved SVG, PNG, favicon, social, and print assets.",
+    description: "All approved SVG, PNG, favicon, social, print, and collateral assets.",
     recommendedUse: "Full brand handoff",
   },
 ];
@@ -510,17 +674,16 @@ export const brandAssetSections: {
   categories: BrandAssetCategory[];
 }[] = [
   {
-    id: "primary-logos",
-    title: "Primary logos",
+    id: "brand-assets",
+    title: "Brand assets",
     description:
-      "Approved lockups for everyday digital use. Prefer SVG whenever possible.",
+      "Logo lockups, wordmarks, mono versions, and special-use marks. Prefer SVG for digital.",
     categories: ["primary", "wordmark", "mono", "special"],
   },
   {
     id: "png-exports",
     title: "PNG exports",
-    description:
-      "Transparent raster exports for tools that cannot use SVG.",
+    description: "Transparent raster exports for tools that cannot use SVG.",
     categories: ["icon", "horizontal", "stacked"],
   },
   {
@@ -537,10 +700,58 @@ export const brandAssetSections: {
   },
   {
     id: "print-assets",
-    title: "Print & design",
+    title: "Print masters",
     description:
       "PDF and SVG masters for vendors. Native AI/EPS are not generated—import SVG into your design tool if required.",
     categories: ["print"],
+  },
+  {
+    id: "business-cards",
+    title: "Business cards",
+    description: "Front and back templates. Customize name, title, and phone before print.",
+    categories: ["business-cards"],
+  },
+  {
+    id: "email-signatures",
+    title: "Email signatures",
+    description: "HTML signature plus artwork reference for staff inboxes.",
+    categories: ["email"],
+  },
+  {
+    id: "letterhead",
+    title: "Letterhead",
+    description: "Formal correspondence master with approved header treatment.",
+    categories: ["letterhead"],
+  },
+  {
+    id: "vehicle-graphics",
+    title: "Vehicle graphics",
+    description: "High-contrast decal masters for fleet and signage use.",
+    categories: ["vehicle"],
+  },
+  {
+    id: "apparel",
+    title: "Apparel",
+    description: "Embroidery mark and placement guidance for garments.",
+    categories: ["apparel"],
+  },
+  {
+    id: "proposal-templates",
+    title: "Proposal templates",
+    description: "Cover artwork for client proposals and statements of work.",
+    categories: ["proposal"],
+  },
+  {
+    id: "powerpoint",
+    title: "PowerPoint",
+    description: "Title slide master for presentations. Export PPTX from your slide tool as needed.",
+    categories: ["powerpoint"],
+  },
+  {
+    id: "word",
+    title: "Word",
+    description: "Header artwork for Word and document workflows.",
+    categories: ["word"],
   },
 ];
 
