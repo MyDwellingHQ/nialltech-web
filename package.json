@@ -15,7 +15,9 @@
     "brand:check": "node scripts/check-brand-consistency.mjs",
     "brand:all": "npm run brand:build && npm run brand:collateral && npm run brand:office && npm run brand:zip && npm run brand:check",
     "brand:logo-reconstruction": "node scripts/build-logo-reconstruction.mjs",
-    "brand:logo-reconstruction:test": "node scripts/test-logo-reconstruction.mjs"
+    "brand:logo-reconstruction:test": "node scripts/test-logo-reconstruction.mjs",
+    "branding:build": "node scripts/build-business-card.mjs",
+    "branding:validate": "node scripts/validate-business-card.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -38,8 +40,10 @@
     "archiver": "^8.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.11",
+    "jsqr": "^1.4.0",
     "pdf-lib": "^1.17.1",
     "png-to-ico": "^3.0.2",
+    "pngjs": "^7.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -549,8 +549,9 @@ export const brandAssets = [
     format: "PDF",
     dimensions: '3.5×2" + bleed',
     background: "dark",
-    description: "Card back: centered mark, tagline, and QR to site.",
-    recommendedUse: "Send to print vendor",
+    description:
+      "Card back (Variant A): stacked mark, QR to /connect, minimal CTA.",
+    recommendedUse: "Send to print vendor (VistaPrint full-bleed PDF)",
     preview: "/brand/collateral/business-card-back.png",
   },
   {
@@ -561,7 +562,8 @@ export const brandAssets = [
     format: "SVG",
     dimensions: '3.5×2" + bleed',
     background: "dark",
-    description: "Editable vector source for the card back.",
+    description:
+      "Editable vector source for the recommended card back. Full concept set under /brand/business-card/.",
     recommendedUse: "Custom edits before printing",
     preview: "/brand/collateral/business-card-back.png",
   },

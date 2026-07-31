@@ -44,6 +44,7 @@ public/brand/
   favicon/       Favicon + PWA icons + site.webmanifest
   social/        Avatars, cover images, and profile banners
   collateral/    Business cards, letterhead, invoice, proposal/SOW covers
+  business-card/ VistaPrint sources, variants, QR, preview (see README there)
   email/         HTML email signatures (responsive + Outlook-safe)
   office/        PowerPoint + Word templates
   print/         PDF + SVG print masters
@@ -51,6 +52,15 @@ public/brand/
   brand-colors.txt
   asset-index.json
   niall-tech-brand-assets.zip
+```
+
+### Business cards (VistaPrint)
+
+See [`business-card/README.md`](./business-card/README.md) for source-of-truth SVGs, bleed specs, QR destination (`https://nialltech.com/connect`), and regenerate/validate commands:
+
+```bash
+npm run branding:build
+npm run branding:validate
 ```
 
 ## Intended usage

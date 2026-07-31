@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Dent;Paul;;;
+FN:Paul Dent
+ORG:Niall Tech
+TITLE:Founder / Systems Engineer
+TEL;TYPE=WORK,VOICE:+15550142200
+EMAIL;TYPE=INTERNET,WORK:paul@nialltech.com
+URL:https://nialltech.com
+NOTE:I help organizations modernize with Microsoft 365, Azure, identity, and infrastructure that stays secure and maintainable.
+END:VCARD

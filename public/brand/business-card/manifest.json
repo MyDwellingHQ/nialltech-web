@@ -1,0 +1,177 @@
+{
+  "generatedAt": "2026-07-31T22:28:46.172Z",
+  "connectUrl": "https://nialltech.com/connect",
+  "recommendedBack": "A",
+  "dimensions": {
+    "finishedIn": {
+      "width": 3.5,
+      "height": 2
+    },
+    "fullBleedIn": {
+      "width": 3.75,
+      "height": 2.25
+    },
+    "bleedIn": 0.125,
+    "safeInsetFromTrimIn": 0.125,
+    "dpi": 300,
+    "designPx": {
+      "width": 1125,
+      "height": 675
+    },
+    "bleedPx": 37.5,
+    "safePx": 75,
+    "pdfPoints": {
+      "width": 270,
+      "height": 162
+    }
+  },
+  "qr": {
+    "targetIn": 0.85,
+    "minIn": 0.75,
+    "targetPx": 255,
+    "encoded": "https://nialltech.com/connect",
+    "errorCorrectionLevel": "M",
+    "quietZoneModules": 4
+  },
+  "files": {
+    "source": [
+      "source/front.svg",
+      "source/back-final.svg",
+      "source/back-variant-a.svg",
+      "source/back-variant-b.svg",
+      "source/back-variant-c.svg"
+    ],
+    "exports": [
+      "exports/niall-tech-business-card-front.pdf",
+      "exports/niall-tech-business-card-back.pdf",
+      "exports/niall-tech-business-card-front.svg",
+      "exports/niall-tech-business-card-back.svg",
+      "exports/niall-tech-business-card-front.png",
+      "exports/niall-tech-business-card-back.png"
+    ],
+    "qr": [
+      "qr/niall-tech-connect-qr.svg",
+      "qr/niall-tech-connect-qr.png"
+    ],
+    "preview": [
+      "preview/business-card-preview.pdf",
+      "preview/business-card-preview.png",
+      "preview/business-card-preview.svg",
+      "preview/index.html"
+    ],
+    "vcard": "public/contact/paul-dent.vcf",
+    "collateral": [
+      "public/brand/collateral/business-card-front.svg",
+      "public/brand/collateral/business-card-front.png",
+      "public/brand/collateral/business-card-front.pdf",
+      "public/brand/collateral/business-card-back.svg",
+      "public/brand/collateral/business-card-back.png",
+      "public/brand/collateral/business-card-back.pdf"
+    ]
+  },
+  "layout": {
+    "front": {
+      "side": "front",
+      "elements": {
+        "logo": {
+          "x": 75,
+          "y": 79,
+          "w": 340,
+          "h": 80.95238095238095
+        },
+        "name": {
+          "x": 75,
+          "y": 522,
+          "w": 360,
+          "h": 42
+        },
+        "title": {
+          "x": 75,
+          "y": 574,
+          "w": 360,
+          "h": 22
+        },
+        "contact": {
+          "x": 758,
+          "y": 502,
+          "w": 292,
+          "h": 94
+        }
+      }
+    },
+    "backFinal": {
+      "side": "back-A",
+      "qr": {
+        "x": 435,
+        "y": 301,
+        "size": 255,
+        "panelX": 423,
+        "panelY": 289,
+        "panelSize": 279,
+        "encoded": "https://nialltech.com/connect"
+      },
+      "logo": {
+        "x": 412.5,
+        "y": 93,
+        "w": 300,
+        "h": 171.42857142857142
+      }
+    },
+    "variants": {
+      "A": {
+        "side": "back-A",
+        "qr": {
+          "x": 435,
+          "y": 301,
+          "size": 255,
+          "panelX": 423,
+          "panelY": 289,
+          "panelSize": 279,
+          "encoded": "https://nialltech.com/connect"
+        },
+        "logo": {
+          "x": 412.5,
+          "y": 93,
+          "w": 300,
+          "h": 171.42857142857142
+        }
+      },
+      "B": {
+        "side": "back-B",
+        "qr": {
+          "x": 435,
+          "y": 222,
+          "size": 255,
+          "panelX": 423,
+          "panelY": 210,
+          "panelSize": 279,
+          "encoded": "https://nialltech.com/connect"
+        },
+        "logo": {
+          "x": 75,
+          "y": 75,
+          "w": 72,
+          "h": 72
+        }
+      },
+      "C": {
+        "side": "back-C",
+        "qr": {
+          "x": 795,
+          "y": 210,
+          "size": 255,
+          "panelX": 783,
+          "panelY": 198,
+          "panelSize": 279,
+          "encoded": "https://nialltech.com/connect"
+        },
+        "logo": {
+          "x": 95,
+          "y": 257.5,
+          "w": 280,
+          "h": 160
+        }
+      }
+    }
+  }
+}
