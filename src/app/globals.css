@@ -175,6 +175,139 @@ option {
   }
 }
 
+@keyframes infra-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.045);
+  }
+}
+
+@keyframes infra-status {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes infra-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes infra-packet {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes infra-ring {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes infra-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.04);
+  }
+}
+
+.infra-visual {
+  --infra-depth: 0px;
+  transform: translateZ(0);
+}
+
+.infra-visual-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 20%, transparent 78%);
+  opacity: 0.9;
+}
+
+.infra-visual-glow {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(20, 107, 255, 0.22), transparent 42%),
+    radial-gradient(circle at 72% 28%, rgba(34, 193, 255, 0.12), transparent 35%);
+}
+
+.infra-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: infra-pulse 7.5s ease-in-out infinite;
+}
+
+.infra-status {
+  animation: infra-status 4.8s ease-in-out infinite;
+}
+
+.infra-path {
+  stroke-dasharray: 5 9;
+  animation: infra-dash 14s linear infinite;
+}
+
+.infra-packet {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: infra-packet 6.5s ease-in-out infinite;
+}
+
+.infra-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: infra-ring 10s ease-in-out infinite;
+}
+
+.infra-ring-delayed {
+  animation-delay: 1.4s;
+}
+
+.infra-mark {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.infra-mark-glow {
+  background: radial-gradient(circle, rgba(20, 107, 255, 0.45), transparent 68%);
+  animation: infra-glow 8s ease-in-out infinite;
+}
+
+.infra-visual:hover .infra-mark {
+  transform: translateY(-2px);
+}
+
+.infra-visual:hover .infra-mark-glow {
+  opacity: 0.95;
+  filter: blur(2px);
+}
+
 .animate-fade-up {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -210,7 +343,17 @@ option {
 
   .animate-fade-up,
   .animate-fade-in,
-  .animate-float-soft {
+  .animate-float-soft,
+  .infra-node,
+  .infra-status,
+  .infra-path,
+  .infra-packet,
+  .infra-ring,
+  .infra-mark-glow {
     animation: none !important;
+  }
+
+  .infra-visual:hover .infra-mark {
+    transform: none;
   }
 }
