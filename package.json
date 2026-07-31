@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "brand:build": "node scripts/build-brand-assets.mjs"
+    "typecheck": "tsc --noEmit",
+    "brand:build": "node scripts/build-brand-assets.mjs",
+    "brand:logo-reconstruction": "node scripts/build-logo-reconstruction.mjs",
+    "brand:logo-reconstruction:test": "node scripts/test-logo-reconstruction.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

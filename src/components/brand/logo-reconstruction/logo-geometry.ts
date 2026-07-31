@@ -56,7 +56,10 @@ export const BOUNDING_BOX: { minX: number; minY: number; maxX: number; maxY: num
   raw.BOUNDING_BOX;
 export const CLEAR_SPACE: number = raw.CLEAR_SPACE;
 
-export const logoGeometry: LogoGeometry = raw.logoGeometry as LogoGeometry;
+// The .mjs source infers coordinates as number[][]; the runtime shape is
+// guaranteed to be [x, y] tuples by the geometry test suite. Route the single
+// structural cast through `unknown` so the tuple-based types apply cleanly.
+export const logoGeometry: LogoGeometry = raw.logoGeometry as unknown as LogoGeometry;
 export const MASTER_GAP: GapOption = raw.MASTER_GAP as GapOption;
 export const GAP_OPTIONS: readonly GapOption[] = raw.GAP_OPTIONS as GapOption[];
 
