@@ -10,7 +10,7 @@ Editable SVG sources (do not hand-edit binary PDFs):
 |------|------|
 | `source/front.svg` | Card front |
 | `source/back-final.svg` | Approved/recommended back (Variant A) |
-| `source/back-variant-a.svg` | Concept A — centered logo + QR + CTA |
+| `source/back-variant-a.svg` | Concept A — centered logo + QR (+ CTA when contrast fits) |
 | `source/back-variant-b.svg` | Concept B — corner mark + QR primary |
 | `source/back-variant-c.svg` | Concept C — split logo / QR |
 
@@ -20,7 +20,7 @@ Contact data comes from `src/data/brand-contact.mjs` — never duplicate phone/e
 
 ## Recommended back
 
-**Variant A** — centered stacked wordmark, large scannable QR, and a quiet “Scan to connect” label. It balances brand recognition with whitespace and scan reliability without repeating contact details.
+**Variant A** — centered stacked wordmark and large scannable QR on the dark field. The quiet “Scan to connect” label is included when print contrast and safe-zone spacing allow; otherwise the back stays mark + QR only. It balances brand recognition with whitespace and scan reliability without repeating contact details.
 
 Variants A–C remain under `concepts/` until final approval.
 
@@ -34,7 +34,7 @@ Variants A–C remain under `concepts/` until final approval.
 | Safe zone | ≥ 0.125" inside trim |
 | Design DPI | 300 |
 | PDF page size | 270 × 162 pt |
-| QR printed size | ~0.85" square (min 0.75") |
+| QR printed size (Variant A) | ~0.95" square (+12% from 0.85"; min 0.75") |
 | QR destination | `https://nialltech.com/connect` |
 | QR quiet zone | 4 modules (included in QR asset) |
 | Error correction | M |
