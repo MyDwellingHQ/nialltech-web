@@ -178,12 +178,12 @@ Phase A is primarily **S–M**. Phase B includes **L** items (detail pages, API,
 
 ## Definition of done (Phase A)
 
-- [ ] Audit, design system, and roadmap published under `/docs`  
-- [ ] UI tokens match brand palette  
-- [ ] Copy rewritten for business owners on core pages  
-- [ ] Reusable sections used by home + core pages  
-- [ ] Major services reachable within two clicks  
-- [ ] SEO metadata + schema improved without breaking existing setup  
-- [ ] Reduced-motion and keyboard nav improved  
-- [ ] Brand page exposes collateral categories + downloads  
-- [ ] `npm run lint` and `npm run build` pass  
+- [x] Audit, design system, and roadmap published under `/docs`  
+- [x] UI tokens match brand palette  
+- [x] Copy rewritten for business owners on core pages  
+- [x] Reusable sections used by home + core pages  
+- [x] Major services reachable within two clicks  
+- [x] SEO metadata + schema improved without breaking existing setup  
+- [x] Reduced-motion and keyboard nav improved  
+- [x] Brand page exposes collateral categories + downloads  
+- [x] `npm run lint` and `npm run build` pass  

@@ -9,11 +9,19 @@ type AnimateInProps = {
   delayMs?: number;
 };
 
+function prefersReducedMotion() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function AnimateIn({ children, className, delayMs = 0 }: AnimateInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [reduceMotion] = useState(prefersReducedMotion);
+  const [visible, setVisible] = useState(reduceMotion);
 
   useEffect(() => {
+    if (reduceMotion) return;
+
     const node = ref.current;
     if (!node) return;
 
@@ -29,15 +37,16 @@ export function AnimateIn({ children, className, delayMs = 0 }: AnimateInProps) 
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delayMs}ms` }}
+      style={reduceMotion ? undefined : { transitionDelay: `${delayMs}ms` }}
       className={cn(
-        "transition-all duration-700 ease-out",
-        visible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0",
+        !reduceMotion && "transition-all duration-700 ease-out",
+        !reduceMotion &&
+          (visible ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"),
         className,
       )}
     >

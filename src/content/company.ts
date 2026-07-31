@@ -1,29 +1,48 @@
 export const whyChooseUs = [
   {
-    title: "Practical expertise",
+    title: "Business outcomes first",
     description:
-      "Advice grounded in real Microsoft, Azure, and infrastructure delivery—not slideware.",
+      "We start with what you need to protect or improve—uptime, risk, productivity—then choose the Microsoft tools that fit.",
   },
   {
-    title: "Security by default",
+    title: "Security without the scare tactics",
     description:
-      "Every engagement considers identity, endpoint, and data protection from the first conversation.",
+      "Practical controls that reduce real risk. No fear-selling, no endless tool sprawl.",
   },
   {
-    title: "Clear communication",
+    title: "Plain-language recommendations",
     description:
-      "Plain-language recommendations, documented decisions, and no unnecessary jargon.",
+      "You always know what we suggest, why it matters, and what it takes to deliver.",
   },
   {
-    title: "Right-sized delivery",
+    title: "Right-sized for growing companies",
     description:
-      "Enterprise-grade patterns adapted for the size and pace of your organization.",
+      "Enterprise-grade patterns adapted to your size and pace—not a template built for a Fortune 500 IT department.",
+  },
+];
+
+export const trustPoints = [
+  {
+    label: "Microsoft-focused",
+    detail: "M365, Azure, Entra ID, Intune",
+  },
+  {
+    label: "Security-minded",
+    detail: "Identity and endpoints first",
+  },
+  {
+    label: "Clear delivery",
+    detail: "Plans you can follow",
+  },
+  {
+    label: "Local expertise",
+    detail: "Responsive, accountable partners",
   },
 ];
 
 export const certifications = [
   {
-    name: "Microsoft 365 Certified",
+    name: "Microsoft 365",
     detail: "Administrator Expert",
   },
   {
@@ -72,33 +91,33 @@ export const workflowSteps = [
     step: "01",
     title: "Discover",
     description:
-      "We learn your environment, priorities, constraints, and what success looks like.",
+      "We learn how your business runs, where technology slows you down, and what “better” looks like.",
   },
   {
     step: "02",
     title: "Design",
     description:
-      "We define a clear architecture, security baselines, and delivery plan.",
+      "We propose a clear plan—priorities, risks, timeline, and what success means in business terms.",
   },
   {
     step: "03",
     title: "Deliver",
     description:
-      "We implement with minimal disruption and keep stakeholders informed throughout.",
+      "We implement with minimal disruption and keep owners informed before anything changes.",
   },
   {
     step: "04",
-    title: "Optimize",
+    title: "Operate",
     description:
-      "We refine, document, and hand over with knowledge your team can operate confidently.",
+      "We document, hand over, and leave your team with systems they can run confidently.",
   },
 ];
 
 export const aboutStats = [
-  { label: "Years of combined experience", value: "15+" },
-  { label: "Cloud & identity projects", value: "120+" },
-  { label: "Average client retention", value: "96%" },
-  { label: "Response commitment", value: "Same day" },
+  { label: "Focus", value: "Microsoft" },
+  { label: "Engagement style", value: "Project + advisory" },
+  { label: "Typical response", value: "Same day" },
+  { label: "Working model", value: "Remote-first" },
 ];
 
 export const values = [
@@ -113,8 +132,52 @@ export const values = [
       "You always know what we recommend, why we recommend it, and what it will take to deliver.",
   },
   {
-    title: "Security as a product quality",
+    title: "Security as a quality",
     description:
-      "Identity, access, and resilience are built into every engagement—not bolted on later.",
+      "Identity, access, and recovery are built into every engagement—not bolted on later.",
   },
 ];
+
+export const faqs = [
+  {
+    question: "Who is Niall Tech for?",
+    answer:
+      "Growing companies and organizations that rely on Microsoft tools and want practical consulting—not a generic helpdesk or a bloated enterprise program.",
+  },
+  {
+    question: "Do you only work with Microsoft products?",
+    answer:
+      "Microsoft 365, Azure, Entra ID, and Intune are our core. We also advise on networks, backups, and infrastructure that surround those platforms.",
+  },
+  {
+    question: "How does an engagement usually start?",
+    answer:
+      "With a short discovery conversation. We clarify goals and constraints, then recommend a focused first step—assessment, hardening, migration, or roadmap.",
+  },
+  {
+    question: "Can you work with our existing IT person or MSP?",
+    answer:
+      "Yes. Many clients bring us in for Microsoft specialization while keeping day-to-day support where it already works.",
+  },
+  {
+    question: "How quickly can you respond?",
+    answer:
+      "We aim to reply the same business day. Urgent production issues are prioritized once we are engaged.",
+  },
+];
+
+export const aboutCopy = {
+  eyebrow: "About",
+  title: "Microsoft consulting with accountability",
+  description:
+    "Niall Tech helps business owners modernize IT with clear priorities, stronger security, and systems people can actually run.",
+  whoTitle: "Who we are",
+  whoBody: [
+    "We are a Microsoft-focused consulting practice for organizations that need capable partners—not another layer of complexity. Our work centers on Microsoft 365, Azure, Entra ID, Intune, security, and the infrastructure that keeps operations steady.",
+    "You get plain-language recommendations, documented decisions, and delivery that respects how your business actually works. Whether you are tightening security, moving to the cloud, or cleaning up years of IT sprawl, we meet you where you are.",
+  ],
+  valuesTitle: "What we value",
+  ctaTitle: "Let’s talk about what to fix first",
+  ctaBody:
+    "Share your goals and constraints. We will recommend a practical next step.",
+};
