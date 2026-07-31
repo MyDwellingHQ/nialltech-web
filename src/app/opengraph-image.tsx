@@ -18,8 +18,7 @@ export default async function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px",
-          background:
-            "linear-gradient(145deg, #04070f 0%, #0b1b33 48%, #1d4ed8 100%)",
+          background: "linear-gradient(145deg, #0B1320 0%, #0E1A2E 55%, #102A56 100%)",
           color: "white",
           fontFamily: "sans-serif",
         }}
@@ -28,25 +27,28 @@ export default async function OpenGraphImage() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "16px",
+            gap: "18px",
           }}
         >
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              background: "#3b82f6",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 22,
-              fontWeight: 700,
-            }}
-          >
-            NT
+          <svg width="56" height="56" viewBox="0 0 100 100">
+            <rect x="21" y="15" width="14.5" height="70" rx="7.25" fill="#FFFFFF" />
+            <line
+              x1="41.5875"
+              y1="23.75"
+              x2="69.575"
+              y2="76.75"
+              stroke="#FFFFFF"
+              strokeWidth="14.5"
+              strokeLinecap="round"
+            />
+            <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill="#146BFF" />
+          </svg>
+          <div style={{ display: "flex", fontSize: 34, fontWeight: 700, letterSpacing: 2 }}>
+            <span>NIALL</span>
+            <span style={{ color: "#146BFF", fontWeight: 500, marginLeft: 10, letterSpacing: 6 }}>
+              TECH
+            </span>
           </div>
-          <div style={{ fontSize: 34, fontWeight: 700 }}>Niall Tech</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div

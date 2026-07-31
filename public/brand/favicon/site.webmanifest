@@ -1,0 +1,27 @@
+{
+  "name": "Niall Tech",
+  "short_name": "Niall Tech",
+  "description": "Microsoft 365, Azure, Entra ID, Intune, security, and infrastructure consulting.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1320",
+  "theme_color": "#146BFF",
+  "icons": [
+    {
+      "src": "/brand/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

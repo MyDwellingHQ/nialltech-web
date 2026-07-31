@@ -1,0 +1,394 @@
+{
+  "generatedAt": "2026-07-31T03:49:32.365Z",
+  "masterSvg": "/brand/svg/niall-tech-icon.svg",
+  "masterGeometry": "medium-gap",
+  "brandColors": {
+    "navy": "#0B1320",
+    "blue": "#146BFF",
+    "cyan": "#22C1FF",
+    "slate": "#475569",
+    "lightGray": "#E5E7EB",
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+  "assets": [
+    {
+      "name": "android-chrome-192x192.png",
+      "category": "favicon",
+      "path": "/brand/favicon/android-chrome-192x192.png",
+      "format": "png",
+      "bytes": 3713
+    },
+    {
+      "name": "android-chrome-512x512.png",
+      "category": "favicon",
+      "path": "/brand/favicon/android-chrome-512x512.png",
+      "format": "png",
+      "bytes": 11266
+    },
+    {
+      "name": "apple-touch-icon.png",
+      "category": "favicon",
+      "path": "/brand/favicon/apple-touch-icon.png",
+      "format": "png",
+      "bytes": 3549
+    },
+    {
+      "name": "favicon-16x16.png",
+      "category": "favicon",
+      "path": "/brand/favicon/favicon-16x16.png",
+      "format": "png",
+      "bytes": 402
+    },
+    {
+      "name": "favicon-32x32.png",
+      "category": "favicon",
+      "path": "/brand/favicon/favicon-32x32.png",
+      "format": "png",
+      "bytes": 720
+    },
+    {
+      "name": "favicon.ico",
+      "category": "favicon",
+      "path": "/brand/favicon/favicon.ico",
+      "format": "ico",
+      "bytes": 5430
+    },
+    {
+      "name": "favicon.svg",
+      "category": "favicon",
+      "path": "/brand/favicon/favicon.svg",
+      "format": "svg",
+      "bytes": 516
+    },
+    {
+      "name": "site.webmanifest",
+      "category": "favicon",
+      "path": "/brand/favicon/site.webmanifest",
+      "format": "webmanifest",
+      "bytes": 661
+    },
+    {
+      "name": "niall-tech-horizontal-1000.png",
+      "category": "png",
+      "path": "/brand/png/horizontal/niall-tech-horizontal-1000.png",
+      "format": "png",
+      "bytes": 12160
+    },
+    {
+      "name": "niall-tech-horizontal-2000.png",
+      "category": "png",
+      "path": "/brand/png/horizontal/niall-tech-horizontal-2000.png",
+      "format": "png",
+      "bytes": 26774
+    },
+    {
+      "name": "niall-tech-horizontal-500.png",
+      "category": "png",
+      "path": "/brand/png/horizontal/niall-tech-horizontal-500.png",
+      "format": "png",
+      "bytes": 6340
+    },
+    {
+      "name": "niall-tech-icon-1024.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-1024.png",
+      "format": "png",
+      "bytes": 27309
+    },
+    {
+      "name": "niall-tech-icon-128.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-128.png",
+      "format": "png",
+      "bytes": 2141
+    },
+    {
+      "name": "niall-tech-icon-16.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-16.png",
+      "format": "png",
+      "bytes": 383
+    },
+    {
+      "name": "niall-tech-icon-2048.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-2048.png",
+      "format": "png",
+      "bytes": 62769
+    },
+    {
+      "name": "niall-tech-icon-256.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-256.png",
+      "format": "png",
+      "bytes": 4944
+    },
+    {
+      "name": "niall-tech-icon-32.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-32.png",
+      "format": "png",
+      "bytes": 644
+    },
+    {
+      "name": "niall-tech-icon-512.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-512.png",
+      "format": "png",
+      "bytes": 12105
+    },
+    {
+      "name": "niall-tech-icon-64.png",
+      "category": "png",
+      "path": "/brand/png/icon/niall-tech-icon-64.png",
+      "format": "png",
+      "bytes": 1116
+    },
+    {
+      "name": "niall-tech-horizontal-white-1000.png",
+      "category": "png",
+      "path": "/brand/png/reverse/niall-tech-horizontal-white-1000.png",
+      "format": "png",
+      "bytes": 12312
+    },
+    {
+      "name": "niall-tech-horizontal-white-2000.png",
+      "category": "png",
+      "path": "/brand/png/reverse/niall-tech-horizontal-white-2000.png",
+      "format": "png",
+      "bytes": 27487
+    },
+    {
+      "name": "niall-tech-stacked-white-1000.png",
+      "category": "png",
+      "path": "/brand/png/reverse/niall-tech-stacked-white-1000.png",
+      "format": "png",
+      "bytes": 19237
+    },
+    {
+      "name": "niall-tech-stacked-white-2000.png",
+      "category": "png",
+      "path": "/brand/png/reverse/niall-tech-stacked-white-2000.png",
+      "format": "png",
+      "bytes": 43457
+    },
+    {
+      "name": "niall-tech-stacked-1000.png",
+      "category": "png",
+      "path": "/brand/png/stacked/niall-tech-stacked-1000.png",
+      "format": "png",
+      "bytes": 20197
+    },
+    {
+      "name": "niall-tech-stacked-2000.png",
+      "category": "png",
+      "path": "/brand/png/stacked/niall-tech-stacked-2000.png",
+      "format": "png",
+      "bytes": 44568
+    },
+    {
+      "name": "niall-tech-stacked-500.png",
+      "category": "png",
+      "path": "/brand/png/stacked/niall-tech-stacked-500.png",
+      "format": "png",
+      "bytes": 8926
+    },
+    {
+      "name": "niall-tech-embroidery.svg",
+      "category": "print",
+      "path": "/brand/print/niall-tech-embroidery.svg",
+      "format": "svg",
+      "bytes": 540
+    },
+    {
+      "name": "niall-tech-logo-one-color.pdf",
+      "category": "print",
+      "path": "/brand/print/niall-tech-logo-one-color.pdf",
+      "format": "pdf",
+      "bytes": 13618
+    },
+    {
+      "name": "niall-tech-logo-print.svg",
+      "category": "print",
+      "path": "/brand/print/niall-tech-logo-print.svg",
+      "format": "svg",
+      "bytes": 1319
+    },
+    {
+      "name": "niall-tech-logo-rgb.pdf",
+      "category": "print",
+      "path": "/brand/print/niall-tech-logo-rgb.pdf",
+      "format": "pdf",
+      "bytes": 24202
+    },
+    {
+      "name": "niall-tech-vehicle-decal.svg",
+      "category": "print",
+      "path": "/brand/print/niall-tech-vehicle-decal.svg",
+      "format": "svg",
+      "bytes": 999
+    },
+    {
+      "name": "facebook-cover-1640x624.png",
+      "category": "social",
+      "path": "/brand/social/facebook-cover-1640x624.png",
+      "format": "png",
+      "bytes": 70145
+    },
+    {
+      "name": "linkedin-company-cover-1128x191.png",
+      "category": "social",
+      "path": "/brand/social/linkedin-company-cover-1128x191.png",
+      "format": "png",
+      "bytes": 25632
+    },
+    {
+      "name": "open-graph-1200x630.png",
+      "category": "social",
+      "path": "/brand/social/open-graph-1200x630.png",
+      "format": "png",
+      "bytes": 67342
+    },
+    {
+      "name": "social-avatar-1024.png",
+      "category": "social",
+      "path": "/brand/social/social-avatar-1024.png",
+      "format": "png",
+      "bytes": 23590
+    },
+    {
+      "name": "social-avatar-dark-1024.png",
+      "category": "social",
+      "path": "/brand/social/social-avatar-dark-1024.png",
+      "format": "png",
+      "bytes": 24053
+    },
+    {
+      "name": "niall-tech-gap-chamfered.svg",
+      "category": "svg",
+      "path": "/brand/svg/alternates/niall-tech-gap-chamfered.svg",
+      "format": "svg",
+      "bytes": 535
+    },
+    {
+      "name": "niall-tech-gap-hairline.svg",
+      "category": "svg",
+      "path": "/brand/svg/alternates/niall-tech-gap-hairline.svg",
+      "format": "svg",
+      "bytes": 503
+    },
+    {
+      "name": "niall-tech-gap-medium.svg",
+      "category": "svg",
+      "path": "/brand/svg/alternates/niall-tech-gap-medium.svg",
+      "format": "svg",
+      "bytes": 515
+    },
+    {
+      "name": "niall-tech-embroidery.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-embroidery.svg",
+      "format": "svg",
+      "bytes": 540
+    },
+    {
+      "name": "niall-tech-horizontal-dark.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-horizontal-dark.svg",
+      "format": "svg",
+      "bytes": 833
+    },
+    {
+      "name": "niall-tech-horizontal-light.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-horizontal-light.svg",
+      "format": "svg",
+      "bytes": 833
+    },
+    {
+      "name": "niall-tech-horizontal-tagline.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-horizontal-tagline.svg",
+      "format": "svg",
+      "bytes": 1019
+    },
+    {
+      "name": "niall-tech-horizontal.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-horizontal.svg",
+      "format": "svg",
+      "bytes": 833
+    },
+    {
+      "name": "niall-tech-icon-dark.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-icon-dark.svg",
+      "format": "svg",
+      "bytes": 480
+    },
+    {
+      "name": "niall-tech-icon-light.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-icon-light.svg",
+      "format": "svg",
+      "bytes": 480
+    },
+    {
+      "name": "niall-tech-icon.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-icon.svg",
+      "format": "svg",
+      "bytes": 480
+    },
+    {
+      "name": "niall-tech-one-color-black.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-one-color-black.svg",
+      "format": "svg",
+      "bytes": 833
+    },
+    {
+      "name": "niall-tech-one-color-white.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-one-color-white.svg",
+      "format": "svg",
+      "bytes": 833
+    },
+    {
+      "name": "niall-tech-stacked-dark.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-stacked-dark.svg",
+      "format": "svg",
+      "bytes": 864
+    },
+    {
+      "name": "niall-tech-stacked-light.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-stacked-light.svg",
+      "format": "svg",
+      "bytes": 864
+    },
+    {
+      "name": "niall-tech-stacked.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-stacked.svg",
+      "format": "svg",
+      "bytes": 864
+    },
+    {
+      "name": "niall-tech-vehicle-decal.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-vehicle-decal.svg",
+      "format": "svg",
+      "bytes": 999
+    },
+    {
+      "name": "niall-tech-wordmark.svg",
+      "category": "svg",
+      "path": "/brand/svg/niall-tech-wordmark.svg",
+      "format": "svg",
+      "bytes": 492
+    }
+  ]
+}

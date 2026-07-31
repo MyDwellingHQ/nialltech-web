@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-labelledby="title">
+  <title id="title">Niall Tech embroidery mark</title>
+  
+  <g transform="translate(10, 10)">
+    <rect x="21" y="15" width="14.5" height="70" rx="7.25" fill="#0B1320"/>
+  <line x1="41.5875" y1="23.75" x2="69.575" y2="76.75" stroke="#0B1320" stroke-width="14.5" stroke-linecap="round"/>
+  <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill="#0B1320"/>
+  </g>
+
+</svg>

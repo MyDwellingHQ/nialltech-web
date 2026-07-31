@@ -60,15 +60,21 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/icon.svg" }],
+    icon: [
+      { url: "/brand/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/brand/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/brand/favicon/favicon.ico", sizes: "any" },
+    ],
+    apple: [{ url: "/brand/favicon/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/brand/favicon/site.webmanifest",
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f7f9fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#070b14" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1320" },
   ],
   width: "device-width",
   initialScale: 1,
