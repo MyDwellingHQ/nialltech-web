@@ -3,6 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  color-scheme: light;
   --background: #f7f9fc;
   --foreground: #0f172a;
   --muted: #64748b;
@@ -23,9 +24,19 @@
   --glow: rgba(37, 99, 235, 0.22);
   --success: #059669;
   --shadow-soft: 0 18px 50px -28px rgba(15, 23, 42, 0.35);
+  --shadow-hover: 0 24px 60px -28px rgba(37, 99, 235, 0.45);
+  --preview-light: #ffffff;
+  --niall-mark-primary: #0b1320;
+  --niall-mark-blue: #146bff;
+  --on-hero: #ffffff;
+  --on-hero-muted: rgba(226, 232, 240, 0.92);
+  --on-hero-subtle: rgba(203, 213, 225, 0.9);
+  --on-hero-soft: rgba(255, 255, 255, 0.1);
+  --on-hero-border: rgba(255, 255, 255, 0.15);
 }
 
 .dark {
+  color-scheme: dark;
   --background: #070b14;
   --foreground: #e8eef9;
   --muted: #94a3b8;
@@ -46,6 +57,15 @@
   --glow: rgba(56, 189, 248, 0.18);
   --success: #34d399;
   --shadow-soft: 0 22px 60px -30px rgba(0, 0, 0, 0.75);
+  --shadow-hover: 0 24px 60px -28px rgba(56, 189, 248, 0.28);
+  --preview-light: #f1f5f9;
+  --niall-mark-primary: #ffffff;
+  --niall-mark-blue: #146bff;
+  --on-hero: #ffffff;
+  --on-hero-muted: rgba(226, 232, 240, 0.92);
+  --on-hero-subtle: rgba(203, 213, 225, 0.9);
+  --on-hero-soft: rgba(255, 255, 255, 0.1);
+  --on-hero-border: rgba(255, 255, 255, 0.15);
 }
 
 @theme inline {
@@ -64,9 +84,16 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-success: var(--success);
+  --color-preview-light: var(--preview-light);
+  --color-on-hero: var(--on-hero);
+  --color-on-hero-muted: var(--on-hero-muted);
+  --color-on-hero-subtle: var(--on-hero-subtle);
+  --color-on-hero-soft: var(--on-hero-soft);
+  --color-on-hero-border: var(--on-hero-border);
   --font-sans: var(--font-plus-jakarta);
   --font-display: var(--font-manrope);
   --shadow-soft: var(--shadow-soft);
+  --shadow-hover: var(--shadow-hover);
 }
 
 html {
@@ -78,6 +105,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   text-rendering: optimizeLegibility;
+}
+
+input,
+textarea,
+select {
+  color-scheme: inherit;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+option {
+  background-color: var(--surface);
+  color: var(--foreground);
 }
 
 ::selection {

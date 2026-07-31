@@ -42,7 +42,7 @@ function MockupCard({ title, caption, children, surface = "bg-[#EEF2F7]" }: Mock
       </div>
       <figcaption className="flex items-baseline justify-between gap-3 border-t border-border px-4 py-3">
         <span className="text-sm font-semibold text-foreground">{title}</span>
-        <span className="text-xs text-muted-foreground text-right">{caption}</span>
+        <span className="text-right text-xs text-muted">{caption}</span>
       </figcaption>
     </figure>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BrandMark } from "@/components/brand/BrandLogo";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Container } from "@/components/ui/Container";
 import { footerNav, siteConfig } from "@/lib/site";
 
@@ -11,11 +11,17 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <BrandMark className="h-9 w-9" />
-              <span className="font-display text-lg font-semibold tracking-tight">
-                Niall Tech
-              </span>
+            <Link
+              href="/"
+              className="inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label={`${siteConfig.name} home`}
+            >
+              <BrandLogo
+                variant="horizontal"
+                theme="auto"
+                size="md"
+                className="h-8 w-auto max-w-[12.5rem] object-contain object-left"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               {siteConfig.tagline} Microsoft 365, Azure, identity, security, and

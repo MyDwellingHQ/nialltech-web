@@ -303,7 +303,7 @@ function LogoShowcase({
 }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-      <div className="flex h-32 items-center justify-center bg-white px-6 dark:bg-slate-100">
+      <div className="flex h-32 items-center justify-center bg-preview-light px-6">
         {light}
       </div>
       <div className="flex h-32 items-center justify-center bg-[#0B1320] px-6">
