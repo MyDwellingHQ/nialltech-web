@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "brand:build": "node scripts/build-brand-assets.mjs"
+    "brand:build": "node scripts/build-brand-assets.mjs",
+    "brand:collateral": "node scripts/generate-brand-collateral.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

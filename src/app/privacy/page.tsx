@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "1. Overview",
-    body: `This Privacy Policy explains how ${siteConfig.name} collects, uses, and protects information when you visit our website or contact us about consulting services. This page uses placeholder language suitable for a marketing site and should be reviewed by legal counsel before production use.`,
+    body: `This Privacy Policy explains how ${siteConfig.name} collects, uses, and protects information when you visit our website or contact us about consulting services.`,
   },
   {
     title: "2. Information we collect",
@@ -57,7 +57,7 @@ export default function PrivacyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy Policy"
-        description="Placeholder policy content describing how Niall Tech handles information collected through this website."
+        description="How Niall Tech collects, uses, and protects information when you visit our website or contact us."
       />
       <Container className="prose-niall max-w-3xl py-16 sm:py-20">
         <p className="text-sm text-muted">Last updated: July 24, 2026</p>

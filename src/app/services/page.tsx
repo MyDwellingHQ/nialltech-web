@@ -1,87 +1,115 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/shared/PageHeader";
-import { AnimateIn } from "@/components/shared/AnimateIn";
+import { PageIntro } from "@/components/sections/PageIntro";
+import { CTABand } from "@/components/sections/CTABand";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { services } from "@/content/services";
+import { serviceCategories, servicesByCategory } from "@/content/services";
+import { ServicesJsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore Niall Tech consulting services spanning Microsoft 365, Azure, Entra ID, Intune, security, infrastructure, and technology strategy.",
+    "Microsoft 365, Azure, identity, security, infrastructure, and IT strategy consulting for growing businesses.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
     title: "Services | Niall Tech",
     description:
-      "Microsoft 365, Azure, identity, security, infrastructure, and strategy consulting.",
+      "Practical Microsoft consulting for productivity, security, and reliable operations.",
     url: "/services",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | Niall Tech",
+    description:
+      "Practical Microsoft consulting for productivity, security, and reliable operations.",
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHeader
+      <ServicesJsonLd />
+      <PageIntro
         eyebrow="Services"
-        title="Consulting built around the platforms that run your business"
-        description="Whether you need a focused engagement or a broader modernization program, we deliver practical guidance across Microsoft cloud, identity, endpoints, and infrastructure."
-      />
+        title="IT help that protects productivity and reduces risk"
+        description="Browse by outcome. Every engagement is scoped to what your business needs next—not a generic managed-services menu."
+      >
+        <Button href="/contact" variant="secondary" size="md">
+          Talk through priorities
+        </Button>
+      </PageIntro>
 
       <Container className="py-16 sm:py-20">
-        <div className="space-y-6">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+        <div className="space-y-16">
+          {serviceCategories.map((category) => {
+            const items = servicesByCategory(category.id);
             return (
-              <AnimateIn key={service.slug} delayMs={Math.min(index * 40, 240)}>
-                <article
-                  id={service.slug}
-                  className="scroll-mt-28 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8"
-                >
-                  <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="max-w-2xl">
-                      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
-                        <Icon className="h-5 w-5" aria-hidden />
-                      </div>
-                      <h2 className="font-display text-2xl font-semibold tracking-tight">
-                        {service.title}
-                      </h2>
-                      <p className="mt-3 text-base leading-relaxed text-muted">
-                        {service.description}
-                      </p>
-                    </div>
-                    <ul className="w-full max-w-md space-y-2.5 rounded-xl border border-border bg-background/70 p-5">
-                      {service.outcomes.map((outcome) => (
-                        <li
-                          key={outcome}
-                          className="flex gap-2 text-sm leading-relaxed text-foreground/90"
-                        >
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                          {outcome}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </AnimateIn>
+              <section
+                key={category.id}
+                id={category.id}
+                className="scroll-mt-28"
+                aria-labelledby={`${category.id}-title`}
+              >
+                <div className="max-w-2xl">
+                  <h2
+                    id={`${category.id}-title`}
+                    className="font-display text-3xl font-semibold tracking-tight"
+                  >
+                    {category.title}
+                  </h2>
+                  <p className="mt-3 text-base leading-relaxed text-muted">
+                    {category.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 space-y-5">
+                  {items.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <article
+                        key={service.slug}
+                        id={service.slug}
+                        className="scroll-mt-28 border-t border-border pt-6 sm:pt-8"
+                      >
+                        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                          <div className="max-w-2xl">
+                            <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary">
+                              <Icon className="h-5 w-5" aria-hidden />
+                            </div>
+                            <h3 className="font-display text-2xl font-semibold tracking-tight">
+                              {service.title}
+                            </h3>
+                            <p className="mt-3 text-base leading-relaxed text-muted">
+                              {service.description}
+                            </p>
+                          </div>
+                          <ul className="w-full max-w-md space-y-2.5 border-l border-border pl-5">
+                            {service.outcomes.map((outcome) => (
+                              <li
+                                key={outcome}
+                                className="text-sm leading-relaxed text-foreground/90"
+                              >
+                                {outcome}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
             );
           })}
         </div>
-
-        <div className="mt-12 rounded-2xl border border-border bg-surface p-8 text-center">
-          <h2 className="font-display text-2xl font-semibold tracking-tight">
-            Not sure where to start?
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted">
-            Tell us what you are trying to improve. We will recommend a focused
-            first engagement and a practical path forward.
-          </p>
-          <Button href="/contact" className="mt-6">
-            Talk with Niall Tech
-          </Button>
-        </div>
       </Container>
+
+      <CTABand
+        title="Not sure which service fits?"
+        description="Tell us what is blocking the business. We will recommend a focused first step."
+      />
     </>
   );
 }

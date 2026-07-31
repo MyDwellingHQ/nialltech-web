@@ -31,6 +31,10 @@ import pngToIco from "png-to-ico";
 import { generateSvgs } from "./generate-brand-svgs.mjs";
 import { COLORS } from "./logo-geometry.mjs";
 
+async function generateCollateral() {
+  await import("./generate-brand-collateral.mjs");
+}
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const BRAND = path.join(ROOT, "public/brand");
@@ -488,6 +492,7 @@ async function writeAssetIndex() {
   await walk(path.join(BRAND, "favicon"), "favicon");
   await walk(path.join(BRAND, "social"), "social");
   await walk(path.join(BRAND, "print"), "print");
+  await walk(path.join(BRAND, "collateral"), "collateral");
 
   const index = {
     generatedAt: new Date().toISOString(),
@@ -631,7 +636,7 @@ async function buildZip() {
     archive.on("error", reject);
     archive.pipe(output);
 
-    const include = ["svg", "png", "favicon", "social", "print"];
+    const include = ["svg", "png", "favicon", "social", "print", "collateral"];
     for (const dir of include) {
       archive.directory(path.join(BRAND, dir), dir);
     }
@@ -664,6 +669,7 @@ async function main() {
   console.log("\nNiall Tech brand asset build\n");
   await ensureFonts();
   await generateSvgs();
+  await generateCollateral();
   await verifyRequired();
   await buildPngs();
   await buildFavicons();

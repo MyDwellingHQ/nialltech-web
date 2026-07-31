@@ -1,38 +1,48 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/home/Hero";
-import { ServicesPreview } from "@/components/home/ServicesPreview";
-import { WhyChooseUs } from "@/components/home/WhyChooseUs";
+import { Hero } from "@/components/sections/Hero";
+import { TrustBar } from "@/components/sections/TrustBar";
+import { ServiceGrid } from "@/components/sections/ServiceGrid";
+import { Benefits } from "@/components/sections/Benefits";
+import { Process } from "@/components/sections/Process";
+import { LogoCloud } from "@/components/sections/LogoCloud";
+import { FAQ, FaqJsonLd } from "@/components/sections/FAQ";
+import { CTABand } from "@/components/sections/CTABand";
 import { Certifications } from "@/components/home/Certifications";
-import { TechStack } from "@/components/home/TechStack";
-import { Workflow } from "@/components/home/Workflow";
-import { ContactCTA } from "@/components/home/ContactCTA";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: `${siteConfig.name} | Technology Consulting`,
+    absolute: `${siteConfig.name} | Microsoft IT Consulting`,
   },
   description: siteConfig.description,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: `${siteConfig.name} | Technology Consulting`,
+    title: `${siteConfig.name} | Microsoft IT Consulting`,
     description: siteConfig.description,
     url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Microsoft IT Consulting`,
+    description: siteConfig.description,
   },
 };
 
 export default function HomePage() {
   return (
     <>
+      <FaqJsonLd />
       <Hero />
-      <ServicesPreview />
-      <WhyChooseUs />
+      <TrustBar />
+      <ServiceGrid />
+      <Benefits />
       <Certifications />
-      <TechStack />
-      <Workflow />
-      <ContactCTA />
+      <LogoCloud />
+      <Process />
+      <FAQ />
+      <CTABand />
     </>
   );
 }

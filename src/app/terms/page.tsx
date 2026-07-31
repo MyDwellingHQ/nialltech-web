@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "1. Acceptance of terms",
-    body: `By accessing the ${siteConfig.name} website, you agree to these Terms of Service. If you do not agree, please do not use the site. This content is placeholder language and should be reviewed by legal counsel before production use.`,
+    body: `By accessing the ${siteConfig.name} website, you agree to these Terms of Service. If you do not agree, please do not use the site.`,
   },
   {
     title: "2. Website purpose",
@@ -61,7 +61,7 @@ export default function TermsPage() {
       <PageHeader
         eyebrow="Legal"
         title="Terms of Service"
-        description="Placeholder terms governing use of the Niall Tech website and related informational materials."
+        description="Terms governing use of the Niall Tech website and related informational materials."
       />
       <Container className="max-w-3xl py-16 sm:py-20">
         <p className="text-sm text-muted">Last updated: July 24, 2026</p>

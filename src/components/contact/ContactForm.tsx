@@ -2,30 +2,64 @@
 
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const interests = [
   "Microsoft 365",
   "Azure / Entra ID",
-  "Intune / Endpoints",
+  "Intune / endpoints",
   "Security",
   "Cloud migration",
-  "IT support",
+  "Backup & recovery",
+  "Technology strategy",
+  "Business IT support",
   "Other",
 ];
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fallbackEmail, setFallbackEmail] = useState<string>(siteConfig.email);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
+    setError(null);
 
-    // Placeholder submission handler for the static marketing site.
-    await new Promise((resolve) => setTimeout(resolve, 650));
-    setPending(false);
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = (await response.json()) as {
+        ok?: boolean;
+        error?: string;
+        email?: string;
+      };
+
+      if (!response.ok) {
+        setFallbackEmail(result.email || siteConfig.email);
+        setError(
+          result.error ||
+            "We could not send your message. Please email us directly.",
+        );
+        setPending(false);
+        return;
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setError("Network error. Please email us directly.");
+    } finally {
+      setPending(false);
+    }
   }
 
   if (submitted) {
@@ -39,8 +73,8 @@ export function ContactForm() {
           Message received
         </h2>
         <p className="mt-3 text-muted">
-          Thank you for contacting Niall Tech. A consultant will follow up shortly
-          with next steps.
+          Thanks for contacting Niall Tech. We typically reply the same business
+          day with a clear next step.
         </p>
         <Button
           className="mt-6"
@@ -56,7 +90,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8"
+      className="rounded-2xl border border-border bg-card p-6 sm:p-8"
       noValidate={false}
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -90,20 +124,26 @@ export function ContactForm() {
             placeholder="Company name"
           />
         </Field>
-        <Field label="Phone" htmlFor="phone">
+        <Field label="Phone (optional)" htmlFor="phone">
           <input
             id="phone"
             name="phone"
             type="tel"
             autoComplete="tel"
             className={inputClassName}
-            placeholder="+1 (555) 000-0000"
+            placeholder="Optional"
           />
         </Field>
       </div>
 
       <Field label="How can we help?" htmlFor="interest" className="mt-5">
-        <select id="interest" name="interest" className={inputClassName} defaultValue="">
+        <select
+          id="interest"
+          name="interest"
+          className={inputClassName}
+          defaultValue=""
+          required
+        >
           <option value="" disabled>
             Select a topic
           </option>
@@ -122,15 +162,36 @@ export function ContactForm() {
           required
           rows={5}
           className={cn(inputClassName, "resize-y")}
-          placeholder="Share your current environment, goals, and timeline."
+          placeholder="What is getting in the way today? Goals, timeline, and constraints help."
         />
       </Field>
 
       <p className="mt-4 text-xs leading-relaxed text-muted">
-        By submitting this form you agree to our privacy policy. This is a
-        placeholder form for demonstration—connect it to your preferred backend
-        or booking system when ready.
+        By submitting, you agree to our{" "}
+        <a href="/privacy" className="underline underline-offset-2 hover:text-foreground">
+          privacy policy
+        </a>
+        . We use your details only to respond to this inquiry.
       </p>
+
+      {error ? (
+        <div
+          className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-100"
+          role="alert"
+        >
+          <p>{error}</p>
+          <p className="mt-2">
+            Email{" "}
+            <a
+              className="font-semibold underline underline-offset-2"
+              href={`mailto:${fallbackEmail}`}
+            >
+              {fallbackEmail}
+            </a>
+            .
+          </p>
+        </div>
+      ) : null}
 
       <Button type="submit" className="mt-6 w-full sm:w-auto" disabled={pending}>
         {pending ? "Sending..." : "Send message"}

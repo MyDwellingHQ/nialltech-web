@@ -95,17 +95,59 @@ export function BrandLogo({
   );
 }
 
-/** Inline SVG mark for header/footer — avoids flash and theme mismatch. */
+/** Inline SVG mark for header/footer — theme-aware for light/dark chrome. */
 export function BrandMark({
   className,
-  theme = "color",
+  theme = "auto",
 }: {
   className?: string;
-  theme?: "color" | "white";
+  theme?: "auto" | "color" | "white";
 }) {
-  const primary = theme === "white" ? "#FFFFFF" : "#0B1320";
-  const accent = theme === "white" ? "#FFFFFF" : "#146BFF";
+  if (theme === "white") {
+    return (
+      <BrandMarkSvg
+        className={className}
+        primary="#FFFFFF"
+        accent="#FFFFFF"
+      />
+    );
+  }
 
+  if (theme === "color") {
+    return (
+      <BrandMarkSvg
+        className={className}
+        primary="#0B1320"
+        accent="#146BFF"
+      />
+    );
+  }
+
+  return (
+    <span className={cn("relative inline-flex h-9 w-9", className)}>
+      <BrandMarkSvg
+        className="h-full w-full dark:hidden"
+        primary="#0B1320"
+        accent="#146BFF"
+      />
+      <BrandMarkSvg
+        className="hidden h-full w-full dark:block"
+        primary="#FFFFFF"
+        accent="#4B8BFF"
+      />
+    </span>
+  );
+}
+
+function BrandMarkSvg({
+  className,
+  primary,
+  accent,
+}: {
+  className?: string;
+  primary: string;
+  accent: string;
+}) {
   return (
     <svg
       viewBox="0 0 100 100"

@@ -15,6 +15,12 @@ import {
   Compass,
 } from "lucide-react";
 
+export type ServiceCategoryId =
+  | "cloud-productivity"
+  | "identity-security"
+  | "infrastructure-resilience"
+  | "strategy-support";
+
 export type Service = {
   slug: string;
   title: string;
@@ -22,198 +28,234 @@ export type Service = {
   description: string;
   outcomes: string[];
   icon: LucideIcon;
+  category: ServiceCategoryId;
   featured?: boolean;
 };
+
+export const serviceCategories: {
+  id: ServiceCategoryId;
+  title: string;
+  description: string;
+}[] = [
+  {
+    id: "cloud-productivity",
+    title: "Cloud & productivity",
+    description:
+      "Keep people working together securely—email, files, meetings, and cloud platforms that don’t get in the way.",
+  },
+  {
+    id: "identity-security",
+    title: "Identity & security",
+    description:
+      "Reduce the risk of account takeovers and device gaps without slowing the business down.",
+  },
+  {
+    id: "infrastructure-resilience",
+    title: "Infrastructure & resilience",
+    description:
+      "Stable systems, networks, and recovery plans so an outage doesn’t become a crisis.",
+  },
+  {
+    id: "strategy-support",
+    title: "Strategy & support",
+    description:
+      "Clear priorities and dependable help so technology decisions support growth.",
+  },
+];
 
 export const services: Service[] = [
   {
     slug: "microsoft-365",
-    title: "Microsoft 365 Consulting",
-    summary:
-      "Optimize collaboration, security, and licensing across Microsoft 365.",
+    title: "Microsoft 365",
+    summary: "Secure email, Teams, and files your whole company can rely on.",
     description:
-      "We design, deploy, and tune Microsoft 365 environments so your teams communicate securely and productively—without unnecessary complexity.",
+      "We set up and harden Microsoft 365 so people collaborate easily while spam, phishing, and messy permissions stay under control.",
     outcomes: [
-      "Tenant hardening and baseline security",
-      "Exchange, SharePoint, and Teams optimization",
-      "Licensing guidance aligned to real usage",
+      "Fewer inbox and sharing headaches for staff",
+      "Stronger baseline security without extra tools",
+      "Licensing that matches how you actually work",
     ],
     icon: Cloud,
+    category: "cloud-productivity",
     featured: true,
   },
   {
     slug: "azure-entra-id",
     title: "Azure & Entra ID",
-    summary:
-      "Cloud architecture and identity foundations built for scale and control.",
+    summary: "Cloud systems with clear ownership—and locked-down access.",
     description:
-      "From landing zones to identity governance, we help you run Azure and Entra ID with clarity, least privilege, and operational confidence.",
+      "We design Azure and Entra ID so the right people get in, unused access gets removed, and cloud spend stays understandable.",
     outcomes: [
-      "Secure Azure landing zone design",
-      "Entra ID Conditional Access strategies",
-      "Hybrid identity and federation guidance",
+      "Identity and cloud foundations you can govern",
+      "Access rules that block risky sign-ins",
+      "A cleaner path from on-premises to cloud",
     ],
     icon: Shield,
-    featured: true,
-  },
-  {
-    slug: "intune-endpoint",
-    title: "Intune / Endpoint Management",
-    summary:
-      "Modern device management that protects every endpoint your business relies on.",
-    description:
-      "We implement Intune policies, compliance baselines, and zero-touch provisioning so laptops and mobiles stay secure and ready for work.",
-    outcomes: [
-      "Autopilot and enrollment workflows",
-      "Compliance and configuration profiles",
-      "Application deployment at scale",
-    ],
-    icon: Laptop,
-    featured: true,
-  },
-  {
-    slug: "identity-access",
-    title: "Identity & Access Management",
-    summary:
-      "Least-privilege access, strong authentication, and clear governance.",
-    description:
-      "We reduce identity risk with MFA, Conditional Access, privileged access reviews, and lifecycle automation that matches how your organization works.",
-    outcomes: [
-      "MFA and passwordless adoption",
-      "Privileged identity controls",
-      "Joiner-mover-leaver processes",
-    ],
-    icon: KeyRound,
-    featured: true,
-  },
-  {
-    slug: "it-infrastructure",
-    title: "IT Infrastructure",
-    summary:
-      "Reliable infrastructure design for hybrid and cloud-first environments.",
-    description:
-      "Servers, networking foundations, and platform standards built for uptime, maintainability, and predictable growth.",
-    outcomes: [
-      "Architecture reviews and roadmaps",
-      "Hybrid infrastructure modernization",
-      "Operational standards and documentation",
-    ],
-    icon: Server,
-  },
-  {
-    slug: "security-consulting",
-    title: "Security Consulting",
-    summary:
-      "Practical security improvements that reduce risk without slowing teams down.",
-    description:
-      "We assess your environment, prioritize the controls that matter, and implement defenses aligned to your risk profile and compliance needs.",
-    outcomes: [
-      "Security posture assessments",
-      "Hardening recommendations",
-      "Incident readiness planning",
-    ],
-    icon: Lock,
+    category: "cloud-productivity",
     featured: true,
   },
   {
     slug: "cloud-migrations",
-    title: "Cloud Migrations",
-    summary:
-      "Predictable migrations to Azure and Microsoft 365 with minimal disruption.",
+    title: "Cloud migrations",
+    summary: "Move email, files, or servers with a plan—not a leap of faith.",
     description:
-      "We plan and execute migrations with clear cutover plans, rollback options, and communication that keeps stakeholders informed.",
+      "We plan cutovers, test first, and keep everyone informed so migrations reduce risk instead of creating weekend fire drills.",
     outcomes: [
-      "Discovery and readiness assessments",
-      "Pilot and wave-based migrations",
-      "Post-migration optimization",
+      "A phased plan with clear go/no-go checkpoints",
+      "Less downtime for customers and staff",
+      "Cleanup and tuning after the move",
     ],
     icon: ArrowRightLeft,
+    category: "cloud-productivity",
   },
   {
-    slug: "small-business-it",
-    title: "Small Business IT Support",
-    summary:
-      "Right-sized IT support so smaller teams can operate with enterprise-grade confidence.",
+    slug: "intune-endpoint",
+    title: "Intune & device management",
+    summary: "Company laptops and phones set up right—and kept that way.",
     description:
-      "From day-to-day support to strategic guidance, we help growing businesses stay secure, productive, and ready to scale.",
+      "We use Intune so new devices are ready on day one, lost devices can be locked, and security settings stay consistent across the team.",
     outcomes: [
-      "Proactive monitoring and support",
-      "Secure collaboration setup",
-      "Clear technology roadmaps",
+      "Faster onboarding for new hires",
+      "Consistent protection on every endpoint",
+      "Less time spent fixing one-off machine issues",
     ],
-    icon: Headset,
+    icon: Laptop,
+    category: "identity-security",
+    featured: true,
+  },
+  {
+    slug: "identity-access",
+    title: "Identity & access",
+    summary: "Stop shared passwords and leftover access from becoming incidents.",
+    description:
+      "We tighten sign-in, privileged accounts, and joiner/leaver processes so former staff and unused admin rights don’t linger.",
+    outcomes: [
+      "MFA and modern sign-in that people will use",
+      "Tighter control of powerful admin accounts",
+      "Clean access changes when roles change",
+    ],
+    icon: KeyRound,
+    category: "identity-security",
+    featured: true,
+  },
+  {
+    slug: "security-consulting",
+    title: "Security consulting",
+    summary: "Fix the risks that matter most—before they cost you.",
+    description:
+      "We assess your environment, prioritize practical fixes, and help you improve security in stages the business can absorb.",
+    outcomes: [
+      "A clear risk list ranked by business impact",
+      "Hardening steps your team can maintain",
+      "A better plan for when something goes wrong",
+    ],
+    icon: Lock,
+    category: "identity-security",
+    featured: true,
+  },
+  {
+    slug: "it-infrastructure",
+    title: "IT infrastructure",
+    summary: "Servers and platforms that stay boring—in the best way.",
+    description:
+      "We design and modernize infrastructure so day-to-day work stays up, maintenance is predictable, and growth doesn’t mean constant rebuilds.",
+    outcomes: [
+      "An architecture roadmap tied to real constraints",
+      "Hybrid or cloud-first designs that fit your size",
+      "Documentation your team can actually use",
+    ],
+    icon: Server,
+    category: "infrastructure-resilience",
   },
   {
     slug: "network-consulting",
-    title: "Network Consulting",
-    summary:
-      "Connectivity designed for performance, resilience, and secure access.",
+    title: "Network consulting",
+    summary: "Office and remote access that stays fast and dependable.",
     description:
-      "We assess and improve LAN, WAN, Wi-Fi, and secure remote access so people and systems stay connected when it counts.",
+      "We improve Wi-Fi, office networks, and secure remote access so people aren’t fighting the connection to do their jobs.",
     outcomes: [
-      "Network architecture reviews",
-      "Secure remote access design",
-      "Performance and reliability improvements",
+      "More reliable office and guest Wi-Fi",
+      "Secure remote access without VPN chaos",
+      "Clear recommendations when hardware needs refresh",
     ],
     icon: Network,
+    category: "infrastructure-resilience",
   },
   {
     slug: "virtualization",
     title: "Virtualization",
-    summary:
-      "Efficient virtualization platforms that simplify operations and reduce cost.",
+    summary: "Run more workloads on fewer boxes—with room to recover.",
     description:
-      "We design and optimize virtualized environments for density, resilience, and straightforward management.",
+      "We design and tune virtualization so capacity, backups, and failover are planned—not improvised during an outage.",
     outcomes: [
-      "Platform assessments",
-      "High-availability design",
-      "Lifecycle and capacity planning",
+      "Better use of existing hardware investment",
+      "High-availability patterns that match your risk",
+      "Capacity planning before you hit the wall",
     ],
     icon: Boxes,
+    category: "infrastructure-resilience",
   },
   {
     slug: "storage",
     title: "Storage",
-    summary:
-      "Storage architectures that balance performance, durability, and cost.",
+    summary: "Put data where it belongs—with performance and protection.",
     description:
-      "Whether on-premises, cloud, or hybrid, we help you store data where it belongs—with the protection and access patterns your business needs.",
+      "We help you choose and structure storage so critical files are fast, archives are affordable, and retention matches policy.",
     outcomes: [
-      "Storage architecture design",
-      "Performance tuning",
-      "Tiering and retention strategies",
+      "Storage that fits performance and budget",
+      "Clear retention and tiering choices",
+      "Less sprawl across random drives and shares",
     ],
     icon: HardDrive,
+    category: "infrastructure-resilience",
   },
   {
     slug: "backup-dr",
-    title: "Backup & Disaster Recovery",
-    summary:
-      "Recovery strategies that turn downtime from a crisis into a controlled event.",
+    title: "Backup & disaster recovery",
+    summary: "Know you can get critical systems back when something fails.",
     description:
-      "We build backup and DR plans with tested recovery objectives so critical systems can be restored with confidence.",
+      "We build backup and recovery plans with tested restore goals so ransomware, hardware failure, or human error doesn’t stop the business cold.",
     outcomes: [
-      "RPO/RTO planning",
-      "Backup platform design",
-      "Documented recovery testing",
+      "Recovery targets the business agrees on",
+      "Backups that are monitored—not assumed",
+      "Documented restore tests, not wishful thinking",
     ],
     icon: DatabaseBackup,
+    category: "infrastructure-resilience",
     featured: true,
   },
   {
     slug: "technology-strategy",
-    title: "Technology Strategy",
-    summary:
-      "Clear roadmaps that connect technology decisions to business outcomes.",
+    title: "Technology strategy",
+    summary: "A practical roadmap so spend follows priorities—not vendors.",
     description:
-      "We help leadership prioritize investments, retire complexity, and build a technology strategy that supports growth.",
+      "We help leadership decide what to fix first, what to retire, and what to invest in next—in plain language tied to business outcomes.",
     outcomes: [
-      "Current-state assessments",
-      "Multi-year roadmaps",
-      "Executive-ready recommendations",
+      "A current-state picture everyone understands",
+      "Priorities sequenced by risk and value",
+      "Recommendations ready for owners and boards",
     ],
     icon: Compass,
+    category: "strategy-support",
+  },
+  {
+    slug: "small-business-it",
+    title: "Business IT support",
+    summary: "Steady help for growing companies—not a helpdesk black hole.",
+    description:
+      "We support day-to-day IT with clear escalation, proactive fixes, and guidance that keeps a small team productive and secure.",
+    outcomes: [
+      "Faster resolution when work is blocked",
+      "Proactive checks before issues pile up",
+      "Advice that scales as you hire",
+    ],
+    icon: Headset,
+    category: "strategy-support",
   },
 ];
 
 export const featuredServices = services.filter((service) => service.featured);
+
+export function servicesByCategory(categoryId: ServiceCategoryId) {
+  return services.filter((service) => service.category === categoryId);
+}

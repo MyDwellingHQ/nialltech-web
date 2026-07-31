@@ -5,13 +5,13 @@ import { BrandColorSwatch } from "@/components/brand/BrandColorSwatch";
 import { BrandLogo, BrandMark } from "@/components/brand/BrandLogo";
 import { BrandUsageExample } from "@/components/brand/BrandUsageExample";
 import { DownloadButton } from "@/components/brand/DownloadButton";
-import { AnimateIn } from "@/components/shared/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import {
   brandAssetSections,
   brandAssets,
   brandColors,
+  brandPortalNav,
   incorrectUsage,
   usageRules,
 } from "@/data/brand-assets";
@@ -25,14 +25,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Brand Assets",
   description:
-    "Download official Niall Tech logos, colors, favicons, and social assets. Approved usage guidance for partners and staff.",
+    "Download official Niall Tech logos, business cards, email signatures, letterhead, templates, and the complete brand package.",
   alternates: {
     canonical: "/brand",
   },
   openGraph: {
     title: "Brand Assets | Niall Tech",
     description:
-      "Official Niall Tech logo files, color palette, and downloadable brand package.",
+      "Official Niall Tech logos, collateral templates, and downloadable brand package.",
     url: "/brand",
     images: [
       {
@@ -42,6 +42,12 @@ export const metadata: Metadata = {
         alt: "Niall Tech brand",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brand Assets | Niall Tech",
+    description:
+      "Official Niall Tech logos, collateral templates, and downloadable brand package.",
   },
 };
 
@@ -54,44 +60,62 @@ export default function BrandAssetsPage() {
         <div className="absolute inset-0 bg-hero-glow opacity-95" />
         <div className="noise absolute inset-0" aria-hidden />
         <Container className="relative py-16 sm:py-20">
-          <AnimateIn>
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <div className="mb-6 flex items-center gap-3">
-                  <BrandMark theme="white" className="h-11 w-11" />
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-200/90">
-                    Niall Tech
-                  </p>
-                </div>
-                <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                  Brand Assets
-                </h1>
-                <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg">
-                  Official logos, colors, and files for approved Niall Tech
-                  communications. Use these masters as provided—do not redraw,
-                  recolor, or redistribute altered marks.
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <div className="mb-6 flex items-center gap-3">
+                <BrandMark theme="white" className="h-11 w-11" />
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-200/90">
+                  Niall Tech
                 </p>
               </div>
-              {packageAsset ? (
-                <DownloadButton
-                  href={packageAsset.path}
-                  label="Download Complete Brand Package"
-                  filename="niall-tech-brand-assets.zip"
-                  variant="primary"
-                  size="md"
-                  className="bg-white text-[#0B1320] hover:bg-slate-100 focus-visible:ring-white"
-                />
-              ) : null}
+              <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                Brand Assets
+              </h1>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg">
+                Official logos and collateral for approved Niall Tech
+                communications. Use these masters as provided—do not redraw,
+                recolor, or redistribute altered marks.
+              </p>
             </div>
-          </AnimateIn>
+            {packageAsset ? (
+              <DownloadButton
+                href={packageAsset.path}
+                label="Download Complete Brand Package"
+                filename="niall-tech-brand-assets.zip"
+                variant="primary"
+                size="md"
+                className="bg-white text-[#0B1320] hover:bg-slate-100 focus-visible:ring-white"
+              />
+            ) : null}
+          </div>
         </Container>
       </header>
 
+      <nav
+        aria-label="Brand portal"
+        className="sticky top-16 z-40 border-b border-border bg-background/90 backdrop-blur-md sm:top-[4.25rem]"
+      >
+        <Container className="overflow-x-auto py-3">
+          <ul className="flex min-w-max gap-2">
+            {brandPortalNav.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="inline-flex rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-primary-soft hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </nav>
+
       <Section
-        id="primary"
+        id="brand-assets"
         eyebrow="Lockups"
         title="Primary logos"
-        description="Horizontal, stacked, and icon-only marks in dark and light variants. SVG is preferred for digital use."
+        description="Horizontal, stacked, and icon-only marks in dark and light variants."
       >
         <div className="grid gap-5 md:grid-cols-3">
           <LogoShowcase
@@ -115,23 +139,39 @@ export default function BrandAssetsPage() {
         </div>
       </Section>
 
-      {brandAssetSections.map((section) => {
-        const assets = brandAssets.filter((asset) =>
-          section.categories.includes(asset.category),
-        );
-        return (
-          <Section
-            key={section.id}
-            id={section.id}
-            eyebrow="Downloads"
-            title={section.title}
-            description={section.description}
-            className="border-t border-border bg-surface/40"
-          >
-            <BrandAssetGrid assets={assets} />
-          </Section>
-        );
-      })}
+      {brandAssetSections
+        .filter((section) => section.id !== "brand-assets")
+        .map((section) => {
+          const assets = brandAssets.filter((asset) =>
+            section.categories.includes(asset.category),
+          );
+          return (
+            <Section
+              key={section.id}
+              id={section.id}
+              eyebrow="Downloads"
+              title={section.title}
+              description={section.description}
+              className="border-t border-border bg-surface/40"
+            >
+              <BrandAssetGrid assets={assets} />
+            </Section>
+          );
+        })}
+
+      {/* Download remaining logo masters not in showcase */}
+      <Section
+        id="logo-files"
+        eyebrow="Logo files"
+        title="Logo download pack"
+        description="All approved SVG logo masters, including wordmark, mono, vehicle, and embroidery variants."
+      >
+        <BrandAssetGrid
+          assets={brandAssets.filter((asset) =>
+            ["primary", "wordmark", "mono", "special"].includes(asset.category),
+          )}
+        />
+      </Section>
 
       <Section
         id="colors"
@@ -150,7 +190,7 @@ export default function BrandAssetsPage() {
         id="typography"
         eyebrow="Type"
         title="Typography"
-        description="Inter is the brand typeface for lockups and formal brand materials. Site UI may use Plus Jakarta Sans and Manrope."
+        description="Inter is the brand typeface for lockups and formal brand materials. Site UI uses Plus Jakarta Sans and Manrope."
         className="border-t border-border bg-surface/40"
       >
         <div
@@ -178,9 +218,9 @@ export default function BrandAssetsPage() {
             </p>
           </div>
           <div className="grid gap-4 border-t border-border pt-6 sm:grid-cols-3">
-            <TypeSample weight="700" label="Bold / Semibold — NIALL" sample="Aa Bb Cc" />
+            <TypeSample weight="700" label="Bold — NIALL" sample="Aa Bb Cc" />
             <TypeSample weight="500" label="Medium — TECH" sample="Aa Bb Cc" />
-            <TypeSample weight="400" label="Regular — body support" sample="Aa Bb Cc" />
+            <TypeSample weight="400" label="Regular — support" sample="Aa Bb Cc" />
           </div>
         </div>
       </Section>
@@ -242,10 +282,10 @@ export default function BrandAssetsPage() {
       </Section>
 
       <Section
-        id="package"
-        eyebrow="Package"
+        id="downloads"
+        eyebrow="Downloads"
         title="Complete brand package"
-        description="One ZIP with every approved SVG, PNG, favicon, social, and print asset—plus README, colors, and asset index."
+        description="One ZIP with logos, rasters, favicons, social covers, print masters, and collateral templates—plus README, colors, and asset index."
       >
         <div className="flex flex-col items-start gap-5 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div>
@@ -253,8 +293,8 @@ export default function BrandAssetsPage() {
               niall-tech-brand-assets.zip
             </p>
             <p className="mt-2 max-w-xl text-sm text-muted">
-              Includes masters, raster exports, favicons, social covers, print
-              PDFs, README.md, brand-colors.txt, and asset-index.json.
+              Includes SVG/PNG masters, favicons, social assets, print files,
+              business cards, email signature, letterhead, and slide/doc templates.
             </p>
           </div>
           {packageAsset ? (
@@ -284,7 +324,7 @@ function LogoShowcase({
   dark: React.ReactNode;
 }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+    <article className="overflow-hidden rounded-2xl border border-border bg-card">
       <div className="flex h-32 items-center justify-center bg-white px-6 dark:bg-slate-100">
         {light}
       </div>

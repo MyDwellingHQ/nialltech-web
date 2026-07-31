@@ -35,7 +35,10 @@ export function BrandAssetCard({ asset }: BrandAssetCardProps) {
           previewBg,
         )}
       >
-        {asset.format === "ZIP" || asset.format === "PDF" || asset.format === "ICO" ? (
+        {asset.format === "ZIP" ||
+        asset.format === "PDF" ||
+        asset.format === "ICO" ||
+        asset.format === "HTML" ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={previewSrc}

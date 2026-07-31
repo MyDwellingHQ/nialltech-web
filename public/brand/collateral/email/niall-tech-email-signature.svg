@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="640" height="200" role="img" aria-labelledby="title">
+  <title id="title">Niall Tech email signature artwork</title>
+  
+  <rect width="640" height="200" fill="#FFFFFF"/>
+  <g transform="translate(24,40) scale(1.1)"><rect x="21" y="15" width="14.5" height="70" rx="7.25" fill="#0B1320"/>
+  <line x1="41.5875" y1="23.75" x2="69.575" y2="76.75" stroke="#0B1320" stroke-width="14.5" stroke-linecap="round"/>
+  <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill="#146BFF"/></g>
+  <text x="160" y="78" fill="#0B1320" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Your Name</text>
+  <text x="160" y="108" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="16">Title · Niall Tech</text>
+  <text x="160" y="145" fill="#146BFF" font-family="Inter, Arial, sans-serif" font-size="15">hello@nialltech.com · nialltech.com</text>
+  <text x="160" y="172" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="2">MODERN IT. LOCAL EXPERTISE.</text>
+
+</svg>

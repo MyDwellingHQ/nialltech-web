@@ -22,7 +22,7 @@ const display = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Technology Consulting`,
+    default: `${siteConfig.name} | Microsoft IT Consulting`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -40,14 +40,24 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Technology Consulting`,
+    title: `${siteConfig.name} | Microsoft IT Consulting`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/brand/social/open-graph-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: "Niall Tech",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Technology Consulting`,
+    title: `${siteConfig.name} | Microsoft IT Consulting`,
     description: siteConfig.description,
+    images: ["/brand/social/open-graph-1200x630.png"],
   },
+
   robots: {
     index: true,
     follow: true,

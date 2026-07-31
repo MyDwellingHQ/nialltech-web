@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="title">
+  <title id="title">Niall Tech PowerPoint title slide</title>
+  
+  <rect width="1920" height="1080" fill="#0B1320"/>
+  <line x1="0" y1="180" x2="1920" y2="80" stroke="#22C1FF" stroke-width="2" opacity="0.25"/>
+  <g transform="translate(160,200) scale(2.8)"><rect x="21" y="15" width="14.5" height="70" rx="7.25" fill="#FFFFFF"/>
+  <line x1="41.5875" y1="23.75" x2="69.575" y2="76.75" stroke="#FFFFFF" stroke-width="14.5" stroke-linecap="round"/>
+  <rect x="64.5" y="15" width="14.5" height="37" rx="7.25" fill="#FFFFFF"/></g>
+  <text x="160" y="620" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">[Presentation title]</text>
+  <text x="160" y="700" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="28">Niall Tech · Microsoft IT Consulting</text>
+  <text x="160" y="960" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="3">NIALL</text>
+  <text x="300" y="960" fill="#146BFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500" letter-spacing="8">TECH</text>
+
+</svg>
