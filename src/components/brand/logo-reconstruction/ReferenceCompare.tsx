@@ -49,10 +49,10 @@ export function ReferenceCompare() {
 
         <figure className="overflow-hidden rounded-2xl border border-border bg-white">
           <div className="flex aspect-[16/10] w-full items-center justify-center p-8">
-            <ReconstructedBrandMark theme="light" gap="medium" size={200} title="Reconstructed mark" />
+            <ReconstructedBrandMark theme="light" size={200} title="Reconstructed mark" />
           </div>
           <figcaption className="border-t border-border p-3 text-xs text-muted">
-            Reconstructed vector (medium gap, master geometry)
+            Reconstructed vector (canonical three-shape geometry)
           </figcaption>
         </figure>
       </div>
@@ -80,7 +80,6 @@ export function ReferenceCompare() {
               >
                 <ReconstructedBrandMark
                   theme="light"
-                  gap="medium"
                   size={180}
                   decorative
                 />

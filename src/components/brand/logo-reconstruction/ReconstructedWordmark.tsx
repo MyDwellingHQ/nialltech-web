@@ -1,87 +1,91 @@
-import { ELECTRIC_BLUE } from "./logo-geometry";
+import { COLORS, getThemeColors, type MarkTheme } from "@/brand/niall-mark-geometry";
 
 export type WordmarkVariant = "clean" | "reference";
 
+const FONT_STACK =
+  "var(--font-inter-recon), var(--font-sans), Inter, system-ui, sans-serif";
+
 /**
- * Live-text wordmark lockup for the review page.
- *
- * NIALL: weight 650, uppercase, tracking 0.24em.
- * TECH:  weight 500, uppercase, tracking 0.32em, Electric Blue.
- *
- * The "reference" variant adds the restrained horizontal blue rules around
- * TECH shown on the brand board. The "clean" variant is the primary
- * recommendation.
+ * NIALL / TECH wordmark as a self-contained, scalable SVG using live Inter text
+ * (no outlining at render time, no images). Typography follows spec §12:
+ *   NIALL  font-size 35, weight 600, tracking 8
+ *   TECH   font-size 19, weight 600, tracking 6, electric blue
+ * The "reference" variant adds the restrained blue horizontal rules around TECH
+ * (rule thickness 2, length 22, gap 8 to the TECH text). "clean" is the
+ * primary recommendation.
  */
 export function ReconstructedWordmark({
   variant = "clean",
   theme = "light",
+  title = "Niall Tech",
   className,
 }: {
   variant?: WordmarkVariant;
-  theme?: "light" | "dark";
+  theme?: MarkTheme;
+  title?: string;
   className?: string;
 }) {
-  const niallColor = theme === "dark" ? "#FFFFFF" : "#0B1320";
+  const { primary } = getThemeColors(theme);
+  const blue = theme === "monochrome" ? "currentColor" : COLORS.electricBlue;
+
+  const centerX = 130;
+  const techHalfWidth = 34; // approximate half-width of "TECH" at fs19 / ls6
+  const ruleLength = 22;
+  const ruleGap = 8;
+  const ruleY = 83;
 
   return (
-    <span
+    <svg
+      viewBox="0 0 260 116"
       className={className}
-      style={{
-        fontFamily: "var(--font-inter-recon), Inter, system-ui, sans-serif",
-        display: "inline-flex",
-        flexDirection: "column",
-        lineHeight: 1,
-      }}
+      role="img"
+      aria-label={title}
+      xmlns="http://www.w3.org/2000/svg"
+      fontFamily={FONT_STACK}
     >
-      <span
-        style={{
-          fontWeight: 650,
-          textTransform: "uppercase",
-          letterSpacing: "0.24em",
-          color: niallColor,
-          fontSize: "2.5rem",
-        }}
+      <title>{title}</title>
+      <text
+        x={centerX}
+        y={52}
+        textAnchor="middle"
+        fontSize={35}
+        fontWeight={600}
+        letterSpacing={8}
+        fill={primary}
       >
-        Niall
-      </span>
-      <span
-        style={{
-          marginTop: "0.5rem",
-          display: "inline-flex",
-          alignItems: "center",
-          alignSelf: variant === "reference" ? "center" : "flex-start",
-          gap: variant === "reference" ? "0.5rem" : undefined,
-        }}
+        NIALL
+      </text>
+      <text
+        x={centerX}
+        y={92}
+        textAnchor="middle"
+        fontSize={19}
+        fontWeight={600}
+        letterSpacing={6}
+        fill={blue}
       >
-        {variant === "reference" ? <BlueRule /> : null}
-        <span
-          style={{
-            fontWeight: 500,
-            textTransform: "uppercase",
-            letterSpacing: "0.32em",
-            color: ELECTRIC_BLUE,
-            fontSize: "1.05rem",
-          }}
-        >
-          Tech
-        </span>
-        {variant === "reference" ? <BlueRule /> : null}
-      </span>
-    </span>
+        TECH
+      </text>
+      {variant === "reference" ? (
+        <>
+          <rect
+            x={centerX - techHalfWidth - ruleGap - ruleLength}
+            y={ruleY}
+            width={ruleLength}
+            height={2}
+            fill={blue}
+          />
+          <rect
+            x={centerX + techHalfWidth + ruleGap}
+            y={ruleY}
+            width={ruleLength}
+            height={2}
+            fill={blue}
+          />
+        </>
+      ) : null}
+    </svg>
   );
 }
 
-/** Restrained blue rule: thickness 2 units, length 22 units (scaled to em). */
-function BlueRule() {
-  return (
-    <span
-      aria-hidden
-      style={{
-        display: "inline-block",
-        width: "1.375rem", // ~22 units relative to the TECH cap height
-        height: "2px",
-        backgroundColor: ELECTRIC_BLUE,
-      }}
-    />
-  );
-}
+export default ReconstructedWordmark;

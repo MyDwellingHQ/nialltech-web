@@ -1,55 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { ReconstructedBrandMark } from "./ReconstructedBrandMark";
 import {
   BOUNDING_BOX,
   CLEAR_SPACE,
+  COLORS,
+  getThemeColors,
+  MARK_VERTICES,
+  NEGATIVE_SPACE,
   OPTICAL_CENTER,
-  getGapGeometry,
-  logoGeometry,
-  round2,
-  type GapOption,
-  type LogoTheme,
-  type Polygon,
-} from "./logo-geometry";
+  NIALL_MARK_PATHS,
+  type MarkShapeId,
+  type MarkTheme,
+} from "@/brand/niall-mark-geometry";
 
-const STROKE_META: { key: "leftStem" | "rightStem" | "diagonal"; label: string; color: string }[] =
-  [
-    { key: "leftStem", label: "Left stem", color: "#0B1320" },
-    { key: "diagonal", label: "Diagonal", color: "#1f2937" },
-    { key: "rightStem", label: "Right pillar", color: "#146BFF" },
-  ];
+const SHAPE_META: { key: MarkShapeId; label: string }[] = [
+  { key: "main", label: "Main folded beam" },
+  { key: "lowerLeft", label: "Lower-left pillar" },
+  { key: "bluePillar", label: "Blue upper-right pillar" },
+];
 
-export function ConstructionViewer({
-  theme = "light",
-  gap = "medium",
-}: {
-  theme?: LogoTheme;
-  gap?: GapOption;
-}) {
+export function ConstructionViewer({ theme = "light" }: { theme?: MarkTheme }) {
   const [showGrid, setShowGrid] = useState(true);
   const [showVertices, setShowVertices] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
   const [showGuides, setShowGuides] = useState(true);
 
-  const gapPolygon = getGapGeometry(gap);
-  const gapTopWidth = round2(
-    Math.max(...gapPolygon.map((p) => p[0])) - Math.min(...gapPolygon.map((p) => p[0])),
-  );
-
-  // Padded viewBox so the clear-space boundary is visible around the canvas.
+  const colors = getThemeColors(theme);
   const pad = 28;
   const vb = `${-pad} ${-pad} ${120 + pad * 2} ${120 + pad * 2}`;
   const bg = theme === "dark" ? "#0B1320" : "#ffffff";
   const gridColor = theme === "dark" ? "rgba(255,255,255,0.14)" : "rgba(11,19,32,0.10)";
-  const guideColor = "#146BFF";
+  const guideColor = COLORS.electricBlue;
   const labelColor = theme === "dark" ? "#e5e7eb" : "#0B1320";
 
-  const gridLines = [];
-  for (let i = 0; i <= 120; i += 10) {
-    gridLines.push(i);
-  }
+  const gridLines: number[] = [];
+  for (let i = 0; i <= 120; i += 10) gridLines.push(i);
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
@@ -66,7 +52,6 @@ export function ConstructionViewer({
         >
           <title>Reconstructed mark construction grid</title>
 
-          {/* Grid */}
           {showGrid ? (
             <g>
               {gridLines.map((i) => (
@@ -94,11 +79,11 @@ export function ConstructionViewer({
             </g>
           ) : null}
 
-          {/* The actual mark */}
-          <ReconstructedBrandMark theme={theme} gap={gap} size={120} decorative />
-          {/* Note: nested full <svg> would clip; instead re-render the mark inline */}
+          {/* The actual mark — three flat canonical paths, no mask or transform */}
+          <path d={NIALL_MARK_PATHS.main} fill={colors.primary} />
+          <path d={NIALL_MARK_PATHS.lowerLeft} fill={colors.primary} />
+          <path d={NIALL_MARK_PATHS.bluePillar} fill={colors.blue} />
 
-          {/* Guides */}
           {showGuides ? (
             <g fill="none">
               {/* Clear-space boundary */}
@@ -139,23 +124,15 @@ export function ConstructionViewer({
                 stroke="#ef4444"
                 strokeWidth={0.8}
               />
-              {/* Gap dimension marker */}
-              <line
-                x1={gapPolygon[0][0]}
-                y1={11}
-                x2={gapPolygon[1][0]}
-                y2={11}
-                stroke="#ef4444"
-                strokeWidth={0.6}
-              />
+              {/* Negative-space channel markers */}
+              <line x1={8} y1={38} x2={8} y2={49} stroke="#ef4444" strokeWidth={0.9} />
+              <line x1={88} y1={34} x2={88} y2={46} stroke="#ef4444" strokeWidth={0.9} />
             </g>
           ) : null}
 
-          {/* Vertices + labels */}
-          {showVertices ? (
-            <g>
-              {STROKE_META.map((meta) =>
-                (logoGeometry[meta.key] as Polygon).map((pt, idx) => (
+          {showVertices
+            ? SHAPE_META.map((meta) =>
+                MARK_VERTICES[meta.key].map((pt, idx) => (
                   <g key={`${meta.key}-${idx}`}>
                     <circle cx={pt[0]} cy={pt[1]} r={1.4} fill={guideColor} />
                     {showLabels ? (
@@ -171,21 +148,30 @@ export function ConstructionViewer({
                     ) : null}
                   </g>
                 )),
-              )}
-            </g>
-          ) : null}
+              )
+            : null}
 
           {showGuides ? (
-            <text
-              x={(gapPolygon[0][0] + gapPolygon[1][0]) / 2}
-              y={8}
-              fontSize={3.4}
-              textAnchor="middle"
-              fill="#ef4444"
-              fontFamily="var(--font-inter-recon), Inter, sans-serif"
-            >
-              gap {gapTopWidth}u
-            </text>
+            <>
+              <text
+                x={2}
+                y={45}
+                fontSize={3.2}
+                fill="#ef4444"
+                fontFamily="var(--font-inter-recon), Inter, sans-serif"
+              >
+                {NEGATIVE_SPACE.leftChannel.verticalUnits}u
+              </text>
+              <text
+                x={90}
+                y={42}
+                fontSize={3.2}
+                fill="#ef4444"
+                fontFamily="var(--font-inter-recon), Inter, sans-serif"
+              >
+                {NEGATIVE_SPACE.blueChannel.verticalUnits}u
+              </text>
+            </>
           ) : null}
         </svg>
       </div>
@@ -196,16 +182,20 @@ export function ConstructionViewer({
         <Toggle label="Polygon vertices" checked={showVertices} onChange={setShowVertices} />
         <Toggle label="Point labels" checked={showLabels} onChange={setShowLabels} />
         <Toggle
-          label="Guides (bbox, center, clear space, gap)"
+          label="Guides (bbox, center, clear space, channels)"
           checked={showGuides}
           onChange={setShowGuides}
         />
         <dl className="mt-2 space-y-1 border-t border-border pt-3 text-xs text-muted">
           <Row k="Canvas" v="120 x 120" />
-          <Row k="Bounding box" v="12,16 -> 102,104" />
-          <Row k="Optical center" v="57, 60" />
+          <Row
+            k="Bounding box"
+            v={`${BOUNDING_BOX.minX},${BOUNDING_BOX.minY} -> ${BOUNDING_BOX.maxX},${BOUNDING_BOX.maxY}`}
+          />
+          <Row k="Optical center" v={`${OPTICAL_CENTER.x}, ${OPTICAL_CENTER.y}`} />
           <Row k="Clear space" v={`${CLEAR_SPACE} units`} />
-          <Row k="Gap option" v={`${gap} (${gapTopWidth}u)`} />
+          <Row k="Left channel" v={`${NEGATIVE_SPACE.leftChannel.verticalUnits}u vertical`} />
+          <Row k="Blue channel" v={`${NEGATIVE_SPACE.blueChannel.verticalUnits}u vertical`} />
         </dl>
       </div>
     </div>
