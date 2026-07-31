@@ -4,7 +4,7 @@ Three restrained back variants sharing the same front.
 
 | Variant | Idea | File |
 |---------|------|------|
-| A | Centered stacked logo, QR beneath, “Scan to connect” | `back-variant-a.svg` |
+| A | Centered stacked logo + QR (CTA when fit/contrast allow) | `back-variant-a.svg` |
 | B | Small mark in corner, QR as primary element | `back-variant-b.svg` |
 | C | Split: logo left, QR right, generous whitespace | `back-variant-c.svg` |
 

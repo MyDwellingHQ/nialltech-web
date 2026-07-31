@@ -214,16 +214,29 @@ async function buildQrAssets() {
   return { svg: finalSvg, inner, viewBox: vb, pngPath: qrPngPath, svgPath: qrSvgPath };
 }
 
-function qrPanel({ x, y, size, qr, label, labelBelow = true }) {
+function qrPanel({
+  x,
+  y,
+  size,
+  qr,
+  label,
+  labelBelow = true,
+  pad = 12,
+  labelFill = BRAND.slate,
+  labelFontSize = 20,
+  labelGap = 28,
+  labelLetterSpacing = 1.2,
+}) {
   // White panel includes quiet zone already present in QR SVG (margin:4).
-  // Extra 12px padding for print breathing room around the module field.
-  const pad = 12;
+  // Default pad adds print breathing room around the module field.
   const panel = size + pad * 2;
   const panelX = x - pad;
   const panelY = y - pad;
-  const labelY = labelBelow ? y + size + pad + 28 : y - pad - 18;
+  const labelY = labelBelow
+    ? y + size + pad + labelGap
+    : y - pad - Math.round(labelFontSize * 0.9);
   const labelMarkup = label
-    ? `<text x="${x + size / 2}" y="${labelY}" text-anchor="middle" fill="${BRAND.slate}" font-size="20" font-weight="500" letter-spacing="1.2">${esc(label)}</text>`
+    ? `<text x="${x + size / 2}" y="${labelY}" text-anchor="middle" fill="${labelFill}" font-size="${labelFontSize}" font-weight="500" letter-spacing="${labelLetterSpacing}">${esc(label)}</text>`
     : "";
   return {
     panelX,
@@ -232,6 +245,7 @@ function qrPanel({ x, y, size, qr, label, labelBelow = true }) {
     qrX: x,
     qrY: y,
     qrSize: size,
+    labelY: label ? labelY : null,
     markup: `
   <rect x="${panelX}" y="${panelY}" width="${panel}" height="${panel}" rx="8" fill="${BRAND.white}"/>
   <svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="${qr.viewBox}" preserveAspectRatio="xMidYMid meet">${qr.inner}</svg>
@@ -293,24 +307,67 @@ async function buildFront() {
 
 /** Variant A — centered wordmark + QR + short CTA (recommended). */
 async function buildBackA(qr) {
+  // Refine sizes only — same centered stack, dark field, and export geometry.
+  const logoWidth = Math.round(300 * 1.1); // +10%
+  const qrSize = Math.round(QR_TARGET_PX * 1.12); // +12% (within 10–15%)
+  const panelPad = 8; // quiet zone remains in QR asset (margin:4)
+  // Prior box gap ~25px; open slightly for breathing room after scale-up.
+  const logoToPanelGap = 30;
+  const ctaGap = 14;
+  const ctaFontSize = 17;
+  // Light gray — readable at print size vs prior slate (#475569).
+  const ctaFill = BRAND.lightGray;
+
+  const stackedViewBoxH = 160;
+  const stackedViewBoxW = 280;
+  const logoHeight = (logoWidth * stackedViewBoxH) / stackedViewBoxW;
+  const panelSize = qrSize + panelPad * 2;
+  const ctaBlock = ctaGap + Math.ceil(ctaFontSize * 0.3);
+  let gap = logoToPanelGap;
+  let includeCta = true;
+
+  const usableTop = SAFE;
+  const usableBottom = CARD_H - SAFE;
+  const usableH = usableBottom - usableTop;
+  const measure = (g, cta) =>
+    logoHeight + g + panelSize + (cta ? ctaBlock : 0);
+
+  // Prefer keeping the CTA; if the larger mark/QR cannot fit with spacing,
+  // drop the label (allowed when print contrast would stay too weak).
+  while (measure(gap, includeCta) > usableH + 0.5 && gap > 24) gap -= 1;
+  if (measure(gap, includeCta) > usableH + 0.5) includeCta = false;
+
+  // Reclaim freed vertical space into the wordmark→QR gap (target ~36px box gap).
+  const targetGap = includeCta ? 32 : 36;
+  const maxFitGap = Math.floor(usableH - logoHeight - panelSize);
+  gap = Math.max(gap, Math.min(targetGap, maxFitGap));
+
+  let stackH = measure(gap, includeCta);
+  // Mathematical center, then nudge upward for optical centering.
+  let stackTop = usableTop + (usableH - stackH) / 2 - usableH * 0.035;
+  stackTop = Math.max(usableTop, Math.min(usableBottom - stackH, stackTop));
+
   const logo = await placeLogo("svg/niall-tech-stacked-light.svg", {
-    x: CARD_W / 2 - 150,
-    y: SAFE + 18,
-    width: 300,
+    x: (CARD_W - logoWidth) / 2,
+    y: stackTop,
+    width: logoWidth,
     align: "xMidYMid",
   });
 
-  const qrSize = QR_TARGET_PX;
   const qrX = (CARD_W - qrSize) / 2;
-  // Sit QR in lower half with room for CTA under the white panel.
-  const qrY = CARD_H - SAFE - qrSize - 44;
+  const qrY = logo.y + logo.height + gap + panelPad;
   const panel = qrPanel({
     x: qrX,
     y: qrY,
     size: qrSize,
     qr,
-    label: CONNECT.qrCta,
+    label: includeCta ? CONNECT.qrCta : null,
     labelBelow: true,
+    pad: panelPad,
+    labelFill: ctaFill,
+    labelFontSize: ctaFontSize,
+    labelGap: ctaGap,
+    labelLetterSpacing: 1.1,
   });
 
   const content = `
@@ -330,8 +387,24 @@ async function buildBackA(qr) {
         panelY: panel.panelY,
         panelSize: panel.panel,
         encoded: CONNECT.url,
+        printedIn: Number((qrSize / DPI).toFixed(3)),
       },
       logo: { x: logo.x, y: logo.y, w: logo.width, h: logo.height },
+      cta: includeCta
+        ? {
+            y: panel.labelY,
+            fill: ctaFill,
+            fontSize: ctaFontSize,
+            text: CONNECT.qrCta,
+          }
+        : null,
+      stack: {
+        top: stackTop,
+        height: stackH,
+        logoToPanelGap: gap,
+        opticalNudge: true,
+        ctaIncluded: includeCta,
+      },
     },
   };
 }
@@ -708,7 +781,7 @@ Editable SVG sources (do not hand-edit binary PDFs):
 |------|------|
 | \`source/front.svg\` | Card front |
 | \`source/back-final.svg\` | Approved/recommended back (Variant ${RECOMMENDED}) |
-| \`source/back-variant-a.svg\` | Concept A — centered logo + QR + CTA |
+| \`source/back-variant-a.svg\` | Concept A — centered logo + QR (+ CTA when contrast fits) |
 | \`source/back-variant-b.svg\` | Concept B — corner mark + QR primary |
 | \`source/back-variant-c.svg\` | Concept C — split logo / QR |
 
@@ -718,7 +791,7 @@ Contact data comes from \`src/data/brand-contact.mjs\` — never duplicate phone
 
 ## Recommended back
 
-**Variant ${RECOMMENDED}** — centered stacked wordmark, large scannable QR, and a quiet “${CONNECT.qrCta}” label. It balances brand recognition with whitespace and scan reliability without repeating contact details.
+**Variant ${RECOMMENDED}** — centered stacked wordmark and large scannable QR on the dark field. The quiet “${CONNECT.qrCta}” label is included when print contrast and safe-zone spacing allow; otherwise the back stays mark + QR only. It balances brand recognition with whitespace and scan reliability without repeating contact details.
 
 Variants A–C remain under \`concepts/\` until final approval.
 
@@ -732,7 +805,7 @@ Variants A–C remain under \`concepts/\` until final approval.
 | Safe zone | ≥ ${SAFE_FROM_TRIM_IN}" inside trim |
 | Design DPI | ${DPI} |
 | PDF page size | ${FULL_W_IN * 72} × ${FULL_H_IN * 72} pt |
-| QR printed size | ~${BUSINESS_CARD.qrTargetIn}" square (min ${BUSINESS_CARD.qrMinIn}") |
+| QR printed size (Variant A) | ~0.95" square (+12% from ${BUSINESS_CARD.qrTargetIn}"; min ${BUSINESS_CARD.qrMinIn}") |
 | QR destination | \`${CONNECT.url}\` |
 | QR quiet zone | 4 modules (included in QR asset) |
 | Error correction | M |
@@ -805,7 +878,7 @@ Three restrained back variants sharing the same front.
 
 | Variant | Idea | File |
 |---------|------|------|
-| A | Centered stacked logo, QR beneath, “${CONNECT.qrCta}” | \`back-variant-a.svg\` |
+| A | Centered stacked logo + QR (CTA when fit/contrast allow) | \`back-variant-a.svg\` |
 | B | Small mark in corner, QR as primary element | \`back-variant-b.svg\` |
 | C | Split: logo left, QR right, generous whitespace | \`back-variant-c.svg\` |
 

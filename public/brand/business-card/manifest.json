@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T22:28:46.172Z",
+  "generatedAt": "2026-07-31T23:13:58.727Z",
   "connectUrl": "https://nialltech.com/connect",
   "recommendedBack": "A",
   "dimensions": {
@@ -102,38 +102,56 @@
     "backFinal": {
       "side": "back-A",
       "qr": {
-        "x": 435,
-        "y": 301,
-        "size": 255,
-        "panelX": 423,
-        "panelY": 289,
-        "panelSize": 279,
-        "encoded": "https://nialltech.com/connect"
+        "x": 419.5,
+        "y": 305.57142857142856,
+        "size": 286,
+        "panelX": 411.5,
+        "panelY": 297.57142857142856,
+        "panelSize": 302,
+        "encoded": "https://nialltech.com/connect",
+        "printedIn": 0.953
       },
       "logo": {
-        "x": 412.5,
-        "y": 93,
-        "w": 300,
-        "h": 171.42857142857142
+        "x": 397.5,
+        "y": 75,
+        "w": 330,
+        "h": 188.57142857142858
+      },
+      "cta": null,
+      "stack": {
+        "top": 75,
+        "height": 524.5714285714286,
+        "logoToPanelGap": 34,
+        "opticalNudge": true,
+        "ctaIncluded": false
       }
     },
     "variants": {
       "A": {
         "side": "back-A",
         "qr": {
-          "x": 435,
-          "y": 301,
-          "size": 255,
-          "panelX": 423,
-          "panelY": 289,
-          "panelSize": 279,
-          "encoded": "https://nialltech.com/connect"
+          "x": 419.5,
+          "y": 305.57142857142856,
+          "size": 286,
+          "panelX": 411.5,
+          "panelY": 297.57142857142856,
+          "panelSize": 302,
+          "encoded": "https://nialltech.com/connect",
+          "printedIn": 0.953
         },
         "logo": {
-          "x": 412.5,
-          "y": 93,
-          "w": 300,
-          "h": 171.42857142857142
+          "x": 397.5,
+          "y": 75,
+          "w": 330,
+          "h": 188.57142857142858
+        },
+        "cta": null,
+        "stack": {
+          "top": 75,
+          "height": 524.5714285714286,
+          "logoToPanelGap": 34,
+          "opticalNudge": true,
+          "ctaIncluded": false
         }
       },
       "B": {
