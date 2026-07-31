@@ -1,14 +1,19 @@
 import { cn } from "@/lib/utils";
 import {
+  CSS_VARS,
   NIALL_MARK_PATHS,
   NIALL_MARK_VIEWBOX,
 } from "@/brand/niall-mark-geometry";
 
 export type BrandLogoVariant = "icon" | "horizontal" | "stacked" | "wordmark";
-export type BrandLogoTheme = "light" | "dark" | "monochrome";
+/** Logo fill theme: dark = navy lockup for light surfaces; light = reverse for dark surfaces. */
+export type BrandLogoTheme = "light" | "dark" | "monochrome" | "auto";
 export type BrandLogoSize = "sm" | "md" | "lg" | "xl";
 
-const sizeMap: Record<BrandLogoSize, { icon: string; horizontal: string; stacked: string; wordmark: string }> = {
+const sizeMap: Record<
+  BrandLogoSize,
+  { icon: string; horizontal: string; stacked: string; wordmark: string }
+> = {
   sm: {
     icon: "h-7 w-7",
     horizontal: "h-6 w-auto",
@@ -35,15 +40,25 @@ const sizeMap: Record<BrandLogoSize, { icon: string; horizontal: string; stacked
   },
 };
 
+const intrinsicSize: Record<
+  BrandLogoVariant,
+  { width: number; height: number }
+> = {
+  icon: { width: 100, height: 100 },
+  horizontal: { width: 420, height: 100 },
+  stacked: { width: 280, height: 160 },
+  wordmark: { width: 420, height: 100 },
+};
+
 function resolveSrc(
   variant: BrandLogoVariant,
-  theme: BrandLogoTheme,
+  theme: Exclude<BrandLogoTheme, "auto">,
   showTagline: boolean,
 ): string {
   if (variant === "icon") {
     if (theme === "light") return "/brand/svg/niall-tech-icon-light.svg";
     if (theme === "monochrome") return "/brand/svg/niall-tech-embroidery.svg";
-    return "/brand/svg/niall-tech-icon.svg";
+    return "/brand/svg/niall-tech-icon-dark.svg";
   }
 
   if (variant === "wordmark") {
@@ -53,14 +68,14 @@ function resolveSrc(
   if (variant === "stacked") {
     if (theme === "light") return "/brand/svg/niall-tech-stacked-light.svg";
     if (theme === "monochrome") return "/brand/svg/niall-tech-one-color-black.svg";
-    return "/brand/svg/niall-tech-stacked.svg";
+    return "/brand/svg/niall-tech-stacked-dark.svg";
   }
 
-  // horizontal
+  // horizontal — primary digital lockup (headers, docs)
   if (showTagline) return "/brand/svg/niall-tech-horizontal-tagline.svg";
   if (theme === "light") return "/brand/svg/niall-tech-horizontal-light.svg";
   if (theme === "monochrome") return "/brand/svg/niall-tech-one-color-black.svg";
-  return "/brand/svg/niall-tech-horizontal.svg";
+  return "/brand/svg/niall-tech-horizontal-dark.svg";
 }
 
 type BrandLogoProps = {
@@ -73,6 +88,37 @@ type BrandLogoProps = {
   alt?: string;
 };
 
+function LogoImage({
+  src,
+  alt,
+  variant,
+  sizeClass,
+  className,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  variant: BrandLogoVariant;
+  sizeClass: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  const { width, height } = intrinsicSize[variant];
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- brand SVGs need crisp vector rendering without Image optimizer quirks
+    <img
+      src={src}
+      alt={alt}
+      className={cn(sizeClass, className)}
+      width={width}
+      height={height}
+      decoding={priority ? "sync" : "async"}
+      loading={priority ? "eager" : "lazy"}
+    />
+  );
+}
+
 export function BrandLogo({
   variant = "horizontal",
   theme = "dark",
@@ -82,38 +128,71 @@ export function BrandLogo({
   priority = false,
   alt = "Niall Tech",
 }: BrandLogoProps) {
-  const src = resolveSrc(variant, theme, showTagline);
   const sizeClass = sizeMap[size][variant];
 
+  if (theme === "auto") {
+    const darkOnLight = resolveSrc(variant, "dark", showTagline);
+    const lightOnDark = resolveSrc(variant, "light", showTagline);
+
+    return (
+      <span className="inline-flex items-center" role="img" aria-label={alt}>
+        <LogoImage
+          src={darkOnLight}
+          alt=""
+          variant={variant}
+          sizeClass={sizeClass}
+          className={cn("dark:hidden", className)}
+          priority={priority}
+        />
+        <LogoImage
+          src={lightOnDark}
+          alt=""
+          variant={variant}
+          sizeClass={sizeClass}
+          className={cn("hidden dark:block", className)}
+          priority={priority}
+        />
+      </span>
+    );
+  }
+
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- brand SVGs need crisp vector rendering without Image optimizer quirks
-    <img
-      src={src}
+    <LogoImage
+      src={resolveSrc(variant, theme, showTagline)}
       alt={alt}
-      className={cn(sizeClass, className)}
-      width={variant === "icon" ? 100 : variant === "stacked" ? 280 : 420}
-      height={variant === "icon" ? 100 : variant === "stacked" ? 160 : 100}
-      decoding={priority ? "sync" : "async"}
-      loading={priority ? "eager" : "lazy"}
+      variant={variant}
+      sizeClass={sizeClass}
+      className={className}
+      priority={priority}
     />
   );
 }
 
-/** Inline SVG mark for header/footer — avoids flash and theme mismatch. */
+/** Inline SVG mark for chrome — theme="auto" follows site light/dark via CSS vars. */
 export function BrandMark({
   className,
-  theme = "color",
+  theme = "auto",
 }: {
   className?: string;
-  theme?: "color" | "white";
+  theme?: "auto" | "color" | "white";
 }) {
-  const primary = theme === "white" ? "#FFFFFF" : "#0B1320";
-  const accent = theme === "white" ? "#FFFFFF" : "#146BFF";
+  const primary =
+    theme === "white"
+      ? "#FFFFFF"
+      : theme === "color"
+        ? "#0B1320"
+        : `var(${CSS_VARS.primary})`;
+  const accent =
+    theme === "white"
+      ? "#FFFFFF"
+      : theme === "color"
+        ? "#146BFF"
+        : `var(${CSS_VARS.blue})`;
 
   return (
     <svg
       viewBox={NIALL_MARK_VIEWBOX}
-      className={cn("h-9 w-9", className)}
+      className={cn("h-9 w-9 shrink-0", className)}
       role="img"
       aria-label="Niall Tech"
     >

@@ -8,7 +8,7 @@ const variants: Record<ButtonVariant, string> = {
   primary:
     "bg-primary text-primary-foreground shadow-soft hover:brightness-110 focus-visible:ring-primary",
   secondary:
-    "bg-white/10 text-white ring-1 ring-white/25 backdrop-blur hover:bg-white/16 focus-visible:ring-white",
+    "bg-on-hero-soft text-on-hero ring-1 ring-on-hero-border backdrop-blur hover:bg-on-hero/16 focus-visible:ring-on-hero",
   ghost:
     "bg-transparent text-foreground hover:bg-primary-soft focus-visible:ring-primary",
   outline:

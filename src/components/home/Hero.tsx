@@ -22,13 +22,13 @@ export function Hero() {
       <Container className="relative flex min-h-[calc(100svh-4.25rem)] flex-col justify-center py-16 sm:py-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div className="max-w-2xl">
-            <p className="animate-fade-up font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <p className="animate-fade-up font-display text-5xl font-semibold tracking-tight text-on-hero sm:text-6xl lg:text-7xl">
               Niall Tech
             </p>
-            <h1 className="animate-fade-up animation-delay-100 mt-5 max-w-xl text-2xl font-medium leading-snug tracking-tight text-slate-100 sm:text-3xl">
+            <h1 className="animate-fade-up animation-delay-100 mt-5 max-w-xl text-2xl font-medium leading-snug tracking-tight text-on-hero-muted sm:text-3xl">
               Microsoft, cloud, and infrastructure consulting you can trust.
             </h1>
-            <p className="animate-fade-up animation-delay-200 mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
+            <p className="animate-fade-up animation-delay-200 mt-5 max-w-lg text-base leading-relaxed text-on-hero-subtle sm:text-lg">
               We help organizations modernize identity, endpoints, security, and
               IT operations with clear guidance and reliable delivery.
             </p>
@@ -48,20 +48,20 @@ export function Hero() {
             aria-hidden
           >
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-sky-400/20 via-blue-500/10 to-transparent" />
-            <div className="animate-float-soft absolute inset-6 overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/5 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7)] backdrop-blur-sm">
+            <div className="animate-float-soft absolute inset-6 overflow-hidden rounded-[1.75rem] border border-on-hero-border bg-on-hero-soft shadow-soft backdrop-blur-sm">
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_40%,rgba(14,165,233,0.18))]" />
               <div className="relative flex h-full flex-col justify-between p-8">
-                <div className="flex items-center gap-3 text-sky-100">
+                <div className="flex items-center gap-3 text-on-hero-muted">
                   <ShieldCheck className="h-5 w-5" />
                   <span className="text-sm font-medium tracking-wide">
                     Secure by design
                   </span>
                 </div>
                 <div>
-                  <p className="font-display text-3xl font-semibold tracking-tight text-white">
+                  <p className="font-display text-3xl font-semibold tracking-tight text-on-hero">
                     Identity. Endpoints. Cloud.
                   </p>
-                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-on-hero-subtle">
                     Architecture and operations aligned to Microsoft 365, Azure,
                     Entra ID, and Intune.
                   </p>
@@ -70,7 +70,7 @@ export function Hero() {
                   {["M365", "Azure", "Intune"].map((item) => (
                     <div
                       key={item}
-                      className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-center text-xs font-semibold tracking-[0.14em] text-slate-200"
+                      className="rounded-xl border border-on-hero-border bg-on-hero-soft px-3 py-3 text-center text-xs font-semibold tracking-[0.14em] text-on-hero-muted"
                     >
                       {item}
                     </div>
