@@ -1,4 +1,5 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { BrandMark } from "@/components/brand/BrandLogo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -20,50 +21,54 @@ export function Hero() {
       />
 
       <Container className="relative flex min-h-[calc(100svh-4.25rem)] flex-col justify-center py-16 sm:py-20">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="max-w-2xl">
-            <p className="animate-fade-up font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Niall Tech
-            </p>
-            <h1 className="animate-fade-up animation-delay-100 mt-5 max-w-xl text-2xl font-medium leading-snug tracking-tight text-slate-100 sm:text-3xl">
-              Microsoft, cloud, and infrastructure consulting you can trust.
+            <div className="animate-fade-up flex items-center gap-3">
+              <BrandMark theme="white" className="h-10 w-10 sm:h-12 sm:w-12" />
+              <p className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Niall Tech
+              </p>
+            </div>
+            <h1 className="animate-fade-up animation-delay-100 mt-6 max-w-xl text-2xl font-medium leading-snug tracking-tight text-slate-100 sm:text-3xl">
+              Microsoft IT consulting that keeps your business productive and
+              secure.
             </h1>
             <p className="animate-fade-up animation-delay-200 mt-5 max-w-lg text-base leading-relaxed text-slate-300 sm:text-lg">
-              We help organizations modernize identity, endpoints, security, and
-              IT operations with clear guidance and reliable delivery.
+              We help owners and operators reduce risk, cut downtime, and get
+              more from Microsoft 365, Azure, identity, and endpoints—without
+              the jargon.
             </p>
             <div className="animate-fade-up animation-delay-300 mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact" size="lg">
-                Start a conversation
+                Book a consultation
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Button>
               <Button href="/services" variant="secondary" size="lg">
-                Explore services
+                View services
               </Button>
             </div>
+            <p className="animate-fade-up animation-delay-400 mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+              Modern IT. Local expertise.
+            </p>
           </div>
 
           <div
-            className="animate-fade-up animation-delay-200 relative hidden min-h-[320px] lg:block"
+            className="animate-fade-up animation-delay-200 relative hidden min-h-[300px] lg:block"
             aria-hidden
           >
-            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-sky-400/20 via-blue-500/10 to-transparent" />
-            <div className="animate-float-soft absolute inset-6 overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/5 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.7)] backdrop-blur-sm">
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_40%,rgba(14,165,233,0.18))]" />
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#146BFF]/25 via-transparent to-[#22C1FF]/10" />
+            <div className="absolute inset-6 overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/5 backdrop-blur-sm">
               <div className="relative flex h-full flex-col justify-between p-8">
-                <div className="flex items-center gap-3 text-sky-100">
-                  <ShieldCheck className="h-5 w-5" />
-                  <span className="text-sm font-medium tracking-wide">
-                    Secure by design
-                  </span>
-                </div>
+                <p className="text-sm font-medium tracking-wide text-sky-100">
+                  Built for business owners
+                </p>
                 <div>
                   <p className="font-display text-3xl font-semibold tracking-tight text-white">
-                    Identity. Endpoints. Cloud.
-                  </p>
-                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
-                    Architecture and operations aligned to Microsoft 365, Azure,
-                    Entra ID, and Intune.
+                    Less downtime.
+                    <br />
+                    Less risk.
+                    <br />
+                    Clearer IT decisions.
                   </p>
                 </div>
                 <div className="grid grid-cols-3 gap-3">

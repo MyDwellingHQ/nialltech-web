@@ -9,8 +9,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2.5">
               <BrandMark className="h-9 w-9" />
               <span className="font-display text-lg font-semibold tracking-tight">
@@ -18,7 +18,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-              {siteConfig.tagline} Microsoft 365, Azure, identity, security, and
+              {siteConfig.tagline} Microsoft 365, Azure, identity, and
               infrastructure consulting for organizations that need clarity and
               reliable delivery.
             </p>
@@ -26,42 +26,54 @@ export function Footer() {
               <p>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="transition-colors hover:text-primary"
+                  className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
                 >
                   {siteConfig.email}
                 </a>
               </p>
-              <p>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
-                  className="transition-colors hover:text-primary"
-                >
-                  {siteConfig.phone}
-                </a>
-              </p>
+              {siteConfig.phone ? (
+                <p>
+                  <a
+                    href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
+                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                </p>
+              ) : null}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-4 text-sm">
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={siteConfig.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+              >
+                GitHub
+              </a>
             </div>
           </div>
 
-          <FooterColumn title="Company" items={footerNav.company} />
-          <FooterColumn title="Resources" items={[...footerNav.resources]} comingSoon />
-          <FooterColumn title="Clients" items={[...footerNav.clients]} comingSoon />
+          <FooterColumn title="Company" items={[...footerNav.company]} />
+          <FooterColumn title="Services" items={[...footerNav.services]} />
+          <FooterColumn title="Legal" items={[...footerNav.legal]} />
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {siteConfig.legalName}. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-4">
-            {footerNav.legal.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+          <p className="text-xs uppercase tracking-[0.16em] text-muted/80">
+            Modern IT. Local expertise.
+          </p>
         </div>
       </Container>
     </footer>
@@ -71,11 +83,9 @@ export function Footer() {
 function FooterColumn({
   title,
   items,
-  comingSoon = false,
 }: {
   title: string;
   items: readonly { label: string; href: string }[];
-  comingSoon?: boolean;
 }) {
   return (
     <div>
@@ -83,33 +93,16 @@ function FooterColumn({
         {title}
       </h3>
       <ul className="mt-4 space-y-2.5">
-        {items.map((item) => {
-          const isFuture =
-            comingSoon &&
-            ["/blog", "/knowledge-base", "/status", "/portal", "/login"].includes(
-              item.href,
-            );
-
-          return (
-            <li key={item.href}>
-              {isFuture ? (
-                <span className="text-sm text-muted/80">
-                  {item.label}
-                  <span className="ml-2 text-xs uppercase tracking-wide text-muted/60">
-                    Soon
-                  </span>
-                </span>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
-                >
-                  {item.label}
-                </Link>
-              )}
-            </li>
-          );
-        })}
+        {items.map((item) => (
+          <li key={item.href + item.label}>
+            <Link
+              href={item.href}
+              className="text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
