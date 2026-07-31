@@ -1,6 +1,26 @@
 import type { ReactNode } from "react";
 import { BrandMark } from "@/components/brand/BrandLogo";
 import { COMPANY } from "@/data/brand-contact";
+import { NIALL_MARK_PATHS } from "@/brand/niall-mark-geometry";
+
+/* -------------------------------------------------------------------------- */
+/*  Inline mark for embedding inside a parent <svg>.                          */
+/*  Draws the canonical 120-unit mark into the parent's coordinate space so   */
+/*  it scales/positions with the surrounding artwork (never overflows like a  */
+/*  nested <svg> with its own viewBox would).                                 */
+/* -------------------------------------------------------------------------- */
+
+function MarkPaths({ theme = "color" }: { theme?: "color" | "white" }) {
+  const primary = theme === "white" ? "#FFFFFF" : "#0B1320";
+  const accent = theme === "white" ? "#FFFFFF" : "#146BFF";
+  return (
+    <>
+      <path d={NIALL_MARK_PATHS.main} fill={primary} />
+      <path d={NIALL_MARK_PATHS.lowerLeft} fill={primary} />
+      <path d={NIALL_MARK_PATHS.bluePillar} fill={accent} />
+    </>
+  );
+}
 
 /* -------------------------------------------------------------------------- */
 /*  Shared frame                                                              */
@@ -76,9 +96,9 @@ function Polo({ fabric, markTheme, thread }: { fabric: string; markTheme: "color
       <path d="M112 34 L120 52 L128 34 Z" fill={fabric} stroke="rgba(0,0,0,0.12)" />
       {/* placket */}
       <line x1="120" y1="52" x2="120" y2="78" stroke="rgba(0,0,0,0.12)" strokeWidth="1.5" />
-      {/* left-chest embroidered mark */}
-      <g transform="translate(146 78) scale(0.26)">
-        <BrandMark theme={markTheme} className="h-full w-full" />
+      {/* left-chest embroidered mark (30u wide → scale 30/120 = 0.25) */}
+      <g transform="translate(140 74) scale(0.25)">
+        <MarkPaths theme={markTheme} />
       </g>
     </svg>
   );
@@ -94,8 +114,9 @@ function Mug() {
       <rect x="52" y="40" width="112" height="104" rx="12" fill="#FFFFFF" stroke="rgba(0,0,0,0.1)" />
       <rect x="52" y="40" width="112" height="104" rx="12" fill="url(#mugShade)" />
       <path d="M164 62 h20 a22 22 0 0 1 0 44 h-20" fill="none" stroke="rgba(0,0,0,0.18)" strokeWidth="10" />
-      <g transform="translate(76 74) scale(0.6)">
-        <BrandMark theme="color" className="h-full w-full" />
+      {/* full-color wrap mark: 54u wide (scale 0.45), centered on body */}
+      <g transform="translate(85 66) scale(0.45)">
+        <MarkPaths theme="color" />
       </g>
       <defs>
         <linearGradient id="mugShade" x1="0" y1="0" x2="1" y2="0">
@@ -116,8 +137,9 @@ function Bottle() {
       <rect x="40" y="26" width="40" height="14" rx="4" fill="#1B2637" />
       <rect x="34" y="40" width="52" height="168" rx="26" fill="#0B1320" />
       <rect x="34" y="40" width="52" height="168" rx="26" fill="url(#bottleShine)" />
-      <g transform="translate(44 96) scale(0.32)">
-        <BrandMark theme="white" className="h-full w-full" />
+      {/* white mark: 30u wide (scale 0.25), centered on the body */}
+      <g transform="translate(45 96) scale(0.25)">
+        <MarkPaths theme="white" />
       </g>
       <defs>
         <linearGradient id="bottleShine" x1="0" y1="0" x2="1" y2="0">
@@ -157,21 +179,19 @@ function VehicleDoor() {
       {/* door panel */}
       <rect x="20" y="24" width="260" height="152" rx="16" fill="#FFFFFF" stroke="rgba(0,0,0,0.12)" />
       <rect x="20" y="24" width="260" height="152" rx="16" fill="url(#doorShade)" />
-      {/* handle */}
-      <rect x="150" y="58" width="70" height="12" rx="6" fill="rgba(0,0,0,0.14)" />
-      {/* graphics */}
-      <g transform="translate(40 92)">
-        <g transform="scale(0.5)">
-          <BrandMark theme="color" className="h-full w-full" />
-        </g>
+      {/* handle (kept clear of the graphics on the lower-left) */}
+      <rect x="196" y="40" width="60" height="11" rx="5.5" fill="rgba(0,0,0,0.14)" />
+      {/* graphics: mark (44u wide → scale ~0.37) + stacked lockup text */}
+      <g transform="translate(44 74) scale(0.37)">
+        <MarkPaths theme="color" />
       </g>
-      <text x="88" y="112" fontFamily="Inter, sans-serif" fontSize="26" fontWeight="700" fill="#0B1320" letterSpacing="1">
+      <text x="98" y="96" fontFamily="Inter, sans-serif" fontSize="24" fontWeight="700" fill="#0B1320" letterSpacing="1">
         NIALL<tspan fill="#146BFF">TECH</tspan>
       </text>
-      <text x="88" y="134" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="500" fill="#475569" letterSpacing="0.5">
+      <text x="99" y="118" fontFamily="Inter, sans-serif" fontSize="11" fontWeight="500" fill="#475569" letterSpacing="0.4">
         {COMPANY.tagline}
       </text>
-      <text x="88" y="152" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="600" fill="#146BFF">
+      <text x="99" y="136" fontFamily="Inter, sans-serif" fontSize="11" fontWeight="600" fill="#146BFF">
         {COMPANY.website}
       </text>
       <defs>
