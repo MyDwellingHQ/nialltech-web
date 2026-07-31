@@ -1,10 +1,15 @@
 {
   "project": "niall-tech",
   "artifact": "logo-reconstruction",
-  "generatedAt": "2026-07-31T05:16:50.527Z",
+  "generatedAt": "2026-07-31T06:22:06.582Z",
   "status": "approval-candidate",
   "canvas": "120x120",
-  "masterGap": "medium",
+  "construction": "three-shape folded beam (main + lowerLeft + bluePillar)",
+  "paths": {
+    "main": "M8 5H35L112 82V115H85L8 38Z",
+    "lowerLeft": "M8 49L35 76V112L31 116H12L8 112Z",
+    "bluePillar": "M88 5H108L112 9V70L88 46Z"
+  },
   "colors": {
     "navy": "#0B1320",
     "electricBlue": "#146BFF",
@@ -12,180 +17,54 @@
   },
   "svg": [
     {
-      "file": "svg/niall-tech-mark-light-hairline.svg",
-      "kind": "icon",
-      "bytes": 596,
-      "sha256": "e4b26b28386f0bc8fe5995e63f8d279bd6b5703bdac18d59982d1970dee267f3"
+      "file": "svg/niall-tech-mark-light.svg",
+      "kind": "mark",
+      "theme": "light",
+      "bytes": 373,
+      "sha256": "a06326948dd2740fab27c044d9ec5de7c6a2f9670e744be4f63a99e824ccaed0"
     },
     {
-      "file": "svg/niall-tech-mark-light-medium.svg",
-      "kind": "icon",
-      "bytes": 594,
-      "sha256": "767096db5275b93b5aed4c68acc614266d1d5e12daeb0f8353aee2e445b8c415"
-    },
-    {
-      "file": "svg/niall-tech-mark-light-chamfered.svg",
-      "kind": "icon",
-      "bytes": 617,
-      "sha256": "2dbef63c2a79f7a98664ff56b40c3678a588a37801e4c3cc92d724eb1e2e6b26"
-    },
-    {
-      "file": "svg/niall-tech-mark-dark-hairline.svg",
-      "kind": "icon",
-      "bytes": 595,
-      "sha256": "a8c9b441ec55a232ac3ec2f6480659b845ab701c64d4ac45af1c7ff0a77d4de9"
-    },
-    {
-      "file": "svg/niall-tech-mark-dark-medium.svg",
-      "kind": "icon",
-      "bytes": 593,
-      "sha256": "8e82efbfaf7f7b63b9d960b8fb12088b7c54a24cb7a11039ba44a50c579e891b"
-    },
-    {
-      "file": "svg/niall-tech-mark-dark-chamfered.svg",
-      "kind": "icon",
-      "bytes": 616,
-      "sha256": "4aa06594ffc30cb40df9a7c5fe02347d6a6ebee4c14c523751ae80d27caff754"
+      "file": "svg/niall-tech-mark-dark.svg",
+      "kind": "mark",
+      "theme": "dark",
+      "bytes": 371,
+      "sha256": "b894fdb6030edfd0644a4a6febb8bfbd08d45f9525f215a669300ca4c3728c3e"
     },
     {
       "file": "svg/niall-tech-mark-monochrome.svg",
-      "kind": "icon",
-      "bytes": 602,
-      "sha256": "63cd83d8dd4abcc600b0b7bd269c01255d86cd2e88ccd41e04cf4c144d2ccf36"
+      "kind": "mark",
+      "theme": "monochrome",
+      "bytes": 398,
+      "sha256": "96470fb923c03d12e64b9c0976f6491049a96ea82d63ca15c006674ce0c7db41"
     },
     {
       "file": "svg/niall-tech-horizontal-light.svg",
       "kind": "horizontal",
-      "bytes": 1074,
-      "sha256": "a8f6b5c15d58176cf6ac6d34058ac1c676b783dd8f6f3c46e20951d65eae0793"
-    },
-    {
-      "file": "svg/niall-tech-horizontal-dark.svg",
-      "kind": "horizontal",
-      "bytes": 1088,
-      "sha256": "32e6a73df09095bd38580b8817d1b717af58b57d0bd9bd6e944e445cd1fac7f4"
+      "theme": "light",
+      "bytes": 928,
+      "sha256": "cc10fe20bd5aa986dab5e0ae2e71c1e21e25e75acd324b03ea69a50497dadcd2"
     },
     {
       "file": "svg/niall-tech-stacked-light.svg",
       "kind": "stacked",
-      "bytes": 996,
-      "sha256": "6c3501c3a1ece9d3c70570f2205fbc193b1420bd466f5df496790822c06c578b"
+      "theme": "light",
+      "bytes": 843,
+      "sha256": "a7604d0653f325de436918287ec8f65ec56b2f0c320ea50db0158bd545c9bd20"
+    },
+    {
+      "file": "svg/niall-tech-horizontal-dark.svg",
+      "kind": "horizontal",
+      "theme": "dark",
+      "bytes": 941,
+      "sha256": "6a949bb279788ac6d8b60024aebf3ab66fd642cb526cf06b7b6a6ef2376bbcc6"
     },
     {
       "file": "svg/niall-tech-stacked-dark.svg",
       "kind": "stacked",
-      "bytes": 995,
-      "sha256": "8650214bfe2a57ad3c4301a24a93e9092764a346f7ad142e0abc97a5e6091516"
+      "theme": "dark",
+      "bytes": 841,
+      "sha256": "8b1b7aca8d4e9451355c92e5c81df0644a2d243a4e9c7fe3359ed096265b353e"
     }
   ],
-  "png": [
-    {
-      "file": "png/niall-tech-mark-light-16.png",
-      "bytes": 466,
-      "size": 16,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-24.png",
-      "bytes": 717,
-      "size": 24,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-32.png",
-      "bytes": 893,
-      "size": 32,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-48.png",
-      "bytes": 1272,
-      "size": 48,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-64.png",
-      "bytes": 1657,
-      "size": 64,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-128.png",
-      "bytes": 2839,
-      "size": 128,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-256.png",
-      "bytes": 6066,
-      "size": 256,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-512.png",
-      "bytes": 13664,
-      "size": 512,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-light-1024.png",
-      "bytes": 38114,
-      "size": 1024,
-      "theme": "light"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-16.png",
-      "bytes": 423,
-      "size": 16,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-24.png",
-      "bytes": 624,
-      "size": 24,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-32.png",
-      "bytes": 798,
-      "size": 32,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-48.png",
-      "bytes": 1189,
-      "size": 48,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-64.png",
-      "bytes": 1592,
-      "size": 64,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-128.png",
-      "bytes": 2762,
-      "size": 128,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-256.png",
-      "bytes": 6099,
-      "size": 256,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-512.png",
-      "bytes": 14176,
-      "size": 512,
-      "theme": "dark"
-    },
-    {
-      "file": "png/niall-tech-mark-dark-1024.png",
-      "bytes": 35584,
-      "size": 1024,
-      "theme": "dark"
-    }
-  ]
+  "png": []
 }

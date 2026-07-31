@@ -15,15 +15,15 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { exportMatrix } from "./logo-reconstruction-svg.mjs";
+import { buildAllSvgs } from "./logo-reconstruction-svg.mjs";
 import { validateSvg } from "./validate-logo-reconstruction.mjs";
 import {
   NAVY,
   ELECTRIC_BLUE,
   WHITE,
-  MASTER_GAP,
   CANVAS_SIZE,
-} from "../src/components/brand/logo-reconstruction/logo-geometry.mjs";
+  NIALL_MARK_PATHS,
+} from "../src/brand/niall-mark-geometry.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -42,11 +42,11 @@ async function main() {
   await rm(PNG_DIR, { recursive: true, force: true });
   await mkdir(SVG_DIR, { recursive: true });
 
-  const matrix = exportMatrix();
+  const all = buildAllSvgs();
   const manifestFiles = [];
   let failures = 0;
 
-  for (const { file, svg, kind } of matrix) {
+  for (const { file, svg, kind, theme } of all) {
     const errors = validateSvg(svg);
     if (errors.length) {
       failures += errors.length;
@@ -54,11 +54,11 @@ async function main() {
       for (const e of errors) console.error(`        - ${e}`);
       continue;
     }
-    const target = path.join(SVG_DIR, file);
-    await writeFile(target, svg, "utf8");
+    await writeFile(path.join(SVG_DIR, file), svg, "utf8");
     manifestFiles.push({
       file: `svg/${file}`,
       kind,
+      theme,
       bytes: Buffer.byteLength(svg, "utf8"),
       sha256: createHash("sha256").update(svg).digest("hex"),
     });
@@ -70,7 +70,7 @@ async function main() {
     process.exit(1);
   }
 
-  // Optional PNG previews of the master icon (light + dark, master gap).
+  // Optional PNG previews of the master icon (light + dark).
   const pngRecords = [];
   if (!skipPng) {
     let Resvg;
@@ -82,7 +82,7 @@ async function main() {
     if (Resvg) {
       await mkdir(PNG_DIR, { recursive: true });
       for (const theme of ["light", "dark"]) {
-        const svgPath = path.join(SVG_DIR, `niall-tech-mark-${theme}-${MASTER_GAP}.svg`);
+        const svgPath = path.join(SVG_DIR, `niall-tech-mark-${theme}.svg`);
         const svg = await readFile(svgPath, "utf8");
         for (const size of PNG_SIZES) {
           const resvg = new Resvg(svg, { fitTo: { mode: "width", value: size } });
@@ -103,7 +103,8 @@ async function main() {
     generatedAt: new Date().toISOString(),
     status: "approval-candidate",
     canvas: `${CANVAS_SIZE}x${CANVAS_SIZE}`,
-    masterGap: MASTER_GAP,
+    construction: "three-shape folded beam (main + lowerLeft + bluePillar)",
+    paths: NIALL_MARK_PATHS,
     colors: { navy: NAVY, electricBlue: ELECTRIC_BLUE, white: WHITE },
     svg: manifestFiles,
     png: pngRecords,

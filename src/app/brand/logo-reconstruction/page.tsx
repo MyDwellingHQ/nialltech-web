@@ -12,8 +12,8 @@ import { ReconstructedWordmark } from "@/components/brand/logo-reconstruction/Re
 import { ConstructionViewer } from "@/components/brand/logo-reconstruction/ConstructionViewer";
 import { ReferenceCompare } from "@/components/brand/logo-reconstruction/ReferenceCompare";
 import {
-  GapComparison,
   LayerOrder,
+  NegativeSpaceSpec,
   PolygonCoordinates,
   ThemeRenderings,
 } from "@/components/brand/logo-reconstruction/GeometrySpec";
@@ -56,9 +56,10 @@ export default function LogoReconstructionPage() {
               </h1>
               <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-slate-200 sm:text-lg">
                 A mathematically controlled, production-quality SVG rebuild of the approved
-                forward-leaning &ldquo;N&rdquo; — three parallelogram strokes, flat color, a
-                controlled negative-space gap, and one shared geometry source of truth. Nothing here
-                replaces production assets until explicitly approved.
+                bold, forward-leaning &ldquo;N&rdquo; — a folded navy beam, a navy lower-left
+                pillar, and a tall electric-blue right pillar, all flat color from one shared
+                geometry source of truth. Nothing here replaces production assets until explicitly
+                approved.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Link
@@ -68,15 +69,15 @@ export default function LogoReconstructionPage() {
                   Open visual test page
                 </Link>
                 <a
-                  href="/brand/logo-reconstruction/svg/niall-tech-mark-light-medium.svg"
+                  href="/brand/logo-reconstruction/svg/niall-tech-mark-light.svg"
                   className="inline-flex min-h-9 items-center rounded-lg bg-[#146BFF] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#0f56cc]"
                 >
-                  Master SVG (medium)
+                  Master SVG (light)
                 </a>
               </div>
             </div>
             <div className="flex items-center justify-center rounded-2xl bg-white/95 p-8">
-              <ReconstructedBrandMark theme="light" gap="medium" size={160} title="Reconstructed Niall Tech mark" />
+              <ReconstructedBrandMark theme="light" size={160} title="Reconstructed Niall Tech mark" />
             </div>
           </div>
         </Container>
@@ -85,7 +86,7 @@ export default function LogoReconstructionPage() {
       <Section
         eyebrow="1 · Reference target"
         title="Exact reference target"
-        description="The approved forward-leaning N built from three parallelogram strokes: a navy left stem, a navy diagonal (upper-left to lower-right), and an electric-blue right stem. Flat color only — no gradients, shadows, outlines, or font glyphs."
+        description="The approved bold, forward-leaning N built from three explicit shapes: a folded navy beam (upper-left down to lower-right, then up), a navy lower-left pillar, and a tall electric-blue right pillar. Flat color only — no gradients, shadows, outlines, or font glyphs."
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <SpecTile k="Canvas" v="0 0 120 120" />
@@ -98,16 +99,16 @@ export default function LogoReconstructionPage() {
       <Section
         eyebrow="2 · Construction"
         title="Construction grid"
-        description="Toggle the overlay to inspect the grid, polygon vertices, point labels, bounding box, optical center, clear-space boundary, and gap dimensions."
+        description="Toggle the overlay to inspect the grid, shape vertices, point labels, bounding box, optical center, clear-space boundary, and the negative-space gaps between shapes."
         className="border-t border-border bg-surface/40"
       >
-        <ConstructionViewer theme="light" gap="medium" />
+        <ConstructionViewer theme="light" />
       </Section>
 
       <Section
         eyebrow="3 · Coordinates"
-        title="Polygon coordinates"
-        description="Every stroke and gap option as explicit points. All artwork — React and static SVG — derives from these exact values."
+        title="Shape path data"
+        description="Each of the three shapes as explicit SVG path commands. All artwork — React and static SVG — derives from these exact values."
       >
         <PolygonCoordinates />
       </Section>
@@ -122,11 +123,11 @@ export default function LogoReconstructionPage() {
       </Section>
 
       <Section
-        eyebrow="5–7 · Gaps"
-        title="Gap explorations (identical geometry)"
-        description="Hairline, medium, and chamfered cutouts on otherwise identical strokes. Medium is the provisional master."
+        eyebrow="5–7 · Negative space"
+        title="Intentional negative space"
+        description="The gaps between the three shapes are structural negative space, not strokes or masks — they reveal whatever background sits behind the mark."
       >
-        <GapComparison />
+        <NegativeSpaceSpec />
       </Section>
 
       <Section
@@ -135,15 +136,15 @@ export default function LogoReconstructionPage() {
         description="Identical geometry across themes — only fill colors change. Monochrome uses currentColor."
         className="border-t border-border bg-surface/40"
       >
-        <ThemeRenderings gap="medium" />
+        <ThemeRenderings />
       </Section>
 
       <Section
         eyebrow="11–16 · Sizes"
-        title="Pixel-size tests (16 → 128px)"
-        description="Recognizability across sizes. 16px and 24px apply the documented small-size optical corrections."
+        title="Pixel-size tests (16 → 256px)"
+        description="Recognizability across sizes using the exact master geometry — the bold shapes hold up down to 16px."
       >
-        <SizeTests gap="medium" />
+        <SizeTests />
       </Section>
 
       <Section
@@ -152,7 +153,7 @@ export default function LogoReconstructionPage() {
         description="The mark on white, deep navy, mid-gray, electric blue, and a transparent checkerboard."
         className="border-t border-border bg-surface/40"
       >
-        <BackgroundTests gap="medium" />
+        <BackgroundTests />
       </Section>
 
       <Section

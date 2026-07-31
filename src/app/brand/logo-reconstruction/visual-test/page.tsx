@@ -51,7 +51,7 @@ export default function ReconstructionVisualTestPage() {
       </header>
 
       <Section eyebrow="Backgrounds" title="Background matrix">
-        <BackgroundTests gap="medium" />
+        <BackgroundTests />
       </Section>
 
       <Section
@@ -59,11 +59,11 @@ export default function ReconstructionVisualTestPage() {
         title="Light / dark / monochrome"
         className="border-t border-border bg-surface/40"
       >
-        <ThemeRenderings gap="medium" />
+        <ThemeRenderings />
       </Section>
 
-      <Section eyebrow="Sizes" title="16 → 128px">
-        <SizeTests gap="medium" />
+      <Section eyebrow="Sizes" title="16 → 256px">
+        <SizeTests />
       </Section>
     </div>
   );

@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" shape-rendering="geometricPrecision"><title>Niall Tech mark — monochrome</title><defs><mask id="nt-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect x="0" y="0" width="120" height="120" fill="#fff"/><polygon points="31,16 35,16 32.6,43 28.6,43" fill="#000"/></mask></defs><g mask="url(#nt-gap)"><polygon points="84,16 102,16 94,104 76,104" fill="currentColor"/><polygon points="20,16 38,16 30,104 12,104" fill="currentColor"/><polygon points="25,16 43,16 91,104 73,104" fill="currentColor"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Niall Tech mark (monochrome)" shape-rendering="geometricPrecision">
+  <title>Niall Tech mark (monochrome)</title>
+  <path d="M8 5H35L112 82V115H85L8 38Z" fill="currentColor" />
+  <path d="M8 49L35 76V112L31 116H12L8 112Z" fill="currentColor" />
+  <path d="M88 5H108L112 9V70L88 46Z" fill="currentColor" />
+</svg>

@@ -3,22 +3,24 @@
  *
  *   node scripts/test-logo-reconstruction.mjs
  *
- * Dependency-free assertions covering the spec's acceptance criteria.
+ * Dependency-free assertions covering the spec's acceptance criteria for the
+ * three-shape folded-beam construction.
  */
 
 import {
-  logoGeometry,
   CANVAS_SIZE,
-  GAP_OPTIONS,
-  getGapGeometry,
+  NIALL_MARK_PATHS,
+  MARK_VERTICES,
+  BOUNDING_BOX,
   getThemeColors,
-} from "../src/components/brand/logo-reconstruction/logo-geometry.mjs";
+  getBoundingBox,
+  parsePathVertices,
+} from "../src/brand/niall-mark-geometry.mjs";
 import {
-  iconSvg,
-  horizontalSvg,
-  stackedSvg,
-  exportMatrix,
-  glyphMarkup,
+  buildMarkSvg,
+  buildHorizontalSvg,
+  buildStackedSvg,
+  buildAllSvgs,
 } from "./logo-reconstruction-svg.mjs";
 import { validateSvg } from "./validate-logo-reconstruction.mjs";
 
@@ -47,81 +49,107 @@ function allInCanvas(poly) {
 
 console.log("Geometry tests\n");
 
-// Point ranges.
-const strokes = { leftStem: logoGeometry.leftStem, rightStem: logoGeometry.rightStem, diagonal: logoGeometry.diagonal };
-for (const [name, poly] of Object.entries(strokes)) {
-  assert(`${name}: all points within 0–120`, allInCanvas(poly));
-}
-for (const gap of GAP_OPTIONS) {
-  assert(`gap ${gap}: all points within 0–120`, allInCanvas(getGapGeometry(gap)));
+// Three canonical shapes exist and are non-empty path strings.
+for (const id of ["main", "lowerLeft", "bluePillar"]) {
+  assert(`path "${id}" is a non-empty string`, typeof NIALL_MARK_PATHS[id] === "string" && NIALL_MARK_PATHS[id].length > 0);
 }
 
-// Point counts.
-assert("left stem has 4 points", logoGeometry.leftStem.length === 4);
-assert("right stem has 4 points", logoGeometry.rightStem.length === 4);
-assert("diagonal has 4 points", logoGeometry.diagonal.length === 4);
-assert("hairline gap has 4 points", getGapGeometry("hairline").length === 4);
-assert("medium gap has 4 points", getGapGeometry("medium").length === 4);
-assert("chamfered gap has 6 points", getGapGeometry("chamfered").length === 6);
-
-// Gap validity (each point is a finite [x,y] pair).
-for (const gap of GAP_OPTIONS) {
-  const valid = getGapGeometry(gap).every(
-    (p) => Array.isArray(p) && p.length === 2 && p.every(Number.isFinite),
-  );
-  assert(`gap ${gap}: valid point pairs`, valid);
+// All vertices inside the canvas.
+for (const [id, poly] of Object.entries(MARK_VERTICES)) {
+  assert(`${id}: all points within 0–120`, allInCanvas(poly), JSON.stringify(poly));
 }
 
-// Bounding box does not exceed canvas.
-const allPts = [...logoGeometry.leftStem, ...logoGeometry.rightStem, ...logoGeometry.diagonal];
-const maxX = Math.max(...allPts.map((p) => p[0]));
-const maxY = Math.max(...allPts.map((p) => p[1]));
-const minX = Math.min(...allPts.map((p) => p[0]));
-const minY = Math.min(...allPts.map((p) => p[1]));
-assert("bounding box within canvas", minX >= 0 && minY >= 0 && maxX <= 120 && maxY <= 120, `box=${minX},${minY},${maxX},${maxY}`);
+// Vertex counts derived from the paths.
+assert("main has 6 vertices", MARK_VERTICES.main.length === 6, `${MARK_VERTICES.main.length}`);
+assert("lowerLeft has 6 vertices", MARK_VERTICES.lowerLeft.length === 6, `${MARK_VERTICES.lowerLeft.length}`);
+assert("bluePillar has 5 vertices", MARK_VERTICES.bluePillar.length === 5, `${MARK_VERTICES.bluePillar.length}`);
 
-// Diagonal runs upper-left to lower-right.
-const dTop = logoGeometry.diagonal[0];
-const dBottom = logoGeometry.diagonal[2];
-assert("diagonal runs upper-left to lower-right", dTop[1] < dBottom[1] && dTop[0] < dBottom[0]);
+// Bounding box within canvas and matches recomputed value.
+const bb = getBoundingBox();
+assert(
+  "bounding box within canvas",
+  bb.minX >= 0 && bb.minY >= 0 && bb.maxX <= 120 && bb.maxY <= 120,
+  JSON.stringify(bb),
+);
+assert(
+  "cached BOUNDING_BOX matches recompute",
+  bb.minX === BOUNDING_BOX.minX && bb.maxX === BOUNDING_BOX.maxX && bb.maxY === BOUNDING_BOX.maxY,
+);
 
-// Blue pillar is the right stem (rightmost stroke).
-const rightMax = Math.max(...logoGeometry.rightStem.map((p) => p[0]));
-const leftMax = Math.max(...logoGeometry.leftStem.map((p) => p[0]));
-assert("right stem is rightmost stroke (blue pillar)", rightMax > leftMax);
+// The main beam runs upper-left to lower-right (forward lean).
+const mainXs = MARK_VERTICES.main.map((p) => p[0]);
+const mainYs = MARK_VERTICES.main.map((p) => p[1]);
+assert("main beam starts near top-left", Math.min(...mainYs) <= 6 && Math.min(...mainXs) <= 10);
+assert("main beam reaches lower-right", Math.max(...mainXs) >= 108 && Math.max(...mainYs) >= 112);
+
+// Blue pillar is the rightmost & upper shape.
+const blueMaxX = Math.max(...MARK_VERTICES.bluePillar.map((p) => p[0]));
+const lowerLeftMaxX = Math.max(...MARK_VERTICES.lowerLeft.map((p) => p[0]));
+assert("blue pillar is rightmost shape", blueMaxX > lowerLeftMaxX);
+
+// Path parser round-trips a simple path.
+const rt = parsePathVertices("M0 0H10V10Z");
+assert(
+  "parser handles H/V/Z",
+  rt.length === 3 && rt[0][0] === 0 && rt[1][0] === 10 && rt[2][1] === 10,
+  JSON.stringify(rt),
+);
+
+// Theme color contract.
+assert("light primary is navy", getThemeColors("light").primary === "#0B1320");
+assert("light blue is electric blue", getThemeColors("light").blue === "#146BFF");
+assert("dark primary is white", getThemeColors("dark").primary === "#FFFFFF");
+assert("dark blue is electric blue", getThemeColors("dark").blue === "#146BFF");
+assert(
+  "monochrome uses currentColor for both fills",
+  getThemeColors("monochrome").primary === "currentColor" &&
+    getThemeColors("monochrome").blue === "currentColor",
+);
 
 // Light vs dark: identical geometry, only fills differ.
-const lightSvg = iconSvg({ theme: "light", gap: "medium", title: "t" });
-const darkSvg = iconSvg({ theme: "dark", gap: "medium", title: "t" });
+const lightSvg = buildMarkSvg("light", "t");
+const darkSvg = buildMarkSvg("dark", "t");
 const stripFills = (s) => s.replace(/fill="[^"]*"/g, 'fill="_"');
 assert("light & dark share identical geometry", stripFills(lightSvg) === stripFills(darkSvg));
 assert("light & dark differ only in fills", lightSvg !== darkSvg);
 
-// Monochrome uses only currentColor.
-const monoInner = glyphMarkup({ theme: "monochrome", gap: "medium", idPrefix: "m" });
-const monoFills = [...monoInner.matchAll(/fill="([^"]+)"/g)].map((m) => m[1]).filter((f) => f !== "#fff" && f !== "#000");
-assert("monochrome fills are all currentColor", monoFills.length > 0 && monoFills.every((f) => f === "currentColor"), monoFills.join(","));
-
-// Theme color contract.
-assert("light primary is navy", getThemeColors("light").primary === "#0B1320");
-assert("dark primary is white", getThemeColors("dark").primary === "#FFFFFF");
-assert("accent is electric blue in light & dark",
-  getThemeColors("light").accent === "#146BFF" && getThemeColors("dark").accent === "#146BFF");
+// Monochrome SVG: every fill is currentColor.
+const monoSvg = buildMarkSvg("monochrome", "m");
+const monoFills = [...monoSvg.matchAll(/fill="([^"]+)"/g)].map((m) => m[1]);
+assert(
+  "monochrome fills all currentColor",
+  monoFills.length === 3 && monoFills.every((f) => f === "currentColor"),
+  monoFills.join(","),
+);
 
 // Every generated SVG passes the strict contract.
 const matrix = [
-  ...exportMatrix(),
-  { file: "horizontal-light", svg: horizontalSvg({ theme: "light", title: "h" }) },
-  { file: "stacked-light", svg: stackedSvg({ theme: "light", title: "s" }) },
+  ...buildAllSvgs(),
+  { file: "horizontal-light", svg: buildHorizontalSvg("light") },
+  { file: "stacked-light", svg: buildStackedSvg("light") },
 ];
 for (const { file, svg } of matrix) {
   const errors = validateSvg(svg);
   assert(`SVG valid: ${file}`, errors.length === 0, errors.join("; "));
   assert(`SVG has viewBox: ${file}`, /viewBox=/.test(svg));
   assert(`SVG has title: ${file}`, /<title>[^<]+<\/title>/.test(svg));
+  assert(`SVG has path geometry: ${file}`, /<path\s+d="/.test(svg));
   assert(`SVG has no raster: ${file}`, !/<image\b/i.test(svg));
   assert(`SVG has no gradient/filter: ${file}`, !/gradient|<filter/i.test(svg));
 }
+
+// Export set is exactly the expected 7 files.
+const files = buildAllSvgs().map((s) => s.file).sort();
+const expected = [
+  "niall-tech-horizontal-dark.svg",
+  "niall-tech-horizontal-light.svg",
+  "niall-tech-mark-dark.svg",
+  "niall-tech-mark-light.svg",
+  "niall-tech-mark-monochrome.svg",
+  "niall-tech-stacked-dark.svg",
+  "niall-tech-stacked-light.svg",
+].sort();
+assert("export set matches expected 7 files", JSON.stringify(files) === JSON.stringify(expected), files.join(", "));
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);

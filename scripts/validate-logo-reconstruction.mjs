@@ -27,29 +27,24 @@ export function validateSvg(svg) {
   if (/<font\b|@font-face/i.test(svg)) errors.push("contains embedded font");
   if (/<metadata\b|<!--|sodipodi|inkscape/i.test(svg)) errors.push("contains design-tool metadata");
 
-  // Balanced tags (crude but catches malformed output).
+  // Balanced tags. Lockups legitimately nest one inner <svg> for the icon, so
+  // allow 1 or 2 open tags but require matching closes.
   const open = (svg.match(/<svg\b/g) || []).length;
   const close = (svg.match(/<\/svg>/g) || []).length;
-  if (open !== 1 || close !== 1) errors.push("unbalanced <svg> tags");
+  if (open < 1 || open > 2 || open !== close) errors.push("unbalanced <svg> tags");
 
-  // Coordinate precision: no more than two decimal places in points.
-  const pointMatches = svg.match(/points="([^"]+)"/g) || [];
-  for (const m of pointMatches) {
+  // Shapes are expressed as <path d="…"> — reject stray <polygon>/<rect> which
+  // would indicate the old (superseded) construction leaked in.
+  if (!/<path\s+d="/.test(svg)) errors.push("missing <path> geometry");
+
+  // Coordinate precision: no more than two decimal places anywhere in path data.
+  const pathMatches = svg.match(/\sd="([^"]+)"/g) || [];
+  for (const m of pathMatches) {
     const nums = m.match(/-?\d+\.\d{3,}/g);
     if (nums) errors.push(`coordinate exceeds 2 decimals: ${nums.join(", ")}`);
-  }
-
-  // Polygon point ranges (icon canvas only — lockups translate the glyph).
-  if (/viewBox="0 0 120 120"/.test(svg)) {
-    for (const m of pointMatches) {
-      const inner = m.slice(8, -1);
-      for (const pair of inner.trim().split(/\s+/)) {
-        const [x, y] = pair.split(",").map(Number);
-        if ([x, y].some((n) => Number.isNaN(n))) {
-          errors.push(`malformed point: ${pair}`);
-        }
-      }
-    }
+    // Every numeric token in the path must be finite.
+    const bad = (m.match(/-?\d*\.?\d+/g) || []).filter((n) => !Number.isFinite(parseFloat(n)));
+    if (bad.length) errors.push(`malformed path number: ${bad.join(", ")}`);
   }
 
   return errors;
