@@ -37,6 +37,7 @@ type ButtonAsLink = CommonProps & {
   href: string;
   target?: string;
   rel?: string;
+  download?: boolean | string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
@@ -55,12 +56,13 @@ export function Button({
   );
 
   if ("href" in props && props.href) {
-    const { href, target, rel, onClick } = props;
+    const { href, target, rel, download, onClick } = props;
     return (
       <Link
         href={href}
         target={target}
         rel={rel}
+        download={download}
         onClick={onClick}
         className={classes}
       >

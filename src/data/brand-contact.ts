@@ -23,11 +23,31 @@ export const COMPANY = raw.COMPANY as {
 export const PERSON = raw.PERSON as {
   name: string;
   firstName: string;
+  lastName: string;
   title: string;
   shortTitle: string;
   email: string;
   phone: string;
   phoneHref: string;
+  intro: string;
+};
+
+export const CONNECT = raw.CONNECT as {
+  path: string;
+  url: string;
+  qrCta: string;
+  vcardPath: string;
+};
+
+export const BUSINESS_CARD = raw.BUSINESS_CARD as {
+  recommendedBack: "A" | "B" | "C";
+  finishedIn: { width: number; height: number };
+  bleedIn: number;
+  fullBleedIn: { width: number; height: number };
+  safeInsetFromTrimIn: number;
+  qrTargetIn: number;
+  qrMinIn: number;
+  dpi: number;
 };
 
 export const BRAND = raw.BRAND as {

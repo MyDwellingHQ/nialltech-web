@@ -17,8 +17,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
 import { PDFDocument } from "pdf-lib";
-import QRCode from "qrcode";
 import { COMPANY, PERSON, BRAND } from "../src/data/brand-contact.mjs";
+import { buildBusinessCard } from "./build-business-card.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -67,26 +67,6 @@ async function placeLogo(relPath, { x, y, width, align = "xMinYMid" }) {
   };
 }
 
-const ICONS = {
-  phone:
-    "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z",
-  mail: "M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
-  mailLine: "m22 6-10 7L2 6",
-  globe: "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z",
-  globeLines: "M2 12h20 M12 2a15.3 15.3 0 0 1 0 20 M12 2a15.3 15.3 0 0 0 0 20",
-};
-
-/** A small stroked contact icon at (x,y) top-left, `s` px box. */
-function icon(name, x, y, s, color) {
-  const scale = s / 24;
-  const g = (paths) =>
-    `<g transform="translate(${x} ${y}) scale(${scale})" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths}</g>`;
-  if (name === "phone") return g(`<path d="${ICONS.phone}"/>`);
-  if (name === "mail")
-    return g(`<path d="${ICONS.mail}"/><path d="${ICONS.mailLine}"/>`);
-  return g(`<path d="${ICONS.globe}"/><path d="${ICONS.globeLines}"/>`);
-}
-
 function esc(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
@@ -133,80 +113,6 @@ async function emitPiece(name, { svg, widthIn, heightIn, dpi = 300 }) {
   const png = await writePng(name, svg, pxWidth);
   await writePdf(name, png, widthIn, heightIn);
   console.log(`piece: ${name} (${widthIn}"x${heightIn}" @ ${dpi}dpi)`);
-}
-
-// ---------------------------------------------------------------------------
-// Business card (3.5 x 2 in + 0.125" bleed => 3.75 x 2.25 in; 300dpi = 1125x675)
-// ---------------------------------------------------------------------------
-const CARD_W = 1125;
-const CARD_H = 675;
-const BLEED = 37.5; // 0.125"
-const SAFE = BLEED + 60; // trim + inner padding
-
-async function cardFront() {
-  const logo = await placeLogo("svg/niall-tech-horizontal-light.svg", {
-    x: SAFE,
-    y: SAFE - 8,
-    width: 360,
-  });
-  const cy = CARD_H - SAFE; // bottom baseline region
-  const contactX = CARD_W - SAFE - 300;
-  const line = (i) => cy - 96 + i * 40;
-  const content = `
-  <rect width="${CARD_W}" height="${CARD_H}" fill="${BRAND.navy}"/>
-  <rect x="0" y="0" width="10" height="${CARD_H}" fill="${BRAND.blue}"/>
-  ${logo.markup}
-  <text x="${SAFE}" y="${cy - 44}" fill="${BRAND.white}" font-size="46" font-weight="700" letter-spacing="0.5">${esc(PERSON.name)}</text>
-  <text x="${SAFE}" y="${cy - 8}" fill="${BRAND.cyan}" font-size="24" font-weight="500" letter-spacing="1.5">${esc(PERSON.title)}</text>
-  <g font-size="23" font-weight="400">
-    ${icon("phone", contactX, line(0) - 18, 22, BRAND.blue)}
-    <text x="${contactX + 36}" y="${line(0)}" fill="${BRAND.lightGray}">${esc(PERSON.phone)}</text>
-    ${icon("mail", contactX, line(1) - 18, 22, BRAND.blue)}
-    <text x="${contactX + 36}" y="${line(1)}" fill="${BRAND.lightGray}">${esc(PERSON.email)}</text>
-    ${icon("globe", contactX, line(2) - 18, 22, BRAND.blue)}
-    <text x="${contactX + 36}" y="${line(2)}" fill="${BRAND.lightGray}">${esc(COMPANY.website)}</text>
-  </g>`;
-  await emitPiece("business-card-front", {
-    svg: svgDoc(CARD_W, CARD_H, content),
-    widthIn: 3.75,
-    heightIn: 2.25,
-  });
-}
-
-async function cardBack() {
-  const logo = await placeLogo("svg/niall-tech-stacked-light.svg", {
-    x: CARD_W / 2 - 210,
-    y: 150,
-    width: 420,
-    align: "xMidYMid",
-  });
-  // QR to website — navy modules on white panel so it scans on the navy card.
-  const qr = await QRCode.toString(COMPANY.websiteUrl, {
-    type: "svg",
-    margin: 0,
-    color: { dark: BRAND.navy, light: "#0000" },
-    errorCorrectionLevel: "M",
-  });
-  const qrInner = qr.replace(/<\?xml[^>]*>/, "").replace(/<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
-  const qrVb = qr.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 25 25";
-  const qrSize = 150;
-  const qrX = CARD_W - SAFE - qrSize;
-  const qrY = CARD_H - SAFE - qrSize;
-  const taglineY = 470;
-  const content = `
-  <rect width="${CARD_W}" height="${CARD_H}" fill="${BRAND.navy}"/>
-  ${logo.markup}
-  <g font-size="26" font-weight="500" letter-spacing="3" text-anchor="middle" fill="${BRAND.lightGray}">
-    <text x="${CARD_W / 2}" y="${taglineY}">${esc(COMPANY.taglineStack[0])} &#160; ${esc(COMPANY.taglineStack[1])} &#160; ${esc(COMPANY.taglineStack[2])}</text>
-  </g>
-  <rect x="${qrX - 16}" y="${qrY - 16}" width="${qrSize + 32}" height="${qrSize + 32}" rx="16" fill="${BRAND.white}"/>
-  <svg x="${qrX}" y="${qrY}" width="${qrSize}" height="${qrSize}" viewBox="${qrVb}" preserveAspectRatio="xMidYMid meet">${qrInner}</svg>
-  <text x="${SAFE}" y="${CARD_H - SAFE - 4}" fill="${BRAND.slate}" font-size="22" font-weight="500" letter-spacing="1">${esc(COMPANY.website)}</text>`;
-  await emitPiece("business-card-back", {
-    svg: svgDoc(CARD_W, CARD_H, content),
-    widthIn: 3.75,
-    heightIn: 2.25,
-  });
 }
 
 // ---------------------------------------------------------------------------
@@ -449,8 +355,8 @@ async function main() {
     if (!(await exists(f))) throw new Error(`Missing font ${f}. Run brand:build first.`);
   }
 
-  await cardFront();
-  await cardBack();
+  // Business cards (VistaPrint) — dedicated builder writes collateral + concepts.
+  await buildBusinessCard();
   await letterhead();
   await invoice();
   await coverPage("proposal-cover", "PROPOSAL", "Technology\nProposal");
