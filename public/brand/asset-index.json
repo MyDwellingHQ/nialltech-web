@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-31T16:34:19.978Z",
+  "generatedAt": "2026-07-31T19:13:12.389Z",
   "masterSvg": "/brand/svg/niall-tech-icon.svg",
-  "masterGeometry": "medium-gap",
+  "masterGeometry": "approved-folded-beam",
   "brandColors": {
     "navy": "#0B1320",
     "blue": "#146BFF",
@@ -12,6 +12,146 @@
     "black": "#000000"
   },
   "assets": [
+    {
+      "name": "business-card-back.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-back.pdf",
+      "format": "pdf",
+      "bytes": 13621
+    },
+    {
+      "name": "business-card-back.png",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-back.png",
+      "format": "png",
+      "bytes": 23074
+    },
+    {
+      "name": "business-card-back.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-back.svg",
+      "format": "svg",
+      "bytes": 2487
+    },
+    {
+      "name": "business-card-front.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-front.pdf",
+      "format": "pdf",
+      "bytes": 17325
+    },
+    {
+      "name": "business-card-front.png",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-front.png",
+      "format": "png",
+      "bytes": 25509
+    },
+    {
+      "name": "business-card-front.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/business-card-front.svg",
+      "format": "svg",
+      "bytes": 2509
+    },
+    {
+      "name": "invoice.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/invoice.pdf",
+      "format": "pdf",
+      "bytes": 67107
+    },
+    {
+      "name": "invoice.png",
+      "category": "collateral",
+      "path": "/brand/collateral/invoice.png",
+      "format": "png",
+      "bytes": 107239
+    },
+    {
+      "name": "invoice.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/invoice.svg",
+      "format": "svg",
+      "bytes": 4728
+    },
+    {
+      "name": "letterhead.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/letterhead.pdf",
+      "format": "pdf",
+      "bytes": 19195
+    },
+    {
+      "name": "letterhead.png",
+      "category": "collateral",
+      "path": "/brand/collateral/letterhead.png",
+      "format": "png",
+      "bytes": 32371
+    },
+    {
+      "name": "letterhead.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/letterhead.svg",
+      "format": "svg",
+      "bytes": 1395
+    },
+    {
+      "name": "proposal-cover.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/proposal-cover.pdf",
+      "format": "pdf",
+      "bytes": 163597
+    },
+    {
+      "name": "proposal-cover.png",
+      "category": "collateral",
+      "path": "/brand/collateral/proposal-cover.png",
+      "format": "png",
+      "bytes": 272811
+    },
+    {
+      "name": "proposal-cover.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/proposal-cover.svg",
+      "format": "svg",
+      "bytes": 1994
+    },
+    {
+      "name": "sow-cover.pdf",
+      "category": "collateral",
+      "path": "/brand/collateral/sow-cover.pdf",
+      "format": "pdf",
+      "bytes": 163217
+    },
+    {
+      "name": "sow-cover.png",
+      "category": "collateral",
+      "path": "/brand/collateral/sow-cover.png",
+      "format": "png",
+      "bytes": 272921
+    },
+    {
+      "name": "sow-cover.svg",
+      "category": "collateral",
+      "path": "/brand/collateral/sow-cover.svg",
+      "format": "svg",
+      "bytes": 2001
+    },
+    {
+      "name": "signature-outlook.html",
+      "category": "email",
+      "path": "/brand/email/signature-outlook.html",
+      "format": "html",
+      "bytes": 1880
+    },
+    {
+      "name": "signature-responsive.html",
+      "category": "email",
+      "path": "/brand/email/signature-responsive.html",
+      "format": "html",
+      "bytes": 2072
+    },
     {
       "name": "android-chrome-192x192.png",
       "category": "favicon",
@@ -48,6 +188,13 @@
       "bytes": 605
     },
     {
+      "name": "favicon-48x48.png",
+      "category": "favicon",
+      "path": "/brand/favicon/favicon-48x48.png",
+      "format": "png",
+      "bytes": 865
+    },
+    {
       "name": "favicon.ico",
       "category": "favicon",
       "path": "/brand/favicon/favicon.ico",
@@ -67,6 +214,20 @@
       "path": "/brand/favicon/site.webmanifest",
       "format": "webmanifest",
       "bytes": 661
+    },
+    {
+      "name": "niall-tech-presentation-template.pptx",
+      "category": "office",
+      "path": "/brand/office/niall-tech-presentation-template.pptx",
+      "format": "pptx",
+      "bytes": 130464
+    },
+    {
+      "name": "niall-tech-word-template.docx",
+      "category": "office",
+      "path": "/brand/office/niall-tech-word-template.docx",
+      "format": "docx",
+      "bytes": 19835
     },
     {
       "name": "niall-tech-horizontal-1000.png",
@@ -195,39 +356,25 @@
       "bytes": 8140
     },
     {
-      "name": "niall-tech-embroidery.svg",
-      "category": "print",
-      "path": "/brand/print/niall-tech-embroidery.svg",
-      "format": "svg",
-      "bytes": 493
-    },
-    {
       "name": "niall-tech-logo-one-color.pdf",
       "category": "print",
       "path": "/brand/print/niall-tech-logo-one-color.pdf",
       "format": "pdf",
-      "bytes": 13019
+      "bytes": 13020
     },
     {
       "name": "niall-tech-logo-print.svg",
       "category": "print",
       "path": "/brand/print/niall-tech-logo-print.svg",
       "format": "svg",
-      "bytes": 1272
+      "bytes": 1284
     },
     {
       "name": "niall-tech-logo-rgb.pdf",
       "category": "print",
       "path": "/brand/print/niall-tech-logo-rgb.pdf",
       "format": "pdf",
-      "bytes": 23045
-    },
-    {
-      "name": "niall-tech-vehicle-decal.svg",
-      "category": "print",
-      "path": "/brand/print/niall-tech-vehicle-decal.svg",
-      "format": "svg",
-      "bytes": 952
+      "bytes": 23054
     },
     {
       "name": "facebook-cover-1640x624.png",
@@ -305,27 +452,6 @@
       "path": "/brand/social/x-banner-1500x500.svg",
       "format": "svg",
       "bytes": 1815
-    },
-    {
-      "name": "niall-tech-gap-chamfered.svg",
-      "category": "svg",
-      "path": "/brand/svg/alternates/niall-tech-gap-chamfered.svg",
-      "format": "svg",
-      "bytes": 462
-    },
-    {
-      "name": "niall-tech-gap-hairline.svg",
-      "category": "svg",
-      "path": "/brand/svg/alternates/niall-tech-gap-hairline.svg",
-      "format": "svg",
-      "bytes": 456
-    },
-    {
-      "name": "niall-tech-gap-medium.svg",
-      "category": "svg",
-      "path": "/brand/svg/alternates/niall-tech-gap-medium.svg",
-      "format": "svg",
-      "bytes": 468
     },
     {
       "name": "niall-tech-embroidery.svg",

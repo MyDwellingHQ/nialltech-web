@@ -5,13 +5,12 @@ Official logo files, raster exports, favicons, social covers, and print masters 
 ## Master logo
 
 - **Production master icon:** `svg/niall-tech-icon.svg`
-- **Geometry:** medium gap between the left pillar, diagonal stroke, and electric-blue right pillar
-- **Studies:** `svg/alternates/` (hairline, medium, chamfered) — medium was selected as the production master
+- **Geometry:** the approved folded-beam **N**, defined once in `src/brand/niall-mark-geometry.mjs` and mapped into every asset
 
-The mark is a geometric capital **N**:
-- Deep Navy left vertical pillar
-- Deep Navy diagonal (upper-left → lower-right)
-- Electric Blue short vertical pillar (upper-right)
+The mark is a bold folded-beam capital **N**:
+- Deep Navy main beam (upper-left → lower-right)
+- Deep Navy lower-left pillar
+- Electric Blue tall right pillar
 - Flat color only — no gradients, shadows, or filters
 
 ## Color values
@@ -40,10 +39,13 @@ Site UI may continue to use Plus Jakarta Sans / Manrope; Inter is required for b
 
 ```
 public/brand/
-  svg/           Vector masters + alternates/
+  svg/           Vector logo masters
   png/           Transparent PNG exports
   favicon/       Favicon + PWA icons + site.webmanifest
-  social/        Avatars and cover images
+  social/        Avatars, cover images, and profile banners
+  collateral/    Business cards, letterhead, invoice, proposal/SOW covers
+  email/         HTML email signatures (responsive + Outlook-safe)
+  office/        PowerPoint + Word templates
   print/         PDF + SVG print masters
   README.md
   brand-colors.txt
