@@ -42,78 +42,96 @@ export function paletteFor(mode: MarkMode): Palette {
 
 /* -------------------------------------------------------------------------- */
 /*  Icon geometry — each returns inner SVG elements for a 0 0 100 100 canvas   */
+/*                                                                            */
+/*  The reference mark is a FORWARD-LEANING (italic) monogram built from      */
+/*  parallelogram strokes: navy left stem, navy diagonal (top-left to         */
+/*  bottom-right), and an electric-blue right stem / pillar. We reproduce the */
+/*  lean with a shared skew transform so all upright coordinates below render */
+/*  as the correct italic parallelograms.                                     */
 /* -------------------------------------------------------------------------- */
 
+// Forward italic: top leans right, bottom leans left, optically recentred.
+const ITALIC = "translate(7 0) skewX(-9)";
+
 function IconA(p: Palette): ReactNode {
-  // Reference refined: solid N, blue cap on the upper-right stem.
+  // Reference refined — faithful rebuild of the PRIMARY logo: solid navy N
+  // with a clean electric-blue cap on the top of the right stem.
   return (
-    <>
-      <rect x="18" y="14" width="15" height="72" rx="4" fill={p.body} />
-      <polygon points="33,14 48,14 67,86 52,86" fill={p.body} />
-      <rect x="67" y="14" width="15" height="72" rx="4" fill={p.body} />
-      <path d="M67 18a4 4 0 0 1 4-4h7a4 4 0 0 1 4 4v26H67Z" fill={p.accent} />
-    </>
+    <g transform={ITALIC}>
+      {/* left stem */}
+      <rect x="20" y="14" width="14" height="72" rx="2.5" fill={p.body} />
+      {/* diagonal: top of left stem down to bottom of right stem */}
+      <polygon points="20,14 34,14 80,86 66,86" fill={p.body} />
+      {/* right stem */}
+      <rect x="66" y="14" width="14" height="72" rx="2.5" fill={p.body} />
+      {/* electric-blue cap on the right stem */}
+      <path d="M66 16.5A2.5 2.5 0 0 1 68.5 14h9A2.5 2.5 0 0 1 80 16.5V44H66Z" fill={p.accent} />
+    </g>
   );
 }
 
 function IconB(p: Palette): ReactNode {
-  // Integrated blue pillar: the entire right stem is electric blue and fuses
-  // with the navy diagonal at the base so it reads as one structure.
+  // Integrated blue pillar — the horizontal / icon-only treatment: the entire
+  // right stem is electric blue and the diagonal chamfers into it so it reads
+  // as one continuous structure (the "chamfered gap" exploration).
   return (
-    <>
-      <rect x="18" y="14" width="15" height="72" rx="4" fill={p.body} />
-      <polygon points="33,14 48,14 67,86 52,86" fill={p.body} />
-      {/* wedge tying the diagonal into the pillar so it is not a floating bar */}
-      <polygon points="55,70 74,70 74,86 60,86" fill={p.accent} />
-      <rect x="67" y="14" width="15" height="72" rx="4" fill={p.accent} />
-    </>
+    <g transform={ITALIC}>
+      <rect x="20" y="14" width="14" height="72" rx="2.5" fill={p.body} />
+      <polygon points="20,14 34,14 80,86 66,86" fill={p.body} />
+      {/* full-height electric-blue right pillar */}
+      <rect x="66" y="14" width="14" height="72" rx="2.5" fill={p.accent} />
+    </g>
   );
 }
 
 function IconC(p: Palette, mode: MarkMode): ReactNode {
-  // Negative-space construction: navy tile with the N carved out; right
-  // stroke rendered in the accent. Carving uses a mask so it is truly
-  // transparent on any background.
+  // Negative-space construction: upright navy app tile with the italic N
+  // carved out; the right stroke sits in front in the accent color.
   const maskId = `nt-lab-c-${mode}`;
   const rightStroke = mode === "mono" || mode === "mono-reversed" ? p.body : p.accent;
   return (
     <>
       <mask id={maskId}>
         <rect x="0" y="0" width="100" height="100" fill="#fff" />
-        {/* carved left stem + diagonal */}
-        <rect x="26" y="24" width="12" height="52" rx="2" fill="#000" />
-        <polygon points="38,24 50,24 62,76 50,76" fill="#000" />
+        <g transform={ITALIC}>
+          {/* carved left stem + diagonal */}
+          <rect x="24" y="24" width="12" height="52" rx="2" fill="#000" />
+          <polygon points="24,24 36,24 74,76 62,76" fill="#000" />
+        </g>
       </mask>
+      {/* tile stays square for a crisp app-icon silhouette */}
       <rect x="6" y="6" width="88" height="88" rx="20" fill={p.tile} mask={`url(#${maskId})`} />
-      <rect x="62" y="24" width="12" height="52" rx="2" fill={rightStroke} />
+      <g transform={ITALIC}>
+        <rect x="62" y="24" width="12" height="52" rx="2" fill={rightStroke} />
+      </g>
     </>
   );
 }
 
 function IconD(p: Palette): ReactNode {
-  // Architectural monogram: sharp, chamfered, grid-engineered. Blue is a
-  // structural diagonal beam.
+  // Architectural monogram: sharp, chamfered, grid-engineered italic N with
+  // the electric blue expressed as a structural diagonal beam.
   return (
-    <>
-      {/* left stem, chamfered top-left */}
-      <polygon points="22,12 32,12 32,88 16,88 16,22" fill={p.body} />
-      {/* right stem, chamfered bottom-right */}
-      <polygon points="68,12 84,12 84,78 74,88 68,88" fill={p.body} />
-      {/* diagonal beam in accent */}
-      <polygon points="32,12 48,12 68,88 52,88" fill={p.accent} />
+    <g transform={ITALIC}>
+      {/* left stem, chamfered top-left corner */}
+      <polygon points="26,14 34,14 34,86 18,86 18,22" fill={p.body} />
+      {/* right stem, chamfered bottom-right corner */}
+      <polygon points="66,14 82,14 82,78 74,86 66,86" fill={p.body} />
+      {/* diagonal structural beam in accent */}
+      <polygon points="20,14 34,14 80,86 66,86" fill={p.accent} />
       {/* engineered joint nodes */}
-      <rect x="30" y="12" width="8" height="8" fill={p.body} />
-      <rect x="62" y="80" width="8" height="8" fill={p.body} />
-    </>
+      <rect x="26" y="14" width="8" height="8" fill={p.body} />
+      <rect x="66" y="78" width="8" height="8" fill={p.body} />
+    </g>
   );
 }
 
 function IconE(p: Palette): ReactNode {
-  // Minimal enterprise mark: single monoline N, one blue terminal.
+  // Minimal enterprise mark: single italic monoline N, one blue terminal.
   return (
-    <>
+    <g transform={ITALIC}>
       <path
-        d="M22 84 V20 L78 84 V20"
+        d="M27 86 V16 L73 86 V16"
         fill="none"
         stroke={p.body}
         strokeWidth="13"
@@ -122,13 +140,13 @@ function IconE(p: Palette): ReactNode {
       />
       {/* blue terminal on the top-right upstroke */}
       <path
-        d="M78 52 V20"
+        d="M73 50 V16"
         fill="none"
         stroke={p.accent}
         strokeWidth="13"
         strokeLinecap="round"
       />
-    </>
+    </g>
   );
 }
 
@@ -314,9 +332,9 @@ export const candidates: Candidate[] = [
     code: "A",
     name: "Reference refined",
     summary:
-      "The closest faithful rebuild of the reference — re-derived stroke ratio, a clean blue cap on the right stem, tuned corners, and corrected optical balance.",
+      "The closest faithful rebuild of the primary board logo — forward-leaning italic N, re-derived stroke ratio, a clean electric-blue cap on the right stem, and corrected optical balance.",
     construction:
-      "Solid navy N (left stem + diagonal + right stem) with an electric-blue cap on the upper-right stem.",
+      "Forward-italic navy N (parallelogram left stem + diagonal + right stem) with an electric-blue cap on the upper-right stem.",
     scores: {
       distinctiveness: 3,
       enterprise: 5,
@@ -333,9 +351,9 @@ export const candidates: Candidate[] = [
     code: "B",
     name: "Integrated blue pillar",
     summary:
-      "Turns the electric-blue element into the full right stem, fused with the diagonal so it reads as a structural part of the N rather than a separate rectangle.",
+      "Matches the horizontal / vehicle treatment on the board — the full right stem becomes the electric-blue pillar and the diagonal chamfers into it, reading as one continuous structure rather than a separate bar.",
     construction:
-      "Navy left stem + navy diagonal flowing into a full-height electric-blue right pillar with a joining wedge.",
+      "Forward-italic navy left stem + diagonal chamfering into a full-height electric-blue right pillar.",
     scores: {
       distinctiveness: 4,
       enterprise: 5,

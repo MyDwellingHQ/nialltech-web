@@ -4,11 +4,27 @@ _Working document for the `/brand/logo-lab` exploration. These are non-productio
 
 ## Source of the reference
 
-The intended identity is captured by the brand board direction and the current production mark
+The intended identity is captured by the supplied **brand board** (primary logo, logo variations,
+color palette, typography, applications, icon/app variants, gap & angle explorations, patterns, and
+photography) together with the current production mark
 (`src/components/brand/BrandLogo.tsx` → `BrandMark`, plus the master SVGs in `public/brand/svg/`).
-That direction is a **minimal geometric "N"** built from a navy left stem, a navy diagonal, and an
-**electric-blue pillar** on the upper right, paired with a `NIALL` (navy, bold) + `TECH` (electric blue,
-medium) wordmark.
+
+The mark is a **forward-leaning (italic) geometric "N"** built from parallelogram strokes: a navy left
+stem, a navy diagonal running top-left to bottom-right, and an **electric-blue right stem / pillar**
+(shown as a blue cap on the right stem in the primary logo and as the full blue pillar in the
+horizontal / vehicle treatments). It is paired with an upright `NIALL` (navy, bold) + `TECH` (electric
+blue, medium) wordmark and the tagline `MODERN IT. LOCAL EXPERTISE.`
+
+### Confirmed from the board
+
+- **Palette (exact):** `#0B1320` navy, `#146BFF` electric blue, `#22C1FF` cyan, `#475569` slate,
+  `#E5E7EB` light grey, `#FFFFFF` white.
+- **Typography:** Inter, weights Regular / Medium / Semi Bold / Bold / Extra Bold.
+- **Variations:** Primary, Stacked, Horizontal, Icon Only.
+- **Gap & angle explorations:** Option A hairline gap, Option B medium gap, Option C chamfered gap —
+  reflected here (Candidate A ≈ refined gap, Candidate B ≈ chamfered/integrated).
+- **Applications:** building signage, vehicle graphics, business cards, branded merch, stickers — all
+  reproduced as CSS/vector mockups in the lab.
 
 > Note on the uploaded artwork: where the reference image contains small, blurry, or AI-generated
 > text and micro-detail, that text is intentionally **not** traced or reproduced. Only the geometric
@@ -38,7 +54,7 @@ medium) wordmark.
 ## What should be preserved
 
 1. Deep Navy + Electric Blue as the only two lockup colors.
-2. The "N" letterform and its upright, architectural posture.
+2. The "N" letterform and its forward-leaning (italic), architectural posture.
 3. The blue accent as a distinct structural element (a pillar, beam, or terminal).
 4. Strong, unambiguous silhouette at 16px.
 5. `NIALL` (heavier) + `TECH` (lighter, blue) wordmark relationship, based on Inter, with restrained
