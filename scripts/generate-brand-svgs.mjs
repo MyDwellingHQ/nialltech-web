@@ -1,6 +1,7 @@
 /**
  * Generates all Niall Tech SVG brand masters into public/brand/svg/
- * Master icon geometry: medium gap (see logo-geometry.mjs).
+ * Master icon geometry: the approved folded-beam N (see logo-geometry.mjs,
+ * which maps src/brand/niall-mark-geometry.mjs into the icon coordinate space).
  */
 
 import { mkdir, writeFile } from "node:fs/promises";
@@ -16,7 +17,6 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const SVG_DIR = path.join(ROOT, "public/brand/svg");
-const ALT_DIR = path.join(SVG_DIR, "alternates");
 const PRINT_DIR = path.join(ROOT, "public/brand/print");
 
 async function write(filePath, contents) {
@@ -133,7 +133,7 @@ function vehicleDecalSvg() {
 }
 
 function embroiderySvg() {
-  // Simplified one-color navy mark; medium gap for stitch clarity
+  // Simplified one-color navy mark; structural gaps kept open for stitch clarity
   const content = `
   <g transform="translate(10, 10)">
     ${renderIconMarkup("medium", "navy")}
@@ -161,7 +161,7 @@ function printMasterSvg() {
   <text x="190" y="140" fill="${COLORS.slate}" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="500" letter-spacing="4.5">MODERN IT. LOCAL EXPERTISE.</text>
   <g font-family="Inter, Arial, Helvetica, sans-serif" font-size="11" fill="${COLORS.slate}">
     <text x="40" y="220">Print master — RGB reference. Deep Navy ${COLORS.navy} · Electric Blue ${COLORS.blue}</text>
-    <text x="40" y="238">Master geometry: medium gap. Do not outline or recolor without brand approval.</text>
+    <text x="40" y="238">Master geometry: approved folded-beam N. Do not outline or recolor without brand approval.</text>
   </g>
 `;
   return wrapSvg({
@@ -175,7 +175,6 @@ function printMasterSvg() {
 
 export async function generateSvgs() {
   await mkdir(SVG_DIR, { recursive: true });
-  await mkdir(ALT_DIR, { recursive: true });
   await mkdir(PRINT_DIR, { recursive: true });
 
   // Primary icons
@@ -202,28 +201,13 @@ export async function generateSvgs() {
   await write(path.join(SVG_DIR, "niall-tech-one-color-black.svg"), horizontalSvg("black"));
   await write(path.join(SVG_DIR, "niall-tech-one-color-white.svg"), horizontalSvg("white"));
 
-  // Special use
+  // Special use — single source in svg/ (surfaced under Vehicle & embroidery).
   await write(path.join(SVG_DIR, "niall-tech-vehicle-decal.svg"), vehicleDecalSvg());
   await write(path.join(SVG_DIR, "niall-tech-embroidery.svg"), embroiderySvg());
 
-  // Alternates / geometry studies
-  await write(
-    path.join(ALT_DIR, "niall-tech-gap-hairline.svg"),
-    iconSvg("color", "hairline", "Niall Tech icon — hairline gap study"),
-  );
-  await write(
-    path.join(ALT_DIR, "niall-tech-gap-medium.svg"),
-    iconSvg("color", "medium", "Niall Tech icon — medium gap (production master)"),
-  );
-  await write(
-    path.join(ALT_DIR, "niall-tech-gap-chamfered.svg"),
-    iconSvg("color", "chamfered", "Niall Tech icon — chamfered diagonal study"),
-  );
-
-  // Print copies
+  // Print master sheet (genuine vendor handoff; vehicle/embroidery are NOT
+  // duplicated here — the svg/ masters above are the single source).
   await write(path.join(PRINT_DIR, "niall-tech-logo-print.svg"), printMasterSvg());
-  await write(path.join(PRINT_DIR, "niall-tech-vehicle-decal.svg"), vehicleDecalSvg());
-  await write(path.join(PRINT_DIR, "niall-tech-embroidery.svg"), embroiderySvg());
 }
 
 const isDirectRun = process.argv[1]

@@ -5,6 +5,7 @@ import { BrandColorSwatch } from "@/components/brand/BrandColorSwatch";
 import { BrandLogo, BrandMark } from "@/components/brand/BrandLogo";
 import { BrandUsageExample } from "@/components/brand/BrandUsageExample";
 import { DownloadButton } from "@/components/brand/DownloadButton";
+import { FaviconPreviewGrid } from "@/components/brand/FaviconPreviewGrid";
 import { MerchandiseMockups } from "@/components/brand/MerchandiseMockups";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { Container } from "@/components/ui/Container";
@@ -129,6 +130,11 @@ export default function BrandAssetsPage() {
             description={section.description}
             className="border-t border-border bg-surface/40"
           >
+            {section.id === "favicon-assets" && (
+              <div className="mb-10">
+                <FaviconPreviewGrid />
+              </div>
+            )}
             <BrandAssetGrid assets={assets} />
           </Section>
         );
@@ -255,7 +261,7 @@ export default function BrandAssetsPage() {
         id="package"
         eyebrow="Package"
         title="Complete brand package"
-        description="One ZIP with every approved SVG, PNG, favicon, social, and print asset—plus README, colors, and asset index."
+        description="One ZIP with every approved asset—logos, PNG exports, favicons, social, collateral, office templates, email signatures, and print—plus README, colors, and asset index."
       >
         <div className="flex flex-col items-start gap-5 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div>
@@ -263,8 +269,10 @@ export default function BrandAssetsPage() {
               niall-tech-brand-assets.zip
             </p>
             <p className="mt-2 max-w-xl text-sm text-muted">
-              Includes masters, raster exports, favicons, social covers, print
-              PDFs, README.md, brand-colors.txt, and asset-index.json.
+              Includes logo masters, raster exports, favicons, social covers &
+              banners, business cards, stationery, email signatures, Office
+              templates, print PDFs, README.md, brand-colors.txt, and
+              asset-index.json.
             </p>
           </div>
           {packageAsset ? (
