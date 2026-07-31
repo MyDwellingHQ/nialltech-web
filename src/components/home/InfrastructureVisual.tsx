@@ -16,13 +16,13 @@ const VIEW_H = 420;
 const CENTER = { x: 280, y: 210 };
 
 const NODES: NodeDef[] = [
-  { id: "m365", label: "Microsoft 365", shortLabel: "M365", x: 96, y: 72, status: "ok" },
-  { id: "entra", label: "Entra ID", shortLabel: "Entra ID", x: 280, y: 40, status: "ok" },
-  { id: "intune", label: "Intune", shortLabel: "Intune", x: 464, y: 72, status: "ok" },
-  { id: "security", label: "Security", shortLabel: "Security", x: 512, y: 210, status: "watch" },
-  { id: "network", label: "Network", shortLabel: "Network", x: 424, y: 348, status: "ok" },
-  { id: "cloud", label: "Cloud", shortLabel: "Cloud", x: 136, y: 348, status: "ok" },
-  { id: "devices", label: "Devices", shortLabel: "Devices", x: 48, y: 210, status: "ok" },
+  { id: "m365", label: "Microsoft 365", shortLabel: "M365", x: 108, y: 78, status: "ok" },
+  { id: "entra", label: "Entra ID", shortLabel: "Entra ID", x: 280, y: 48, status: "ok" },
+  { id: "intune", label: "Intune", shortLabel: "Intune", x: 452, y: 78, status: "ok" },
+  { id: "security", label: "Security", shortLabel: "Security", x: 498, y: 208, status: "watch" },
+  { id: "network", label: "Network", shortLabel: "Network", x: 412, y: 328, status: "ok" },
+  { id: "cloud", label: "Cloud", shortLabel: "Cloud", x: 148, y: 328, status: "ok" },
+  { id: "devices", label: "Devices", shortLabel: "Devices", x: 62, y: 208, status: "ok" },
 ];
 
 function connectionPath(from: { x: number; y: number }, to: { x: number; y: number }) {
@@ -43,7 +43,7 @@ export function InfrastructureVisual({ className }: InfrastructureVisualProps) {
   return (
     <div
       className={cn(
-        "infra-visual group relative isolate h-[300px] w-full overflow-hidden rounded-[1.75rem] sm:h-[320px] lg:h-auto lg:min-h-[360px] lg:aspect-[560/420]",
+        "infra-visual group relative isolate h-[320px] w-full overflow-hidden rounded-[1.75rem] sm:h-[340px] lg:h-auto lg:min-h-[380px] lg:aspect-[560/420]",
         className,
       )}
       role="img"

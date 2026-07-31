@@ -5,7 +5,7 @@ import { InfrastructureVisual } from "@/components/home/InfrastructureVisual";
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pb-28 pt-4 sm:pb-32 sm:pt-6">
+    <section className="relative isolate overflow-hidden pb-24 pt-2 sm:pb-28 sm:pt-4 lg:pb-32">
       <div className="absolute inset-0 bg-hero-glow" aria-hidden />
       <div className="noise absolute inset-0" aria-hidden />
       <div
@@ -28,21 +28,21 @@ export function Hero() {
         aria-hidden
       />
 
-      <Container className="relative py-10 sm:py-14 lg:py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 xl:gap-16">
+      <Container className="relative py-8 sm:py-12 lg:py-16">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 xl:gap-16">
           <div className="max-w-xl">
-            <p className="animate-fade-up text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#22C1FF] sm:text-xs">
-              Microsoft · Security · Infrastructure
+            <p className="animate-fade-up text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[#22C1FF] sm:text-xs">
+              Microsoft • Security • Infrastructure
             </p>
-            <h1 className="animate-fade-up animation-delay-100 mt-4 font-display text-[2rem] font-semibold leading-[1.15] tracking-tight text-on-hero sm:text-4xl lg:text-[2.75rem] xl:text-5xl">
+            <h1 className="animate-fade-up animation-delay-100 mt-3 font-display text-[1.85rem] font-semibold leading-[1.15] tracking-tight text-on-hero sm:mt-4 sm:text-4xl lg:text-[2.75rem] xl:text-5xl">
               Modern IT, built around your business.
             </h1>
-            <p className="animate-fade-up animation-delay-200 mt-5 max-w-lg text-base leading-relaxed text-on-hero-muted sm:text-lg">
+            <p className="animate-fade-up animation-delay-200 mt-4 max-w-lg text-[0.95rem] leading-relaxed text-on-hero-muted sm:mt-5 sm:text-lg">
               Niall Tech helps small organizations modernize Microsoft 365,
               identity, endpoints, security, networking, and cloud infrastructure
               with clear guidance and reliable delivery.
             </p>
-            <div className="animate-fade-up animation-delay-300 mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="animate-fade-up animation-delay-300 mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <Button href="/contact" size="lg">
                 Start a conversation
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -51,7 +51,7 @@ export function Hero() {
                 Explore services
               </Button>
             </div>
-            <p className="animate-fade-up animation-delay-400 mt-6 text-sm leading-relaxed text-on-hero-subtle">
+            <p className="animate-fade-up animation-delay-400 mt-5 text-sm leading-relaxed text-on-hero-subtle sm:mt-6">
               Serving Bremerton, Kitsap County, and organizations across the
               Pacific Northwest.
             </p>
