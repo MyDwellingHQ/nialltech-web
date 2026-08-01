@@ -12,8 +12,10 @@ export const COMPANY = {
   website: "nialltech.com",
   websiteUrl: "https://nialltech.com",
   email: "hello@nialltech.com",
-  phone: "+1 (555) 014-2200",
-  phoneHref: "+15550142200",
+  /** Display format for print + UI. */
+  phone: "(360) 474-7305",
+  /** E.164 for tel: links, vCard, and structured data. */
+  phoneHref: "+13604747305",
   linkedin: "https://www.linkedin.com/company/niall-tech",
   github: "https://github.com/niall-tech",
   tagline: "Modern IT. Local Expertise.",
@@ -29,8 +31,10 @@ export const PERSON = {
   title: "Founder / Systems Engineer",
   shortTitle: "Founder",
   email: "paul@nialltech.com",
-  phone: "+1 (555) 014-2200",
-  phoneHref: "+15550142200",
+  /** Display format for print + UI. */
+  phone: "(360) 474-7305",
+  /** E.164 for tel: links, vCard, and structured data. */
+  phoneHref: "+13604747305",
   /** Short intro for the /connect digital card page. */
   intro:
     "I help organizations modernize with Microsoft 365, Azure, identity, and infrastructure that stays secure and maintainable.",

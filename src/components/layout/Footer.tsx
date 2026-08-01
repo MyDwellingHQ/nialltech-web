@@ -39,7 +39,7 @@ export function Footer() {
               </p>
               <p>
                 <a
-                  href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
+                  href={`tel:${siteConfig.phoneHref}`}
                   className="transition-colors hover:text-primary"
                 >
                   {siteConfig.phone}

@@ -1,3 +1,4 @@
+import { PERSON } from "@/data/brand-contact";
 import { ReconstructedBrandMark } from "./ReconstructedBrandMark";
 import {
   ReconstructedHorizontalLockup,
@@ -98,7 +99,9 @@ export function BusinessCardMockup() {
           <div>
             <p className="text-[11px] font-semibold text-[#0B1320]">Paul Dent</p>
             <p className="text-[9px] uppercase tracking-wide text-[#475569]">Managing Partner</p>
-            <p className="mt-1 text-[8px] text-[#475569]">paul@nialltech.com · (206) 555-0198</p>
+            <p className="mt-1 text-[8px] text-[#475569]">
+              {PERSON.email} · {PERSON.phone}
+            </p>
           </div>
         </div>
         <div className="flex aspect-[1.75/1] w-56 items-center justify-center rounded-lg bg-[#0B1320] p-4 shadow-soft">
