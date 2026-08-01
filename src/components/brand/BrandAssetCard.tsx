@@ -14,8 +14,11 @@ type BrandAssetCardProps = {
 };
 
 export function BrandAssetCard({ asset }: BrandAssetCardProps) {
-  const previewBg =
-    asset.background === "dark"
+  const isBusinessCard = asset.category === "business-card";
+  const previewBg = isBusinessCard
+    ? // Mid-tone well so full-bleed navy card art stays edge-visible.
+      "bg-[#cbd5e1] dark:bg-[#334155]"
+    : asset.background === "dark"
       ? "bg-[#0B1320]"
       : asset.background === "transparent"
         ? "bg-[linear-gradient(45deg,var(--border)_25%,transparent_25%),linear-gradient(-45deg,var(--border)_25%,transparent_25%),linear-gradient(45deg,transparent_75%,var(--border)_75%),linear-gradient(-45deg,transparent_75%,var(--border)_75%)] bg-[length:16px_16px] bg-[position:0_0,0_8px,8px_-8px,-8px_0]"
@@ -23,15 +26,16 @@ export function BrandAssetCard({ asset }: BrandAssetCardProps) {
 
   const previewSrc = asset.preview || asset.path;
   const isRasterPreview =
-    previewSrc.endsWith(".png") ||
-    previewSrc.endsWith(".jpg") ||
-    previewSrc.endsWith(".ico");
+    previewSrc.split("?")[0].endsWith(".png") ||
+    previewSrc.split("?")[0].endsWith(".jpg") ||
+    previewSrc.split("?")[0].endsWith(".ico");
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
       <div
         className={cn(
-          "flex h-36 items-center justify-center px-6 py-5 sm:h-40",
+          "flex items-center justify-center px-6 py-5",
+          isBusinessCard ? "h-44 sm:h-48" : "h-36 sm:h-40",
           previewBg,
         )}
       >
@@ -40,7 +44,10 @@ export function BrandAssetCard({ asset }: BrandAssetCardProps) {
           <img
             src={previewSrc}
             alt=""
-            className="max-h-24 max-w-full object-contain"
+            className={cn(
+              "max-w-full object-contain",
+              isBusinessCard ? "max-h-36 w-auto shadow-sm" : "max-h-24",
+            )}
             loading="lazy"
             decoding="async"
           />
@@ -50,7 +57,10 @@ export function BrandAssetCard({ asset }: BrandAssetCardProps) {
             src={previewSrc}
             alt={`Preview of ${asset.name}`}
             className={cn(
-              "max-h-24 max-w-full object-contain",
+              "max-w-full object-contain",
+              isBusinessCard
+                ? "max-h-36 w-auto shadow-sm"
+                : "max-h-24",
               asset.category === "social" && "max-h-28 w-full object-cover",
             )}
             loading={isRasterPreview ? "lazy" : "eager"}

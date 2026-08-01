@@ -51,7 +51,15 @@ export const BUSINESS_CARD = {
   bleedIn: 0.125,
   fullBleedIn: { width: 3.75, height: 2.25 },
   safeInsetFromTrimIn: 0.125,
+  /** Base / variants B–C QR edge length (inches). Variant A scales this. */
   qrTargetIn: 0.85,
+  /**
+   * Production Variant A printed QR edge length (inches @ dpi).
+   * 0.85 × 1.12 → ~0.953" → 286 px at 300 DPI.
+   */
+  qrPrintedInA: 0.953,
+  /** Production Variant A stacked wordmark width in design px (+10% from 300). */
+  backLogoWidthPxA: 330,
   qrMinIn: 0.75,
   dpi: 300,
 };

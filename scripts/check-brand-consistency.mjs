@@ -50,8 +50,12 @@ const warnings = [];
 const fail = (code, msg) => failures.push({ code, msg });
 const warn = (msg) => warnings.push(msg);
 
+/** Strip cache-bust query strings from registry preview URLs. */
+const stripQuery = (webPath) => String(webPath).split("?")[0];
+
 /** Resolve a public web path ("/brand/...") to an absolute fs path. */
-const toFsPath = (webPath) => path.join(PUBLIC, webPath.replace(/^\//, ""));
+const toFsPath = (webPath) =>
+  path.join(PUBLIC, stripQuery(webPath).replace(/^\//, ""));
 
 // ---------------------------------------------------------------------------
 // Load sources
@@ -62,7 +66,7 @@ const registryPaths = new Set(brandAssets.map((a) => a.path));
 // previews of PDF collateral don't register as orphaned assets.
 const surfacedPaths = new Set([
   ...brandAssets.map((a) => a.path),
-  ...brandAssets.map((a) => a.preview).filter(Boolean),
+  ...brandAssets.map((a) => a.preview).filter(Boolean).map(stripQuery),
 ]);
 
 const manifest = JSON.parse(readFileSync(MANIFEST, "utf8"));

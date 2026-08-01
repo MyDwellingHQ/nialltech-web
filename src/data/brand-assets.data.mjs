@@ -11,6 +11,41 @@
  * and fails CI on any divergence. Do not maintain a second hard-coded list.
  */
 
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { BUSINESS_CARD, CONNECT } from "./brand-contact.mjs";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+
+/** Cache-bust token from the business-card build manifest (stable until layout changes). */
+function businessCardPreviewVersion() {
+  try {
+    const manifest = JSON.parse(
+      readFileSync(
+        path.join(ROOT, "public/brand/business-card/manifest.json"),
+        "utf8",
+      ),
+    );
+    if (manifest.assetVersion) return String(manifest.assetVersion);
+    const qrPx = manifest.layout?.backFinal?.qr?.size;
+    const logoW = manifest.layout?.backFinal?.logo?.w;
+    const hasCta = Boolean(
+      manifest.layout?.backFinal?.cta ||
+        manifest.layout?.backFinal?.stack?.ctaIncluded,
+    );
+    if (qrPx && logoW) return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}`;
+  } catch {
+    // Fall through to contact-data defaults when manifest is absent.
+  }
+  const qrPx = Math.round(BUSINESS_CARD.qrPrintedInA * BUSINESS_CARD.dpi);
+  return `a${qrPx}-w${BUSINESS_CARD.backLogoWidthPxA}-nocta`;
+}
+
+const BC_PREVIEW_V = businessCardPreviewVersion();
+const bcPreview = (file) =>
+  `/brand/business-card/exports/${file}?v=${BC_PREVIEW_V}`;
+
 /** Ordered category ids used to group assets into page sections. */
 export const BRAND_ASSET_CATEGORIES = [
   "primary",
@@ -517,55 +552,58 @@ export const brandAssets = [
     preview: "/brand/social/github-org-banner-1280x640.png",
   },
   // ------------------------------------------------------------ Business cards
+  // Production downloads + previews use the VistaPrint export masters under
+  // /brand/business-card/exports/ (collateral/ holds identical sync copies).
   {
     id: "business-card-front",
     name: "Business card — front",
     category: "business-card",
-    path: "/brand/collateral/business-card-front.pdf",
+    path: "/brand/business-card/exports/niall-tech-business-card-front.pdf",
     format: "PDF",
     dimensions: '3.5×2" + bleed',
     background: "light",
-    description: "Print-ready card front: logo, name, title, contact.",
-    recommendedUse: "Send to print vendor",
-    preview: "/brand/collateral/business-card-front.png",
+    description:
+      "Print-ready VistaPrint front: logo, name, title, and contact on the light field.",
+    recommendedUse: "Recommended VistaPrint upload (front)",
+    preview: bcPreview("niall-tech-business-card-front.png"),
   },
   {
     id: "business-card-front-svg",
-    name: "Business card — front (SVG)",
+    name: "Business card — front (SVG source)",
     category: "business-card",
-    path: "/brand/collateral/business-card-front.svg",
+    path: "/brand/business-card/exports/niall-tech-business-card-front.svg",
     format: "SVG",
     dimensions: '3.5×2" + bleed',
     background: "light",
-    description: "Editable vector source for the card front.",
-    recommendedUse: "Custom edits before printing",
-    preview: "/brand/collateral/business-card-front.png",
+    description:
+      "Editable vector source for the card front. Not the VistaPrint upload — use the PDF for print.",
+    recommendedUse: "Editable vector source (not for VistaPrint upload)",
+    preview: bcPreview("niall-tech-business-card-front.png"),
   },
   {
     id: "business-card-back",
     name: "Business card — back",
     category: "business-card",
-    path: "/brand/collateral/business-card-back.pdf",
+    path: "/brand/business-card/exports/niall-tech-business-card-back.pdf",
     format: "PDF",
     dimensions: '3.5×2" + bleed',
     background: "dark",
-    description:
-      "Card back (Variant A): stacked mark, QR to /connect, minimal CTA.",
-    recommendedUse: "Send to print vendor (VistaPrint full-bleed PDF)",
-    preview: "/brand/collateral/business-card-back.png",
+    description: `Production Variant A back: enlarged stacked wordmark and ~${BUSINESS_CARD.qrPrintedInA}" (${Math.round(BUSINESS_CARD.qrPrintedInA * BUSINESS_CARD.dpi)} px @ ${BUSINESS_CARD.dpi} DPI) QR to ${CONNECT.url}. No “Scan to connect” CTA.`,
+    recommendedUse: "Recommended VistaPrint upload (back)",
+    preview: bcPreview("niall-tech-business-card-back.png"),
   },
   {
     id: "business-card-back-svg",
-    name: "Business card — back (SVG)",
+    name: "Business card — back (SVG source)",
     category: "business-card",
-    path: "/brand/collateral/business-card-back.svg",
+    path: "/brand/business-card/exports/niall-tech-business-card-back.svg",
     format: "SVG",
     dimensions: '3.5×2" + bleed',
     background: "dark",
     description:
-      "Editable vector source for the recommended card back. Full concept set under /brand/business-card/.",
-    recommendedUse: "Custom edits before printing",
-    preview: "/brand/collateral/business-card-back.png",
+      "Editable vector source for the recommended Variant A back. Concepts A–C live under /brand/business-card/concepts/. Not the VistaPrint upload — use the PDF for print.",
+    recommendedUse: "Editable vector source (not for VistaPrint upload)",
+    preview: bcPreview("niall-tech-business-card-back.png"),
   },
   // --------------------------------------------------------------- Stationery
   {
@@ -675,7 +713,7 @@ export const brandAssets = [
     background: "light",
     description: "Responsive HTML email signature with logo and contact block.",
     recommendedUse: "Modern mail clients (Gmail, Apple Mail)",
-    preview: "/brand/collateral/business-card-front.png",
+    preview: bcPreview("niall-tech-business-card-front.png"),
   },
   {
     id: "email-signature-outlook",
@@ -687,7 +725,7 @@ export const brandAssets = [
     background: "light",
     description: "Outlook-safe table markup for desktop Outlook signatures.",
     recommendedUse: "Microsoft Outlook desktop",
-    preview: "/brand/collateral/business-card-front.png",
+    preview: bcPreview("niall-tech-business-card-front.png"),
   },
   // ---------------------------------------------------------- Office templates
   {
@@ -820,7 +858,8 @@ export const brandAssetSections = [
   {
     id: "business-cards",
     title: "Business cards",
-    description: "Print-ready front and back, with editable vector sources.",
+    description:
+      "Production VistaPrint front and Variant A back (enlarged mark + QR to /connect, no CTA). PDF uploads recommended; SVG sources are editable vectors only.",
     categories: ["business-card"],
   },
   {

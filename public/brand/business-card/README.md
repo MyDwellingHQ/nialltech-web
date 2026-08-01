@@ -34,7 +34,7 @@ Variants A–C remain under `concepts/` until final approval.
 | Safe zone | ≥ 0.125" inside trim |
 | Design DPI | 300 |
 | PDF page size | 270 × 162 pt |
-| QR printed size (Variant A) | ~0.95" square (+12% from 0.85"; min 0.75") |
+| QR printed size (Variant A) | ~0.953" (286 px @ 300 DPI; min 0.75") |
 | QR destination | `https://nialltech.com/connect` |
 | QR quiet zone | 4 modules (included in QR asset) |
 | Error correction | M |
@@ -48,7 +48,7 @@ Upload these print-ready PDFs (full bleed included):
 1. **Front:** `exports/niall-tech-business-card-front.pdf`
 2. **Back:** `exports/niall-tech-business-card-back.pdf`
 
-Identical copies are synced to `public/brand/collateral/business-card-front.pdf` and `business-card-back.pdf` for the brand hub.
+The `/brand` hub downloads and previews these export masters directly. Identical sync copies are also written to `public/brand/collateral/business-card-front.pdf` and `business-card-back.pdf` for the complete brand ZIP.
 
 ## QR code
 
