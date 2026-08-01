@@ -54,7 +54,6 @@ public/brand/
   niall-tech-brand-assets.zip
 ```
 
-
 ### Business cards (VistaPrint)
 
 See [`business-card/README.md`](./business-card/README.md) for source-of-truth SVGs, bleed specs, QR destination (`https://nialltech.com/connect`), and regenerate/validate commands:
