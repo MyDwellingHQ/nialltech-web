@@ -495,13 +495,26 @@ async function writeAssetIndex() {
   await walk(path.join(BRAND, "collateral"), "collateral");
   await walk(path.join(BRAND, "office"), "office");
   await walk(path.join(BRAND, "email"), "email");
+  // Canonical VistaPrint masters (brand hub downloads/previews point here).
+  await walk(path.join(BRAND, "business-card/exports"), "business-card");
+
+  // Drop collateral business-card sync copies from the index so the registry
+  // can surface a single production set under business-card/exports/ without
+  // duplicating "final" cards on /brand.
+  const filtered = entries.filter(
+    (e) =>
+      !(
+        e.category === "collateral" &&
+        /^business-card-(front|back)\.(pdf|png|svg)$/.test(e.name)
+      ),
+  );
 
   const index = {
     generatedAt: new Date().toISOString(),
     masterSvg: "/brand/svg/niall-tech-icon.svg",
     masterGeometry: "approved-folded-beam",
     brandColors: COLORS,
-    assets: entries.sort((a, b) => a.path.localeCompare(b.path)),
+    assets: filtered.sort((a, b) => a.path.localeCompare(b.path)),
   };
 
   await writeFile(

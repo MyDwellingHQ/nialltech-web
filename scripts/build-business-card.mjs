@@ -305,11 +305,11 @@ async function buildFront() {
   return { svg: svgDoc(CARD_W, CARD_H, content), meta };
 }
 
-/** Variant A — centered wordmark + QR + short CTA (recommended). */
+/** Variant A — centered wordmark + QR (recommended production back). */
 async function buildBackA(qr) {
   // Refine sizes only — same centered stack, dark field, and export geometry.
-  const logoWidth = Math.round(300 * 1.1); // +10%
-  const qrSize = Math.round(QR_TARGET_PX * 1.12); // +12% (within 10–15%)
+  const logoWidth = BUSINESS_CARD.backLogoWidthPxA; // +10% vs 300px base
+  const qrSize = Math.round(BUSINESS_CARD.qrPrintedInA * DPI); // ~0.953" / 286px
   const panelPad = 8; // quiet zone remains in QR asset (margin:4)
   // Prior box gap ~25px; open slightly for breathing room after scale-up.
   const logoToPanelGap = 30;
@@ -702,9 +702,20 @@ ${content}
   console.log("preview: business-card-preview.{svg,png,pdf} + index.html");
 }
 
+/** Deterministic cache-bust token for /brand previews (stable until layout changes). */
+function cardAssetVersion(meta) {
+  const back = meta.backFinal ?? {};
+  const qrPx = back.qr?.size ?? Math.round(BUSINESS_CARD.qrPrintedInA * DPI);
+  const logoW = back.logo?.w ?? BUSINESS_CARD.backLogoWidthPxA;
+  const hasCta = Boolean(back.cta || back.stack?.ctaIncluded);
+  return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}`;
+}
+
 async function writeManifest(meta) {
+  const assetVersion = cardAssetVersion(meta);
   const manifest = {
     generatedAt: new Date().toISOString(),
+    assetVersion,
     connectUrl: CONNECT.url,
     recommendedBack: RECOMMENDED,
     dimensions: {
@@ -805,7 +816,7 @@ Variants A–C remain under \`concepts/\` until final approval.
 | Safe zone | ≥ ${SAFE_FROM_TRIM_IN}" inside trim |
 | Design DPI | ${DPI} |
 | PDF page size | ${FULL_W_IN * 72} × ${FULL_H_IN * 72} pt |
-| QR printed size (Variant A) | ~0.95" square (+12% from ${BUSINESS_CARD.qrTargetIn}"; min ${BUSINESS_CARD.qrMinIn}") |
+| QR printed size (Variant A) | ~${BUSINESS_CARD.qrPrintedInA}" (${Math.round(BUSINESS_CARD.qrPrintedInA * DPI)} px @ ${DPI} DPI; min ${BUSINESS_CARD.qrMinIn}") |
 | QR destination | \`${CONNECT.url}\` |
 | QR quiet zone | 4 modules (included in QR asset) |
 | Error correction | M |
@@ -819,7 +830,7 @@ Upload these print-ready PDFs (full bleed included):
 1. **Front:** \`exports/niall-tech-business-card-front.pdf\`
 2. **Back:** \`exports/niall-tech-business-card-back.pdf\`
 
-Identical copies are synced to \`public/brand/collateral/business-card-front.pdf\` and \`business-card-back.pdf\` for the brand hub.
+The \`/brand\` hub downloads and previews these export masters directly. Identical sync copies are also written to \`public/brand/collateral/business-card-front.pdf\` and \`business-card-back.pdf\` for the complete brand ZIP.
 
 ## QR code
 

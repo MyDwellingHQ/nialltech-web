@@ -46,6 +46,8 @@ export const BUSINESS_CARD = raw.BUSINESS_CARD as {
   fullBleedIn: { width: number; height: number };
   safeInsetFromTrimIn: number;
   qrTargetIn: number;
+  qrPrintedInA: number;
+  backLogoWidthPxA: number;
   qrMinIn: number;
   dpi: number;
 };

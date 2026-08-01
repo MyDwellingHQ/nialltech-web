@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T19:13:12.389Z",
+  "generatedAt": "2026-08-01T04:42:47.431Z",
   "masterSvg": "/brand/svg/niall-tech-icon.svg",
   "masterGeometry": "approved-folded-beam",
   "brandColors": {
@@ -13,46 +13,46 @@
   },
   "assets": [
     {
-      "name": "business-card-back.pdf",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-back.pdf",
+      "name": "niall-tech-business-card-back.pdf",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-back.pdf",
       "format": "pdf",
-      "bytes": 13621
+      "bytes": 11077
     },
     {
-      "name": "business-card-back.png",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-back.png",
+      "name": "niall-tech-business-card-back.png",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-back.png",
       "format": "png",
-      "bytes": 23074
+      "bytes": 20102
     },
     {
-      "name": "business-card-back.svg",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-back.svg",
+      "name": "niall-tech-business-card-back.svg",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-back.svg",
       "format": "svg",
-      "bytes": 2487
+      "bytes": 2731
     },
     {
-      "name": "business-card-front.pdf",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-front.pdf",
+      "name": "niall-tech-business-card-front.pdf",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-front.pdf",
       "format": "pdf",
-      "bytes": 17325
+      "bytes": 15112
     },
     {
-      "name": "business-card-front.png",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-front.png",
+      "name": "niall-tech-business-card-front.png",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-front.png",
       "format": "png",
-      "bytes": 25509
+      "bytes": 22392
     },
     {
-      "name": "business-card-front.svg",
-      "category": "collateral",
-      "path": "/brand/collateral/business-card-front.svg",
+      "name": "niall-tech-business-card-front.svg",
+      "category": "business-card",
+      "path": "/brand/business-card/exports/niall-tech-business-card-front.svg",
       "format": "svg",
-      "bytes": 2509
+      "bytes": 2490
     },
     {
       "name": "invoice.pdf",
