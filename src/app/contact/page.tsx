@@ -51,7 +51,7 @@ export default function ContactPage() {
               icon={Phone}
               label="Phone"
               value={siteConfig.phone}
-              href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
+              href={`tel:${siteConfig.phoneHref}`}
             />
             <ContactDetail
               icon={Clock3}

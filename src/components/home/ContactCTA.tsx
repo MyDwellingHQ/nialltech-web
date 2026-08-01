@@ -42,7 +42,7 @@ export function ContactCTA() {
                 {siteConfig.email}
               </a>
               <a
-                href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
+                href={`tel:${siteConfig.phoneHref}`}
                 className="flex items-center gap-3 text-sm text-on-hero-muted transition-colors hover:text-on-hero"
               >
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-on-hero-soft">

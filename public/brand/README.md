@@ -54,6 +54,7 @@ public/brand/
   niall-tech-brand-assets.zip
 ```
 
+
 ### Business cards (VistaPrint)
 
 See [`business-card/README.md`](./business-card/README.md) for source-of-truth SVGs, bleed specs, QR destination (`https://nialltech.com/connect`), and regenerate/validate commands:
@@ -62,6 +63,8 @@ See [`business-card/README.md`](./business-card/README.md) for source-of-truth S
 npm run branding:build
 npm run branding:validate
 ```
+
+Contact/phone values come from `src/data/brand-contact.mjs` — regenerate collateral after contact changes.
 
 ## Intended usage
 

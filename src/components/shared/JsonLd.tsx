@@ -10,7 +10,7 @@ export function OrganizationJsonLd() {
     logo: `${siteConfig.url}/brand/png/icon/niall-tech-icon-512.png`,
     image: `${siteConfig.url}/brand/social/open-graph-1200x630.png`,
     email: siteConfig.email,
-    telephone: siteConfig.phone,
+    telephone: siteConfig.phoneHref,
     description: siteConfig.description,
     areaServed: "Worldwide",
     sameAs: [siteConfig.social.linkedin, siteConfig.social.github],

@@ -1,16 +1,21 @@
+import { COMPANY } from "@/data/brand-contact";
+
 export const siteConfig = {
-  name: "Niall Tech",
-  legalName: "Niall Tech",
+  name: COMPANY.name,
+  legalName: COMPANY.legalName,
   tagline: "Technology consulting that keeps your business moving.",
   description:
     "Niall Tech delivers Microsoft 365, Azure, Entra ID, Intune, security, and infrastructure consulting for modern organizations.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://nialltech.com",
   locale: "en_US",
-  email: "hello@nialltech.com",
-  phone: "+1 (555) 014-2200",
+  email: COMPANY.email,
+  /** Display phone — keep in sync via brand-contact.mjs. */
+  phone: COMPANY.phone,
+  /** E.164 for tel: links and JSON-LD. */
+  phoneHref: COMPANY.phoneHref,
   social: {
-    linkedin: "https://www.linkedin.com/company/niall-tech",
-    github: "https://github.com/niall-tech",
+    linkedin: COMPANY.linkedin,
+    github: COMPANY.github,
   },
   keywords: [
     "Microsoft 365 consulting",
