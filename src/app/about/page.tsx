@@ -39,9 +39,10 @@ export default function AboutPage() {
               <div className="mt-5 space-y-4 text-base leading-relaxed text-muted">
                 <p>
                   Niall Tech is a technology consulting company for leaders who
-                  want capable partners—not another layer of complexity. We
-                  specialize in Microsoft 365, Azure, Entra ID, Intune, security,
-                  and the infrastructure foundations that keep operations steady.
+                  want capable partners—not another layer of complexity. As a
+                  Microsoft Launch Partner, we specialize in Microsoft 365,
+                  Azure, Entra ID, Intune, security, and the infrastructure
+                  foundations that keep operations steady.
                 </p>
                 <p>
                   Our approach is simple: understand the business, design for

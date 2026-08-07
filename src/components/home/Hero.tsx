@@ -32,7 +32,7 @@ export function Hero() {
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 xl:gap-16">
           <div className="max-w-xl">
             <p className="animate-fade-up text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-[#22C1FF] sm:text-xs">
-              Microsoft • Security • Infrastructure
+              Microsoft Launch Partner
             </p>
             <h1 className="animate-fade-up animation-delay-100 mt-3 font-display text-[1.85rem] font-semibold leading-[1.15] tracking-tight text-on-hero sm:mt-4 sm:text-4xl lg:text-[2.75rem] xl:text-5xl">
               Modern IT, built around your business.

@@ -21,8 +21,12 @@ export const whyChooseUs = [
   },
 ];
 
-/** Sourced from Paul Dent LinkedIn (linkedin.com/in/podent). */
+/** Partner status + credentials (certs from linkedin.com/in/podent). */
 export const certifications = [
+  {
+    name: "Microsoft Launch Partner",
+    detail: "Microsoft AI Cloud Partner Program",
+  },
   {
     name: "CompTIA Security+",
     detail: "CE — current through 2028",
