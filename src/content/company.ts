@@ -21,39 +21,36 @@ export const whyChooseUs = [
   },
 ];
 
-/** Partner status + credentials (certs from linkedin.com/in/podent). */
-export const certifications = [
+/** Featured partner status (from linkedin.com/in/podent). */
+export const partnerCredential = {
+  name: "Microsoft Launch Partner",
+  program: "Microsoft AI Cloud Partner Program",
+  summary:
+    "Active partner standing for Microsoft cloud, identity, and security work—not a badge from years ago.",
+};
+
+/**
+ * Practice-focused credentials (from linkedin.com/in/podent).
+ * Grouped by the work they support; expiry dates are omitted on purpose.
+ */
+export const credentialGroups = [
   {
-    name: "Microsoft Launch Partner",
-    detail: "Microsoft AI Cloud Partner Program",
+    area: "Security",
+    credentials: [
+      "CompTIA Security+",
+      "CompTIA Secure Infrastructure Specialist",
+    ],
   },
   {
-    name: "CompTIA Security+",
-    detail: "CE — current through 2028",
+    area: "Infrastructure",
+    credentials: ["CompTIA Network+", "CompTIA A+", "Kaseya VSA 10"],
   },
   {
-    name: "CompTIA Network+",
-    detail: "CE — current through 2028",
-  },
-  {
-    name: "CompTIA A+",
-    detail: "CE — current through 2028",
-  },
-  {
-    name: "CompTIA Secure Infrastructure Specialist",
-    detail: "CSIS — current through 2028",
-  },
-  {
-    name: "CompTIA Project+",
-    detail: "Certified Professional",
-  },
-  {
-    name: "Microsoft Certified Technology Specialist",
-    detail: "MCTS",
-  },
-  {
-    name: "Kaseya VSA 10",
-    detail: "Certified Technician",
+    area: "Delivery",
+    credentials: [
+      "CompTIA Project+",
+      "Microsoft Certified Technology Specialist",
+    ],
   },
 ];
 

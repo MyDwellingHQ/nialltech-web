@@ -81,4 +81,4 @@ public/                # Static assets
 
 ## Placeholder content
 
-Certifications are sourced from the founder LinkedIn profile. Stats remain illustrative placeholders. Connect the contact form to your preferred backend or booking provider when ready.
+Credentials are sourced from the founder LinkedIn profile and shown by practice area (no expiry dates). Stats remain illustrative placeholders. Connect the contact form to your preferred backend or booking provider when ready.
