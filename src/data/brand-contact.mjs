@@ -11,7 +11,7 @@ export const COMPANY = {
   legalName: "Niall Tech",
   website: "nialltech.com",
   websiteUrl: "https://nialltech.com",
-  email: "pdent@nialltech.com",
+  email: "hello@nialltech.com",
   /** Display format for print + UI. */
   phone: "(360) 474-7305",
   /** E.164 for tel: links, vCard, and structured data. */
@@ -30,7 +30,7 @@ export const PERSON = {
   lastName: "Dent",
   title: "Founder / Systems Engineer",
   shortTitle: "Founder",
-  email: "pdent@nialltech.com",
+  email: "hello@nialltech.com",
   /** Display format for print + UI. */
   phone: "(360) 474-7305",
   /** E.164 for tel: links, vCard, and structured data. */
