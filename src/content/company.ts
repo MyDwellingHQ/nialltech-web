@@ -101,10 +101,10 @@ export const workflowSteps = [
 ];
 
 export const aboutStats = [
-  { label: "Years of combined experience", value: "15+" },
-  { label: "Cloud & identity projects", value: "120+" },
-  { label: "Average client retention", value: "96%" },
-  { label: "Response commitment", value: "Same day" },
+  { label: "Professional IT experience", value: "20+ Years" },
+  { label: "Modern workplace expertise", value: "Cloud + Identity" },
+  { label: "Built into every solution", value: "Security First" },
+  { label: "Strategy, implementation & support", value: "End-to-End" },
 ];
 
 export const values = [
