@@ -81,4 +81,4 @@ public/                # Static assets
 
 ## Placeholder content
 
-Contact details, certifications, and stats are placeholders for demonstration. Replace them with production-ready copy and connect the contact form to your preferred backend or booking provider when ready.
+Certifications are sourced from the founder LinkedIn profile. Stats remain illustrative placeholders. Connect the contact form to your preferred backend or booking provider when ready.

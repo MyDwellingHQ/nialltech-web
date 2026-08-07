@@ -7,8 +7,8 @@ export function Certifications() {
   return (
     <Section
       eyebrow="Credentials"
-      title="Certifications that signal readiness"
-      description="Our consultants maintain current Microsoft and security credentials relevant to the platforms we implement."
+      title="Partner status and certifications"
+      description="Microsoft Launch Partner membership plus current CompTIA and operations credentials aligned with the work we deliver."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert, index) => (

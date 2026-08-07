@@ -21,30 +21,39 @@ export const whyChooseUs = [
   },
 ];
 
+/** Partner status + credentials (certs from linkedin.com/in/podent). */
 export const certifications = [
   {
-    name: "Microsoft 365 Certified",
-    detail: "Administrator Expert",
-  },
-  {
-    name: "Azure Administrator",
-    detail: "Associate",
-  },
-  {
-    name: "Microsoft Security",
-    detail: "Operations Analyst",
-  },
-  {
-    name: "Endpoint Administrator",
-    detail: "Associate",
-  },
-  {
-    name: "Identity & Access",
-    detail: "Administrator Associate",
+    name: "Microsoft Launch Partner",
+    detail: "Microsoft AI Cloud Partner Program",
   },
   {
     name: "CompTIA Security+",
+    detail: "CE — current through 2028",
+  },
+  {
+    name: "CompTIA Network+",
+    detail: "CE — current through 2028",
+  },
+  {
+    name: "CompTIA A+",
+    detail: "CE — current through 2028",
+  },
+  {
+    name: "CompTIA Secure Infrastructure Specialist",
+    detail: "CSIS — current through 2028",
+  },
+  {
+    name: "CompTIA Project+",
     detail: "Certified Professional",
+  },
+  {
+    name: "Microsoft Certified Technology Specialist",
+    detail: "MCTS",
+  },
+  {
+    name: "Kaseya VSA 10",
+    detail: "Certified Technician",
   },
 ];
 
