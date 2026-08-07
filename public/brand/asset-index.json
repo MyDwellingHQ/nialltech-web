@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T07:53:02.624Z",
+  "generatedAt": "2026-08-07T06:05:23.023Z",
   "masterSvg": "/brand/svg/niall-tech-icon.svg",
   "masterGeometry": "approved-folded-beam",
   "brandColors": {
@@ -38,14 +38,14 @@
       "category": "business-card",
       "path": "/brand/business-card/exports/niall-tech-business-card-front.pdf",
       "format": "pdf",
-      "bytes": 15069
+      "bytes": 15001
     },
     {
       "name": "niall-tech-business-card-front.png",
       "category": "business-card",
       "path": "/brand/business-card/exports/niall-tech-business-card-front.png",
       "format": "png",
-      "bytes": 22457
+      "bytes": 22307
     },
     {
       "name": "niall-tech-business-card-front.svg",
@@ -59,14 +59,14 @@
       "category": "collateral",
       "path": "/brand/collateral/invoice.pdf",
       "format": "pdf",
-      "bytes": 67109
+      "bytes": 67034
     },
     {
       "name": "invoice.png",
       "category": "collateral",
       "path": "/brand/collateral/invoice.png",
       "format": "png",
-      "bytes": 107135
+      "bytes": 107096
     },
     {
       "name": "invoice.svg",
@@ -80,14 +80,14 @@
       "category": "collateral",
       "path": "/brand/collateral/letterhead.pdf",
       "format": "pdf",
-      "bytes": 19315
+      "bytes": 19190
     },
     {
       "name": "letterhead.png",
       "category": "collateral",
       "path": "/brand/collateral/letterhead.png",
       "format": "png",
-      "bytes": 32315
+      "bytes": 32100
     },
     {
       "name": "letterhead.svg",
@@ -101,14 +101,14 @@
       "category": "collateral",
       "path": "/brand/collateral/proposal-cover.pdf",
       "format": "pdf",
-      "bytes": 163934
+      "bytes": 163596
     },
     {
       "name": "proposal-cover.png",
       "category": "collateral",
       "path": "/brand/collateral/proposal-cover.png",
       "format": "png",
-      "bytes": 273078
+      "bytes": 272811
     },
     {
       "name": "proposal-cover.svg",
@@ -122,14 +122,14 @@
       "category": "collateral",
       "path": "/brand/collateral/sow-cover.pdf",
       "format": "pdf",
-      "bytes": 163554
+      "bytes": 163217
     },
     {
       "name": "sow-cover.png",
       "category": "collateral",
       "path": "/brand/collateral/sow-cover.png",
       "format": "png",
-      "bytes": 273199
+      "bytes": 272921
     },
     {
       "name": "sow-cover.svg",
