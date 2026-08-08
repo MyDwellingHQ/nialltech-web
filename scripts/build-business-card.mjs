@@ -64,6 +64,7 @@ const BLEED = BLEED_IN * DPI;
 const SAFE = BLEED + SAFE_FROM_TRIM_IN * DPI; // 75
 const QR_TARGET_PX = Math.round(BUSINESS_CARD.qrTargetIn * DPI); // 255
 const RECOMMENDED = BUSINESS_CARD.recommendedBack;
+const CARD_EMAIL = "pdent@nialltech.com";
 
 async function exists(p) {
   try {
@@ -280,7 +281,7 @@ async function buildFront() {
     ${icon("phone", contactX, line(0) - 15, iconSize, BRAND.blue)}
     <text x="${contactX + 30}" y="${line(0)}" fill="${BRAND.lightGray}">${esc(PERSON.phone)}</text>
     ${icon("mail", contactX, line(1) - 15, iconSize, BRAND.blue)}
-    <text x="${contactX + 30}" y="${line(1)}" fill="${BRAND.lightGray}">${esc(PERSON.email)}</text>
+    <text x="${contactX + 30}" y="${line(1)}" fill="${BRAND.lightGray}">${esc(CARD_EMAIL)}</text>
     ${icon("globe", contactX, line(2) - 15, iconSize, BRAND.blue)}
     <text x="${contactX + 30}" y="${line(2)}" fill="${BRAND.lightGray}">${esc(COMPANY.website)}</text>
   </g>`;
@@ -708,7 +709,8 @@ function cardAssetVersion(meta) {
   const qrPx = back.qr?.size ?? Math.round(BUSINESS_CARD.qrPrintedInA * DPI);
   const logoW = back.logo?.w ?? BUSINESS_CARD.backLogoWidthPxA;
   const hasCta = Boolean(back.cta || back.stack?.ctaIncluded);
-  return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}`;
+  const emailKey = CARD_EMAIL.split("@", 1)[0];
+  return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}-e${emailKey}`;
 }
 
 async function writeManifest(meta) {
