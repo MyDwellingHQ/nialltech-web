@@ -709,7 +709,8 @@ function cardAssetVersion(meta) {
   const qrPx = back.qr?.size ?? Math.round(BUSINESS_CARD.qrPrintedInA * DPI);
   const logoW = back.logo?.w ?? BUSINESS_CARD.backLogoWidthPxA;
   const hasCta = Boolean(back.cta || back.stack?.ctaIncluded);
-  return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}`;
+  const emailKey = CARD_EMAIL.split("@", 1)[0];
+  return `a${qrPx}-w${logoW}-${hasCta ? "cta" : "nocta"}-e${emailKey}`;
 }
 
 async function writeManifest(meta) {
