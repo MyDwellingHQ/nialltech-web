@@ -44,6 +44,7 @@ const SAFE = BLEED + BUSINESS_CARD.safeInsetFromTrimIn * DPI;
 const PDF_W_PT = FULL_W_IN * 72;
 const PDF_H_PT = FULL_H_IN * 72;
 const QR_MIN_PX = BUSINESS_CARD.qrMinIn * DPI;
+const CARD_EMAIL = "pdent@nialltech.com";
 
 const failures = [];
 const warnings = [];
@@ -398,7 +399,13 @@ async function main() {
 
   // Contact consistency
   const frontSvg = await readFile(frontSvgPath, "utf8");
-  for (const token of [PERSON.name, PERSON.title, PERSON.phone, PERSON.email, COMPANY.website]) {
+  for (const token of [
+    PERSON.name,
+    PERSON.title,
+    PERSON.phone,
+    CARD_EMAIL,
+    COMPANY.website,
+  ]) {
     if (frontSvg.includes(token)) ok(`front includes ${token}`);
     else fail(`front missing ${token}`);
   }
